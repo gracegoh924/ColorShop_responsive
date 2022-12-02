@@ -1,0 +1,11 @@
+.user_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_image{
+    width: 200px;
+    height: 200px;
+}
