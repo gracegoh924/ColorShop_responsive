@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    /* font-family:'Jua', sans-serif */
+    /* font-family: 'Cinzel', serif; */
+}
+
+body {
+    /* background: #02343F; */
+}
+
+.userbutton button{
+    height: 40px;
+    background-color: #F0EDCC;
+    color: #02343F;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px 40px #F0EDCC inset, 0 0 0 0 #F0EDCC;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.userbutton button:hover {
+    box-shadow: 0 0 10px 0 #F0EDCC inset, 0 0 10px 4px #F0EDCC;
+}
+
+.postview-box {
+    background-color: #F0EDCC; 
+    width: 68%;
+    height: 800px; 
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.image-box {
+    background-color: #F0EDCC; 
+    width: 65%;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.image-container {
+    width: 100%;
+}
+
+.image {
+    width: 100%;
+    border-radius: 20px;
+    margin: auto;
+}
+
+.image-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.new_post_content {
+    background:#02343F;
+    color: #F0EDCC;
+    height: 120px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.content-box{
+    font-size:20px;
+    height:80px;
+    width: 600px;
+}
+
+.post_buttons {
+    display: flex;
+    align-items: flex-end;
+    background-color: #02343F;
+    color: #F0EDCC;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.like_container {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart_box {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.count_box {
+    width: 60%;
+    height: 100%;
+    text-align : center;
+    line-height : 100px;
+}
+
+.heart {
+    font-size: 30px;
+    color: gray;
+    cursor: pointer;
+}
+
+.heart:hover {
+    font-size: 35px;
+    color: gray;
+}
+
+.like_heart {
+    color: red
+}
+
+.like_heart:hover {
+    font-size: 35px;
+    color: red
+}
+
+.comment-box {
+    width: 33%;
+    padding-top: 20px;
+}
+
+.create_comment {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.comments {
+    background:#02343F;
+    color: #F0EDCC;
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 635px;
+    padding: 10px;
+}
+
+.comment-btn{
+    width: 60px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: #02343F;
+    color: #F0EDCC;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.comment-box button:hover {
+    box-shadow: 0 0 10px 0 #02343F inset, 0 0 10px 4px #02343F;
+}
+
+.comments button{
+    width: 90px;
+    height: 40px;
+    background-color: #F0EDCC;
+    color: #02343F;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px 40px #F0EDCC inset, 0 0 0 0 #F0EDCC;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.comments button:hover {
+    box-shadow: 0 0 10px 0 #F0EDCC inset, 0 0 10px 4px #F0EDCC;
+}
+
+.delete_back{
+    display: inline-block;
+    float: right;
+}
+
+.delete_back button{
+    width: 80px;
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 10px;
+    background-color: #02343F;
+    color: #F0EDCC;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.delete_back button:hover {
+    box-shadow: 0 0 10px 0 #02343F inset, 0 0 10px 4px #02343F;
+}
+
