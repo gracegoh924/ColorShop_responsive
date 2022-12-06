@@ -1,3 +1,5 @@
+includehtml();
+
 // 게시글 url 가져오기 
 const urlParams = new URLSearchParams(window.location.search)
 const post_id = urlParams.get('id')
@@ -289,5 +291,42 @@ async function addcomment() {
     createComment.value = '' // 댓글 입력란 글자 삭제
 }
 
+// 좋아요 정보 확인
+async function viewLike() {
+    // 좋아요 여부
+    const liked = await getLike()
+    const me = await getName()
+    console.log(liked.likes)
+    console.log(me)
+    const like_button = document.getElementById("like_button")
+    if(liked.likes.includes(me)) {
+        like_button.classList.add('like_heart')
+    }else{
+        like_button.classList.remove('like_heart')
+    }
+    // 좋아요 카운트
+    const like_count = document.getElementById("like_count")
+    like_count.innerText = "좋아요 " + liked.likes.length + "개"
+}
+
+// 좋아요 기능
+async function likePost() {
+    const liked = await getLike()
+    const like_button = document.getElementById("like_button")
+    const like_count = document.getElementById("like_count")
+    var count = parseInt(liked.likes.length)
+    num1 = parseInt(1)
+    if(like_button.classList == 'heart fa-solid fa-heart') {
+        const response = await postLike()
+        like_button.classList.add('like_heart')
+        like_count.innerText = "좋아요 " + (count + num1) + "개"
+    }else{
+        const response = await postLike()
+        like_button.classList.remove('like_heart')
+        like_count.innerText = "좋아요 " + (count - num1) + "개"
+    }
+}
+
+viewLike()
 checkLogin()
 loadPostDetail(post_id)

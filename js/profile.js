@@ -1,3 +1,5 @@
+includehtml();
+
 const profileUrlParams = new URLSearchParams(window.location.search)
 const profile_user_id = profileUrlParams.get('id')
 console.log(profile_user_id)
@@ -61,6 +63,7 @@ async function postListButton(){
 
 async function postLikeListButton(){
     const profile = await getProfile(profile_user_id)
+
     const posts = await getPost()
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
@@ -105,4 +108,5 @@ async function postLikeListButton(){
     }
 }
 
+loadHeader(user_id);
 loadProfile(profile_user_id);

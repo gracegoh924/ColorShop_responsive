@@ -1,3 +1,5 @@
+includehtml();
+
 const userinfoUrlParams = new URLSearchParams(window.location.search)
 const userinfo_user_id = userinfoUrlParams.get('id')
 console.log(userinfo_user_id)

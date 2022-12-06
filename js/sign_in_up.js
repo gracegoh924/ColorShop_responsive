@@ -1,3 +1,5 @@
+includehtml();
+
 const signInBtn = document.getElementById("signIn");
 const signUpBtn = document.getElementById("signUp");
 const fistForm = document.getElementById("form1");
@@ -14,8 +16,6 @@ signUpBtn.addEventListener("click", () => {
 
 fistForm.addEventListener("submit", (e) => e.preventDefault());
 secondForm.addEventListener("submit", (e) => e.preventDefault());
-
-
 
 async function handleSignup() {
   
@@ -93,5 +93,3 @@ async function handleSignup() {
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
   }
-  
-  
