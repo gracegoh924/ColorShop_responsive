@@ -39,14 +39,15 @@ async function handleSignup() {
     })
     
     const Response = await response.json()
-  
+    console.log(Response)
+   
     if (response.status === 201){
         alert("회원가입 성공!");
-        window.location.reload()
+        container.classList.remove("right-panel-active");
     }
     else if(response.status === 400){
-    if ("email" in Response){
-        sign_up_Alert.innerText = Response.email[0]
+    if ("username" in Response){
+        sign_up_Alert.innerText = Response.username[0]
     }
     else if ("password" in Response){
         sign_up_Alert.innerText = Response.password[0]
@@ -83,7 +84,7 @@ async function handleSignup() {
         location.href="home.html"
     }        
     else{
-        Alert.innerText = "이메일 또는 비밀번호를 확인해주세요"
+        Alert.innerText = "유저이름 또는 비밀번호를 확인해주세요"
         return false
     }
     const base64Url = response_json.access.split('.')[1];
