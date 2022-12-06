@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko-kr">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/header.css">
-    <script src="/js/home.js"></script>
+    <script src="/js/api.js"></script>
+    
     <title>header</title>
 </head>
 
@@ -15,12 +16,12 @@
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <h1 onclick="location.href='/html/post_detail.html'"><b><span style=color:dodgerblue>C</span>olor<span style=color:tomato>S</span>hop</b></h1>
+                <h1 onclick="location.href='/html/home.html'"><b><span style=color:dodgerblue>C</span>olor<span style=color:tomato>S</span>hop</b></h1>
             </ul>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Sketch</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Community</a></li>
+                <li><a class="nav-link px-2 link-secondary" onclick="location.href='/html/sketch.html'">Sketch</a></li>
+                <li><a class="nav-link px-2 link-dark" onclick="location.href='/html/community.html'">Community</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -28,7 +29,7 @@
             </form>
 
             <div class="dropdown text-end">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                <a class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img id="dropdown_profile_image" class="rounded-circle" alt="..." width="32" height="32">
                 </a>
@@ -42,13 +43,12 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" onclick="location.href='/html/sign_in_up.html'">회원가입</a></li>
+                    <li><a class="dropdown-item" onclick="location.href=`${frontend_base_url}/html/sign_in_up.html`">회원가입</a></li>
                     <li><a id="loginout" class="dropdown-item">로그인</a></li>
                 </ul>
             </div>
         </header>
     </div>
-    <script src="/js/api.js"></script>
     <script src="/js/header.js"></script>
 </body>
 </html>

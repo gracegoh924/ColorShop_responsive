@@ -1,3 +1,19 @@
+// 로그인 확인
+async function checkLogin() {
+    const name = await getName();
+    const loginoutButton = document.getElementById("loginout")
+
+    loginoutButton.innerText = ''
+
+    if(name){
+        loginoutButton.innerText = "로그아웃"
+        loginoutButton.setAttribute("onclick", "logout()")
+    }else{
+        loginoutButton.innerText = "로그인"
+        loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}/html/sign_in_up.html`") 
+    }
+}
+
 async function loadHeader(){
     const users = await getUser()
     
@@ -33,4 +49,5 @@ function userinfoButton(user_id){
     location.href=url
 }
 
+checkLogin()
 loadHeader()

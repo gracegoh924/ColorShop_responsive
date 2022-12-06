@@ -39,43 +39,24 @@ async function handleLogin() {
     }
 }
 
-// 포스트 get
-async function getPosts() {
-    const response = await fetch(`${backend_base_url}/posts/`, {
-        method: 'GET',
-    })
-    response_json = await response.json()
-    console.log(response_json)
-    return response_json
-}
-
-// 좋아요 post
-async function postLike() {
-    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
-        headers:{
-            'Authorization':'Bearer '+localStorage.getItem("access"),
-            'content-type':'application/json'
-        },
-        method: 'POST',
-    })
-}
-
-// 좋아요 get
-async function getLike() {
-    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
-        method: 'GET'
-    })
-    
-    response_json = await response.json()
-    console.log(response_json)
-    return response_json
-}
 
 async function getUser(){
     const response = await fetch(`${backend_base_url}/users/`, {
         method:'GET'
     })
     response_json = await response.json()
+    return response_json
+}
+
+async function getName(){
+    const response = await fetch(`${backend_base_url}/users/mock/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+        },
+        method:'GET'
+    })
+    response_json = await response.json()
+    console.log(response_json)
     return response_json
 }
 
@@ -87,7 +68,7 @@ async function getProfile(profile_user_id){
     return response_json
 }
 
-async function getPost(){
+async function getPosts(){
     const response = await fetch(`${backend_base_url}/posts/`, {
         method:'GET',
     })
@@ -130,4 +111,26 @@ async function deleteUserinfo(userinfo_user_id){
         window.location.replace(`/html/profile.html?id=${userinfo_user_id}`)
 
     }
+}
+
+// 좋아요 post
+async function postLike() {
+    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+            'content-type':'application/json'
+        },
+        method: 'POST',
+    })
+}
+
+// 좋아요 get
+async function getLike() {
+    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
+        method: 'GET'
+    })
+    
+    response_json = await response.json()
+    console.log(response_json)
+    return response_json
 }

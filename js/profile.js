@@ -19,7 +19,7 @@ async function loadProfile(profile_user_id){
 
 async function postListButton(){
     const profile = await getProfile(profile_user_id)
-    const posts = await getPost()
+    const posts = await getPosts()
     
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
@@ -63,8 +63,7 @@ async function postListButton(){
 
 async function postLikeListButton(){
     const profile = await getProfile(profile_user_id)
-
-    const posts = await getPost()
+    const posts = await getPosts()
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
 
@@ -108,5 +107,4 @@ async function postLikeListButton(){
     }
 }
 
-loadHeader(user_id);
 loadProfile(profile_user_id);
