@@ -1,11 +1,11 @@
-.user_info{
+.userinfo{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.profile_image{
-    width: 200px;
-    height: 200px;
+.userinfo_image{
+    width: 100px;
+    height: 100px;
 }

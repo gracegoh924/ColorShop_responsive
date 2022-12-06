@@ -92,6 +92,49 @@ body {
     transition: all 150ms ease-in-out;
 }
 
+.like_container {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart_box {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.count_box {
+    width: 60%;
+    height: 100%;
+    text-align : center;
+    line-height : 100px;
+}
+
+.heart {
+    font-size: 30px;
+    color: gray;
+    cursor: pointer;
+}
+
+.heart:hover {
+    font-size: 35px;
+    color: gray;
+}
+
+.like_heart {
+    color: red
+}
+
+.like_heart:hover {
+    font-size: 35px;
+    color: red
+}
+
 .comment-box {
     width: 33%;
     padding-top: 20px;

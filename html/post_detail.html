@@ -62,12 +62,20 @@
                     </div> 
                 </div>
             </div>
+            <div class="like_container">
+                <div class="heart_box">
+                    <i onclick="likePost()" id="like_button" class="heart fa-solid fa-heart"></i>
+                </div>
+                <div class="count_box">
+                    <p class="like_count" id="like_count">좋아요 0개</p>
+                </div>
+            </div>
         </div>
         <div id="comment-box" class="comment-box">
             <div id="create_comment" style="display: flex; justify-content: space-evenly; align-items: stretch;">
                 <input type="text" id="user_comment" class="form-control" style="width: 370px; height: 40px;"
                     placeholder="댓글을 입력해주세요">
-                <button id="btn_comment" class="comment-btn" onclick="addcomment()">입력</button>
+                <button id="btn_comment" class="comment-btn" onclick="addComment()">입력</button>
             </div>
             <div id="comment_list" class="comments">
             </div>
