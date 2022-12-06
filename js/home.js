@@ -121,26 +121,6 @@ async function transferImage() {
   }
 }
 
-// 로그인 확인
-async function checkLogin() {
-  const name = await getName();
-
-  const loginoutButton = document.getElementById("loginout");
-  if (name) {
-    loginoutButton.innerText = "로그아웃";
-    loginoutButton.setAttribute("onclick", "logout()");
-  } else {
-    loginoutButton.innerText = "로그인";
-    loginoutButton.setAttribute("onclick", "location.href='/login.html'");
-
-    const update_post = document.getElementById("update_post");
-    const delete_post = document.getElementById("delete_post");
-
-    update_post.style.visibility = "hidden";
-    delete_post.style.visibility = "hidden";
-  }
-}
-
 // 포스팅 모달창 띄우기
 const modal = document.getElementById("post_modal");
 const buttonAddFeed = document.getElementById("img_post_btn");
@@ -221,5 +201,4 @@ async function loadPosts() {
   });
 }
 
-checkLogin();
 loadPosts();

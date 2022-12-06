@@ -48,16 +48,30 @@ async function getUser(){
     return response_json
 }
 
-async function getName(){
+// 로그인 시 정보 가져오기
+async function getName() {
     const response = await fetch(`${backend_base_url}/users/mock/`, {
-        headers:{
-            'Authorization':'Bearer '+localStorage.getItem("access"),
-        },
-        method:'GET'
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("access")
+        }
     })
-    response_json = await response.json()
-    console.log(response_json)
-    return response_json
+
+    if (response.status == 200) {
+        const payload = localStorage.getItem("payload");
+        const payload_parse = JSON.parse(payload)
+        return payload_parse.user_id
+    } else {
+        return null
+    }
+}
+
+// 로그아웃
+function logout() {
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    localStorage.removeItem("payload")
+    window.location.replace(`${frontend_base_url}/html/home.html`)
+    alert('로그아웃 하셨습니다')
 }
 
 async function getProfile(profile_user_id){
@@ -131,6 +145,5 @@ async function getLike() {
     })
     
     response_json = await response.json()
-    console.log(response_json)
     return response_json
 }
