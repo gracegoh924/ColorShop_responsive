@@ -7,55 +7,78 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="/css/user_info.css">
     <script src="/js/api.js"></script>
-    <script src="/js/head.js"></script>
+    <script src="/js/header.js"></script>
     <title>회원 정보</title>
 </head>
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+    <div class="container" style="background-color: #F0EDCC;">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <h1 onclick="location.href='/html/post_detail.html'"><b><span style=color:dodgerblue>C</span>olor<span style=color:tomato>S</span>hop</b></h1>
+            </ul>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 link-secondary">Sketch</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Community</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control" placeholder="검색" aria-label="Search" control-id="ControlID-2">
+            </form>
+
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img id="dropdown_profile_image" class="rounded-circle" alt="..." width="32" height="32">
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item"><sapn id="dropdown_username"></sapn>님, 안녕하세요?</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a id="profile" class="dropdown-item">프로필</a></li>
+                    <li><a id="user_info" class="dropdown-item">회원정보</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/">회원가입</a></li>
+                    <li><a class="dropdown-item" href="/">로그인</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="userinfo" style="display: flex; align-items:center;">
+            <div class="form-control" style="display: flex; flex-direction: column; align-items: center;">
+                <p>프로필 사진</p>
+                <img id="image" class="userinfo_image">
+                <input id="userinfo_image" type="file" class="form-control" style="width: 95px;">
+            </div>
+            <div class="userinfo_profile form-control" style="width: 100%; margin:30px">
+                <p>프로필</p>
+                <div class="form-control-sm">
+                    <label>아이디</label>
+                    <input type="text" id="userinfo_username" class="form-control-plaintext">
+                </div>
+                <div class="form-control-sm">
+                    <label>닉네임</label>
+                    <div style="display: flex;">
+                        <input type="text" id="userinfo_nickname" class="form-control" aria-describedby="button-addon2">
+                    </div>
+                    <p>닉네임을 변경할 수 있습니다</p>
+                </div>
+                <div class="form-control-sm">
+                    <label>자기 소개</label>
+                    <div style="display: flex; align-items:center;">
+                        <textarea id="userinfo_bio" class="form-control" aria-describedby="button-addon3"></textarea>
+                    </div>
+                    <p>자기소개를 변경할 수 있습니다</p>
                 </div>
             </div>
-        </nav>
-        <div class="user_info">
-            <img class="profile_image">
             <div>
-                <div id="username" style="margin-top: 20px;">username</div>
-                <div id="bio" style="margin-top: 20px;">안녕하세요 nickname입니다.</div>
+                <button id="update_userinfo" type="button" class="btn btn-primary" style="margin: 10px;" onclick="updateUserinfo()">수정</button>
+                <button id="remove_userinfo" type="button" class="btn btn-primary" style="margin: 10px;" onclick="removeUserinfo()">회원 탈퇴</button>
             </div>
         </div>
     </div>
