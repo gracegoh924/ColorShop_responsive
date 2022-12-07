@@ -15,8 +15,6 @@ signUpBtn.addEventListener("click", () => {
 fistForm.addEventListener("submit", (e) => e.preventDefault());
 secondForm.addEventListener("submit", (e) => e.preventDefault());
 
-
-
 async function handleSignup() {
 
     const username = document.getElementById("signup_username").value

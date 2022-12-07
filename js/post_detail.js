@@ -327,7 +327,6 @@ async function likePost() {
     }
 }
 
-
 viewLike()
 checkLogin()
 loadPostDetail(post_id)
