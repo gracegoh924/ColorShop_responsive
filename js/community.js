@@ -1,52 +1,121 @@
 includehtml();
 
+async function loadPosts() {
+    const posts = await getPosts()
+    const post_list = document.getElementById("post_list")
 
-async function postList(){
-    // const profile = await getProfile(user_id)
-    const posts = await getPost()
-    
-    const postList = document.getElementById("post_list")
-    const postLikeList = document.getElementById("post_like_list")
-
-    postList.innerHTML = ''
-    postLikeList.innerHTML = ''
-
-    const result = posts.filter(function (post) { return post.user == profile.username})
-
-    for(let i = 0; i < result.length; i++){
-        console.log(result)
-        console.log(result[i].image)
-        console.log(result[i].user)
-        const postCol = document.createElement("div")
-        postCol.classList.add("col")
-
-        const postCard = document.createElement("div")
-        postCard.classList.add("card")
-        postCard.classList.add("h-100")
+    posts.forEach(post => {
+        const newPost = document.createElement("div")
+        newPost.classList.add("post_list")
+        newPost.setAttribute("id", post.id)
+        newPost.setAttribute("onclick", "postDetail(this.id)")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${result[i].image}`)
-        postImage.classList.add("card-img-top")
+        postImage.setAttribute("src", `${backend_base_url}${post.image}`)
 
-        const postCardFooter = document.createElement("div")
-        postCardFooter.classList.add("card-footer")
-        
-        const postUsername = document.createElement("small")
-        postUsername.classList.add("card-text")
-        postUsername.innerText = result[i].user
+        const postContent = document.createElement("span")
+        postContent.classList.add("content")
+        postContent.innerText = post.content
 
-        const postLikes = document.createElement("small")
-        postLikes.classList.add("card-text")
-        postLikes.innerText = '좋아요 (' + result[i].likes_count + ')'
-
-        postCardFooter.appendChild(postUsername)
-        postCardFooter.appendChild(postLikes)
-        postCard.appendChild(postImage)
-        postCard.appendChild(postCardFooter)
-        postCol.appendChild(postCard)
-        postList.appendChild(postCol)
-    }
+        post_list.append(newPost)
+        newPost.append(postImage)
+        newPost.append(postContent)
+    })
 }
 
+async function loadPosts_2() {
+    const posts = await getPosts()
+    const post_list = document.getElementById("post_list_2")
 
-postList()
+    posts.forEach(post => {
+        const newPost = document.createElement("div")
+        newPost.classList.add("post_list")
+        newPost.setAttribute("id", post.id)
+        newPost.setAttribute("onclick", "postDetail(this.id)")
+
+        const postImage = document.createElement("img")
+        postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+
+        const postContent = document.createElement("span")
+        postContent.classList.add("content")
+        postContent.innerText = post.content
+
+        post_list.append(newPost)
+        newPost.append(postImage)
+        newPost.append(postContent)
+    })
+}
+
+async function loadPosts_3() {
+    const posts = await getPosts()
+    const me = await getName()
+    const post_list = document.getElementById("post_list_3")
+
+    posts.forEach(post => {
+        const newPost = document.createElement("div")
+        newPost.classList.add("post_card")
+
+        const postImage = document.createElement("img")
+        postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+        postImage.setAttribute("id", post.id)
+        postImage.setAttribute("onclick", "postDetail(this.id)")
+
+        const postContent = document.createElement("p")
+        postContent.classList.add("content_3")
+        postContent.innerText = post.content
+
+        const postUser = document.createElement("p")
+        postUser.classList.add("user_3")
+        postUser.innerText = post.user
+
+        const line = document.createElement("hr")
+        line.classList.add("line")
+
+        const postLike = document.createElement("i")
+        postLike.setAttribute("id", "like" + post.id)
+        postLike.setAttribute("onclick", "likePost(this.id)")
+        if (post.likes.includes(me)) {
+            postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
+        } else {
+            postLike.classList.add("heart", "fa-solid", "fa-heart")
+        }
+
+        const likeCount = document.createElement("p")
+        likeCount.setAttribute("id", "like_count")
+        likeCount.classList.add("likeCount")
+        likeCount.innerText = post.likes_count
+
+
+        post_list.append(newPost)
+        newPost.append(postImage)
+        newPost.append(postContent)
+        newPost.append(postUser)
+        newPost.append(line)
+        newPost.append(postLike)
+        newPost.append(likeCount)
+    })
+}
+
+// async function likePost(likeId) {
+//     const posts = await getPosts()
+//     console.log(posts)
+//     const like_button = document.getElementById(`${likeId}`)
+//     console.log(like_button)
+//     console.log(like_button.classList)
+
+//     if(like_button.classList == 'heart fa-solid fa-heart') {
+//         const response = await postLike(post_id)
+//         like_button.classList.add('like_heart')
+//         // like_count.innerText = "좋아요 " + (count + num1) + "개"
+//     }else{
+//         const response = await postLike()
+//         like_button.classList.remove('like_heart')
+//         // like_count.innerText = "좋아요 " + (count - num1) + "개"
+//     }
+// }
+
+
+loadPosts()
+loadPosts_2()
+loadPosts_3()
+
