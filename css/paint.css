@@ -1,0 +1,129 @@
+.sketch_container {
+    width: 100%;
+    height: 400px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.btn_box {
+    width: 300px;
+    height:300px;
+    margin-right: 10px;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+    border:1px solid red;
+}
+
+.sketch_text {
+    height: 40%;
+    justify-content: center;
+    align-items : center;
+}
+
+.sketch_btn {
+    justify-content: center;
+    align-items : center;
+    cursor: pointer;
+}
+
+.sketch_img_box {
+    width: 250px;
+    height:300px;
+    margin-left: 10px;
+    padding: 5px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+    background-color: white;
+}
+
+.sketch_image {
+    height: 100%;
+}
+
+.info_container {
+    width: 100%;
+    height: 400px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.info_img_box {
+    width: 300px;
+    height:300px;
+    margin-right: 10px;
+    padding: 5px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+    background-color: white;
+}
+
+.info_image {
+    height: 100%;
+}
+
+.info_text_box {
+    width: 900px;
+    height:300px;
+    margin-left: 10px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+    border:1px solid blue;
+}
+
+.info_text {
+    font-size: 15px;
+}
+
+.post_container {
+    width: 100%;
+    height: 760px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.post_box {
+    width: 750px;
+    height: 100%;
+    margin-top: 100px;
+    margin-right: 10px;
+}
+
+.post_box_title {
+    margin-left: 25px;
+}
+
+.card_row_1 {
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items : center;
+}
+
+.card_row_2 {
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items : center;
+}
+
+.card_box {
+    width: 220px;
+    margin: 10px
+
+}
+
+.crawling_box {
+    width: 400px;
+    height: 100%;
+    margin-top: 100px;
+    margin-left: 10px;
+    border:1px solid purple;
+}

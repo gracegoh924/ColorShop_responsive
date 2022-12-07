@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/paint.css">
+    <script src="/js/includehtml.js"></script>
+
+    <title>main</title>
+</head>
+
+<body>
+    <!-- 헤더 연결 -->
+    <header include-html="/html/header.html"></header>
+
+    <div class="sketch_container" style="background-color:#02343F;">
+        <div class="btn_box">
+            <p class="sketch_text">Auto_painter 어쩌구 저쩌구</p>
+            <button type="button" id="upload">이미지 선택하기</button>
+            <input type="file" hidden>
+        </div>
+        <div class="btn_box">
+            <div>
+                <button type="button" class="button" id="line_art" value="1" onclick="selectImageStyle(this.value)">line_art</button>
+                <button type="button" class="button" id="colorization" value="2" onclick="selectImageStyle(this.value)">colorization</button>
+            </div>
+            <div>
+                <button type="button" class="button" onclick="" id="img_upload_btn">이미지 변환</button>
+                <button type="button" class="button" onclick="" id="img_post_btn">공유하기</button>
+            </div>
+
+        </div>
+        <div class="sketch_img_box">
+            <img src="/static/auto.png" alt="sketch_image" class="sketch_image" onclick="window.open(this.src)" id="after_image">
+        </div>
+    </div>
+    
+    <div class="info_container" style="background-color:#F0EDCC;">
+        <div class="info_text_box">
+            <p class="info_text">선택한 기능에 따른 세부 설정 창</p>
+        </div>
+    </div>
+
+    <!-- 푸터 연결 -->
+    <footer include-html="/html/footer.html"></footer>
+
+    <script src="/js/home.js"></script>
+</body>
+
+</html>
