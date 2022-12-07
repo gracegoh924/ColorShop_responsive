@@ -93,15 +93,14 @@
   
   .container--signup {
     left: 0;
+
     opacity: 0;
-    width: 50%;
     z-index: 1;
   }
-  
-  .container.right-panel-active .container--signup {
-    animation: show 0.6s;
+
+  50%,
+  100% {
     opacity: 1;
-    transform: translateX(100%);
     z-index: 5;
   }
   

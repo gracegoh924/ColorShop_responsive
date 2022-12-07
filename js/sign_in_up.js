@@ -15,16 +15,14 @@ signUpBtn.addEventListener("click", () => {
 fistForm.addEventListener("submit", (e) => e.preventDefault());
 secondForm.addEventListener("submit", (e) => e.preventDefault());
 
-
-
 async function handleSignup() {
-  
+
     const username = document.getElementById("signup_username").value
     const password = document.getElementById("signup_password").value
     const password_check = document.getElementById("signup_password_check").value
     const nickname = document.getElementById("nickname").value
     const sign_up_Alert = document.getElementById("sign_up_Alert")
-   
+
     const response = await fetch('http://127.0.0.1:8000/users/', {
         headers: {
             'content-type' : 'application/json',
@@ -37,10 +35,11 @@ async function handleSignup() {
             "nickname":nickname
         })
     })
-    
+
     const Response = await response.json()
+
     console.log(Response)
-   
+
     if (response.status === 201){
         alert("회원가입 성공!");
         container.classList.remove("right-panel-active");
@@ -59,7 +58,7 @@ async function handleSignup() {
         sign_up_Alert.innerText = Response.nickname[0]
     }
     }
-  
+
   }
 
   async function handleLogin(){
@@ -94,5 +93,3 @@ async function handleSignup() {
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
   }
-  
-  

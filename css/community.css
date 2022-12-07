@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jua', sans-serif
+}
+
+body {
+    background: #02343F;
+    color: #F0EDCC;
+}
+
+#gallery {
+    column-count: 4;
+}
+
+#gallery img {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: white;
+}
+
+#gallery img:hover {
+    filter: brightness(70%);
+}
+
+.gallery_2 {
+    height: 200px;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+}
+
+.gallery_2 img {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.gallery_2 img:hover {
+    filter: brightness(70%);
+}
+
+.content {
+    position: absolute;
+    bottom: 25px;
+    left: 15px;
+    z-index: 1;
+    font-size: 20px;
+    color: white;
+    opacity: 0;
+}
+
+.post_list {
+    position: relative;
+}
+
+.post_list:hover .content{
+    opacity: 1;
+}
+
+.gallery_3 {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+}
+
+.gallery_3 .post_card {
+    width: 100%;
+    height: 300px;
+    background-color: white;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.gallery_3 img {
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+}
+
+.content_3 {
+    position: absolute;
+    bottom: 48px;
+    left: 15px;
+    font-size: 20px;
+    color: black;
+}
+
+.user_3 {
+    position: absolute;
+    bottom: 25px;
+    left: 15px;
+    font-size: 16px;
+    color: black;
+}
+
+.line {
+    position: absolute;
+    text-align: left;
+    bottom: 18px;
+    width: 100%;
+    size: 1px;
+    color: black;
+}
+
+.heart {
+    position: absolute;
+    bottom: 9px;
+    left: 14px;
+    font-size: 18px;
+    color: gray;
+    /* cursor: pointer; */
+}
+
+/* .heart:hover {
+    filter: brightness(80%);
+} */
+
+.like_heart {
+    color: red
+}
+
+/* .like_heart:hover {
+    filter: brightness(80%);
+} */
+
+.likeCount {
+    position: absolute;
+    bottom: -12px;
+    left: 38px;
+    font-size: 15px;
+    color: black;

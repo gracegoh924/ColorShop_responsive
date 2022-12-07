@@ -13,7 +13,10 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/css/home.css">
+    
     <script src="/js/includehtml.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/header.js"></script>
 
     <title>main</title>
 </head>
@@ -22,7 +25,7 @@
     <!-- 헤더 연결 -->
     <header include-html="/html/header.html"></header>
 
-    <div class="sketch_container" style="background-color:#EE4E34;">
+    <div class="sketch_container" style="background-color:#02343F;">
         <div class="btn_box">
             <p class="sketch_text">Auto_painter 어쩌구 저쩌구</p>
             <button class="sketch_btn" onClick="location.href='/html/upload.html'">Upload sketch image</button>
@@ -32,9 +35,9 @@
         </div>
     </div>
     
-    <div class="info_container" style="background-color:#FCEDDA;">
+    <div class="info_container" style="background-color:#F0EDCC;">
         <div class="info_img_box">
-            <img src="non_image.png" alt="info_image" class="info_image">
+            <img src="/static/auto.png" alt="info_image" class="info_image">
         </div>
         <div class="info_text_box">
             <p class="info_text">info 어쩌구 저쩌구</p>
@@ -93,11 +96,11 @@
             </div>
         </div>
     </div>
+    
 
     <!-- 푸터 연결 -->
     <footer include-html="/html/footer.html"></footer>
 
     <script src="/js/home.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,11 @@
+.userinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userinfo_image{
+    width: 100px;
+    height: 100px;
+}
