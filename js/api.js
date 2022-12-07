@@ -61,6 +61,7 @@ async function getName(){
     } else {
         return null
     }
+}
 
 async function getProfile(profile_user_id){
     const response = await fetch(`${backend_base_url}/users/${profile_user_id}/`, {
@@ -75,6 +76,23 @@ async function getPosts(){
         method:'GET',
     })
     response_json = await response.json()
+    return response_json
+}
+
+// 상세 페이지로 이동
+function postDetail(post_id){
+    const url = `${frontend_base_url}/post_detail.html?id=${post_id}`
+    location.href=url
+}
+
+// 상세 페이지 GET
+async function getPostDetail(post_id) {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        method: 'GET'
+    })
+
+    response_json = await response.json()
+    console.log(response_json)
     return response_json
 }
 
