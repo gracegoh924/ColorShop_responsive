@@ -15,10 +15,12 @@
             <input type="password" id="signup_password" placeholder="Password" class="input" />
             <input type="password" id="signup_password_check" placeholder="repeat_password" class="input" />
             <input type="text" id="nickname"placeholder="nickname" class="input" />
+            <span id="alert_box">
+              <p id="sign_up_Alert"></p>
+            </span>
             <button onclick="handleSignup()" class="btn">Sign Up</button>
           </form>
           <div id="alert_box">
-            <p id="sign_up_Alert"></p>
           </div>
         </div>
 
@@ -28,11 +30,12 @@
             <h2 class="form__title">Sign In</h2>
             <input type="Username" id="Username"  placeholder="Username" class="input" />
             <input type="password" id="password"  placeholder="Password" class="input" />
+            <div id="alert_box_login">
+              <p id="alert"></p>
+            </div>
             <button onclick="handleLogin()" class="btn">Sign In</button>
           </form>
-          <div id="alert_box">
-            <p id="alert"></p>
-          </div>
+          
         </div>
 
         <!-- Overlay -->

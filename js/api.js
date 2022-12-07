@@ -53,16 +53,18 @@ async function getName(){
         headers:{
             'Authorization':'Bearer '+localStorage.getItem("access"),
         },
-        method:'GET'
     })
-    response_json = await response.json()
-    console.log(response_json)
-    return response_json
-}
+    if (response.status == 200) {
+        const payload = localStorage.getItem("payload");
+        const payload_parse = JSON.parse(payload)
+        return payload_parse.username
+    } else {
+        return null
+    }
 
 async function getProfile(profile_user_id){
     const response = await fetch(`${backend_base_url}/users/${profile_user_id}/`, {
-        method:'GET',
+        method: 'GET',
     })
     response_json = await response.json()
     return response_json
@@ -109,13 +111,12 @@ async function deleteUserinfo(userinfo_user_id){
     if(response.status == 204){
         alert('삭제되었습니다')
         window.location.replace(`/html/profile.html?id=${userinfo_user_id}`)
-
     }
 }
 
 // 좋아요 post
 async function postLike() {
-    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/like/`, {
         headers:{
             'Authorization':'Bearer '+localStorage.getItem("access"),
             'content-type':'application/json'
@@ -126,7 +127,7 @@ async function postLike() {
 
 // 좋아요 get
 async function getLike() {
-    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/like/`, {
         method: 'GET'
     })
     
