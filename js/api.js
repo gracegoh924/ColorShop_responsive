@@ -1,7 +1,6 @@
 const backend_base_url = 'http://127.0.0.1:8000'
 const frontend_base_url = 'http://127.0.0.1:5500'
 
-
 // 로그인
 async function handleLogin() {
     const username = document.getElementById("username").value
@@ -36,7 +35,6 @@ async function handleLogin() {
         // 로그인이 성공하면 홈으로 이동
         location.replace("/html/community.html")
     }else{
-
         alert('아이디 혹은 비밀번호를 잘못입력했습니다')
     }
 }
@@ -63,6 +61,7 @@ async function getName(){
     } else {
         return null
     }
+}
 
 async function getProfile(profile_user_id){
     const response = await fetch(`${backend_base_url}/users/${profile_user_id}/`, {
@@ -72,12 +71,28 @@ async function getProfile(profile_user_id){
     return response_json
 }
 
-
 async function getPosts(){
     const response = await fetch(`${backend_base_url}/posts/`, {
         method:'GET',
     })
     response_json = await response.json()
+    return response_json
+}
+
+// 상세 페이지로 이동
+function postDetail(post_id){
+    const url = `${frontend_base_url}/post_detail.html?id=${post_id}`
+    location.href=url
+}
+
+// 상세 페이지 GET
+async function getPostDetail(post_id) {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        method: 'GET'
+    })
+
+    response_json = await response.json()
+    console.log(response_json)
     return response_json
 }
 
@@ -114,14 +129,12 @@ async function deleteUserinfo(userinfo_user_id){
     if(response.status == 204){
         alert('삭제되었습니다')
         window.location.replace(`/html/profile.html?id=${userinfo_user_id}`)
-
     }
 }
 
 // 좋아요 post
 async function postLike() {
     const response = await fetch(`${backend_base_url}/posts/${post_id}/like/`, {
-
         headers:{
             'Authorization':'Bearer '+localStorage.getItem("access"),
             'content-type':'application/json'

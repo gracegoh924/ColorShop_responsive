@@ -1,6 +1,5 @@
 includehtml();
 
-
 async function loadPosts() {
     const posts = await getPosts()
     const post_list = document.getElementById("post_list")
@@ -97,6 +96,8 @@ async function loadPosts_3() {
     })
 }
 
+
+
 // async function likePost(likeId) {
 //     const posts = await getPosts()
 //     console.log(posts)
@@ -119,3 +120,4 @@ async function loadPosts_3() {
 loadPosts()
 loadPosts_2()
 loadPosts_3()
+
