@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko-kr">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/haeder/home.css">
+    <link rel="stylesheet" href="/css/header.css">
+
+    <script src="/js/api.js"></script>
+    
     <title>header</title>
 </head>
 
@@ -14,12 +17,12 @@
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <img src="/static/cs.png" href="/" style="height: 40px; cursor: pointer;"></a>
+                <h1 onclick="location.href='/html/home.html'"><b><span style=color:dodgerblue>C</span>olor<span style=color:tomato>S</span>hop</b></h1>
             </ul>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Sketch</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Community</a></li>
+                <li><a class="nav-link px-2 link-secondary" onclick="location.href='/html/sketch.html'">Sketch</a></li>
+                <li><a class="nav-link px-2 link-dark" onclick="location.href='/html/community.html'">Community</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -27,26 +30,27 @@
             </form>
 
             <div class="dropdown text-end">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                <a class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img id="dropdown_profile_image" class="rounded-circle" alt="..." width="32" height="32">
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item">님, 안녕하세요?</a></li>
+                    <li><a class="dropdown-item"><sapn id="dropdown_username"></sapn>님, 안녕하세요?</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="/">프로필</a></li>
-                    <li><a class="dropdown-item" href="/">회원정보</a></li>
+                    <li><a id="profile" class="dropdown-item">프로필</a></li>
+                    <li><a id="user_info" class="dropdown-item">회원정보</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="/">회원가입</a></li>
-                    <li><a class="dropdown-item" href="/">로그인</a></li>
+                    <li><a class="dropdown-item" onclick="location.href=`${frontend_base_url}/html/sign_in_up.html`">회원가입</a></li>
+                    <li><a id="loginout" class="dropdown-item">로그인</a></li>
                 </ul>
             </div>
         </header>
     </div>
-</body>
 
+    <script src="/js/header.js"></script>
+</body>
 </html>
