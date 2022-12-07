@@ -10,7 +10,7 @@ function includehtml(callback) {
     if (file) {
       /*make an HTTP request using the attribute value as the file name:*/
       xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
+      xhr.onreadystatechange = function () {
         if (this.readyState == 4) {
           if (this.status == 200) {
             elmnt.innerHTML = this.responseText;
@@ -29,6 +29,6 @@ function includehtml(callback) {
       return;
     }
   }
-  setTimeout(function() {
+  setTimeout(function () {
   }, 0);
 }
