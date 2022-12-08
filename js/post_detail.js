@@ -34,7 +34,7 @@ async function loadPostDetail(post_id){
     const postContent = document.getElementById("post_content")
     const postTime = document.getElementById("time")
 
-    postImage.setAttribute("src", `${backend_base_url}${post.image.after_image}`)
+    postImage.setAttribute("src", `${backend_base_url}${post.image}`)
     postUser.innerText = post.user
     postContent.innerText = post.content
     postTime.innerText = post.update_at
