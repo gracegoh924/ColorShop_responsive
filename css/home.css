@@ -219,5 +219,5 @@
 .timeline {
     height:620px;
     overflow:scroll;
-    background-color:white;
+    background-color:transparent;
 }
