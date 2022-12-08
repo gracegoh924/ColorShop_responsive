@@ -61,6 +61,7 @@ async function getName(){
     } else {
         return null
     }
+}
 
 async function getProfile(profile_user_id){
     const response = await fetch(`${backend_base_url}/users/${profile_user_id}/`, {
@@ -134,4 +135,33 @@ async function getLike() {
     response_json = await response.json()
     console.log(response_json)
     return response_json
+}
+
+// 이미지 업로드 post
+async function uploadImage() {
+    const imageData = new FormData()
+    const before_image = document.getElementById("before_image")
+    imageData.append("before_image", before_image)
+
+    const response = await fetch(`${backend_base_url}/posts/image/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("access"),
+        },
+        body: imageData
+    })
+
+    if (response.status == 201) {
+        // 홈페이지에서 after_image 띄우기
+        const getimages = await getImages();
+        const after_image = document.getElementById("after_image")
+        after_image.setAttribute("src", `${backend_base_url}${getimages.after_image}`)
+        return response
+    }else{
+        if(file == null){
+            alert('파일을 올려주세요')
+        }else{
+            alert('로그인 해주세요')
+        }
+    }
 }
