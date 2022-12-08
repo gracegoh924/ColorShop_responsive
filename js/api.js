@@ -39,7 +39,6 @@ async function handleLogin() {
     }
 }
 
-
 async function getUser(){
     const response = await fetch(`${backend_base_url}/users/`, {
         method:'GET'
@@ -76,6 +75,7 @@ async function getPosts(){
         method:'GET',
     })
     response_json = await response.json()
+    console.log(response_json)
     return response_json
 }
 

@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="/css/home.css">
 
     <script src="/js/includehtml.js"></script>
-    <script src="/js/api.js"></script>
-    <script src="/js/header.js"></script>
 
     <title>main</title>
 </head>
@@ -51,45 +49,8 @@
             <div class="box_title">
                 <p>Best post</p>
             </div>
-            <div class="card_row_1">
-                <div class="card_box card">
-                    <img src="/static/auto.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">content 어쩌구 저쩌구 1</p>
-                    </div>
-                </div>
-                <div class="card_box card">
-                    <img src="/static/auto.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">content 어쩌구 저쩌구 2</p>
-                    </div>
-                </div>
-                <div class="card_box card">
-                    <img src="/static/auto.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">content 어쩌구 저쩌구 3</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card_row_2">
-                <div class="card_box card">
-                    <img src="/static/auto.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">content 어쩌구 저쩌구 4</p>
-                    </div>
-                </div>
-                <div class="card_box card">
-                    <img src="/static/auto.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">content 어쩌구 저쩌구 5</p>
-                    </div>
-                </div>
-                <div class="card_box card">
-                    <img src="/static/auto.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">content 어쩌구 저쩌구 6</p>
-                    </div>
-                </div>
+            <div>
+                <div class="best_post" id="best_post" style="background:red"></div>
             </div>
         </div>
         <div class="tweet_box">
@@ -114,7 +75,10 @@
     <!-- 푸터 연결 -->
     <footer include-html="/html/footer.html"></footer>
 
+    <script src="/js/api.js"></script>
+    <script src="/js/header.js"></script>
     <script src="/js/home.js"></script>
+    <!-- <script src="/js/api.js"></script> -->
 </body>
 
 </html>
