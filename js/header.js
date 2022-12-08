@@ -1,5 +1,4 @@
 async function loadHeader(){
-    const users = getUser()
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
 

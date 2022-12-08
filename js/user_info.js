@@ -11,6 +11,9 @@ async function loadUserinfo(userinfo_user_id){
 
     const userinfoUsername = document.getElementById("userinfo_username")
     userinfoUsername.value = userinfo.username
+    
+    const userinfoPassword = document.getElementById("userinfo_password")
+    userinfoPassword.value = userinfo.password
 
     const userinfoNickname = document.getElementById("userinfo_nickname")
     userinfoNickname.value = userinfo.nickname
@@ -39,6 +42,9 @@ async function loadUserinfo(userinfo_user_id){
 
         const removeUserinfo = document.getElementById("remove_userinfo")
         removeUserinfo.style.visibility = "hidden"
+
+        const changePassword = document.getElementById("button-addon")
+        changePassword.style.visibility = "hidden"
     }
 }
 
@@ -56,5 +62,30 @@ async function updateUserinfo(){
 async function removeUserinfo(){
     const removeUserinfo = await deleteUserinfo(userinfo_user_id)
 }
+
+async function changePassword(){
+    const changePasswordButton = document.getElementById("button-addon")
+    const newPassword = document.getElementById("new_password").value
+    const newPassword2 = document.getElementById("new_password2").value
+
+    await putPassword(userinfo_user_id, newPassword, newPassword2)
+}
+
+// 포스팅 모달창 띄우기
+const modal = document.getElementById("post_modal");
+const buttonAddFeed = document.getElementById("button-addon");
+buttonAddFeed.addEventListener("click", e => {
+    modal.style.top = window.pageYOffset + 'px';
+    modal.style.display = "flex";
+    document.body.style.overflowY = "hidden";
+})
+
+// 포스팅 모달창 닫기
+const buttonCloseModal = document.getElementById("close_modal");
+buttonCloseModal.addEventListener("click", e => {
+    modal.style.display = "none";
+    document.body.style.overflowY = "visible";
+});
+
 
 loadUserinfo(userinfo_user_id);

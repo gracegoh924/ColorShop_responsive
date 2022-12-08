@@ -9,3 +9,25 @@
     width: 100px;
     height: 100px;
 }
+
+.modal{
+    width: 500px;
+    height: 500px;
+    left: 0px;
+    top: 0px;
+    position: relative;
+    align-items: center;
+    justify-content: center; 
+    z-index: 999;
+    display: none;
+}
+
+.modal_content{
+    border-radius: 10px;
+    border: 1px solid #02343F;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
