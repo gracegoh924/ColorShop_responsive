@@ -26,22 +26,17 @@
     <!-- 좋아요 Icons -->
     <script src="https://kit.fontawesome.com/edb6bbddd8.js" crossorigin="anonymous"></script>
 
+    <script src="/js/includehtml.js"></script>
+
     <title>ColorShop</title>
 </head>
 
 <body>
-    <div class="container">
-        <header
-            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <h1 onclick="location.href='/html/home.html'"><b><span style=color:dodgerblue>C</span>olor<span style=color:tomato>S</span>hop</b></h1>
-            </a>
+    <!-- 헤더 연결 -->
+    <header include-html="/html/header.html"></header>
 
-            <div class="userbutton col-md-3 text-end">
-                <button type="button" id="loginout" onclick="logout()" style="margin-right: 10px;">로그인</button>
-                <button type="button" onclick="location.href='/signup.html'">회원가입</button>
-            </div>
-        </header>
-    </div>
+    <!-- <div class="container">
+    </div> -->
 
     <div class="postview-box">
         <div class="image-box">
@@ -75,7 +70,7 @@
             <div id="create_comment" style="display: flex; justify-content: space-evenly; align-items: stretch;">
                 <input type="text" id="user_comment" class="form-control" style="width: 370px; height: 40px;"
                     placeholder="댓글을 입력해주세요">
-                <button id="btn_comment" class="comment-btn" onclick="addComment()">입력</button>
+                <button id="btn_comment" class="comment-btn" onclick="addcomment()">입력</button>
             </div>
             <div id="comment_list" class="comments">
             </div>
@@ -85,6 +80,10 @@
             </div>
         </div>
     </div>
+
+    <!-- 푸터 연결 -->
+    <footer include-html="/html/footer.html"></footer>
+
 
     <script src="/js/api.js"></script>
     <script src="/js/post_detail.js"></script>

@@ -42,9 +42,9 @@ async function handleLogin() {
 // 로그인 시 정보 가져오기
 async function getName() {
     const response = await fetch(`${backend_base_url}/users/mock/`, {
-        headers: {
-            'Authorization': 'Bearer ' + localStorage.getItem("access")
-        }
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+        },
     })
 
     if (response.status == 200) {
@@ -67,7 +67,7 @@ function logout() {
 
 async function getProfile(profile_user_id){
     const response = await fetch(`${backend_base_url}/users/${profile_user_id}/`, {
-        method:'GET',
+        method: 'GET',
     })
     response_json = await response.json()
     return response_json
@@ -136,6 +136,23 @@ async function putPassword(userinfo_user_id, newPassword, newPassword2){
     }
 }
 
+// 상세 페이지로 이동
+function postDetail(post_id){
+    const url = `${frontend_base_url}/post_detail.html?id=${post_id}`
+    location.href=url
+}
+
+// 상세 페이지 GET
+async function getPostDetail(post_id) {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        method: 'GET'
+    })
+
+    response_json = await response.json()
+    console.log(response_json)
+    return response_json
+}
+
 async function putUserinfo(userinfo_user_id, profile_img, username, nickname, bio){
     const userinfoData = new FormData()
     userinfoData.append("profile_img", profile_img)
@@ -176,13 +193,12 @@ async function deleteUserinfo(userinfo_user_id){
     if(response.status == 204){
         alert('삭제되었습니다')
         window.location.replace(`/html/profile.html?id=${userinfo_user_id}`)
-
     }
 }
 
 // 좋아요 post
 async function postLike() {
-    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/like/`, {
         headers:{
             'Authorization':'Bearer '+localStorage.getItem("access"),
             'content-type':'application/json'
@@ -193,7 +209,7 @@ async function postLike() {
 
 // 좋아요 get
 async function getLike() {
-    const response = await fetch(`${backend_base_url}/post/${post_id}/like/`, {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/like/`, {
         method: 'GET'
     })
     

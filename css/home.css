@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;
     align-items : center;
-    border:1px solid red;
+    border:1px solid silver;
 }
 
 .sketch_text {
@@ -75,7 +75,7 @@
     display : flex;
     justify-content: center;
     align-items : center;
-    border:1px solid blue;
+    border:1px solid rgb(169, 181, 241);
 }
 
 .info_text {
@@ -97,7 +97,7 @@
     margin-right: 10px;
 }
 
-.post_box_title {
+.box_title {
     margin-left: 25px;
 }
 
@@ -121,10 +121,19 @@
 
 }
 
-.crawling_box {
-    width: 400px;
+.tweet_box {
+    width: 500px;
     height: 100%;
     margin-top: 100px;
     margin-left: 10px;
-    border:1px solid purple;
+}
+
+.tweet_box .box_title {
+    margin-left: 0px;
+}
+
+.timeline {
+    height:700px;
+    overflow:scroll;
+    background-color:white;
 }
