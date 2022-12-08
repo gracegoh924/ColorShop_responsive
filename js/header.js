@@ -15,8 +15,6 @@ async function checkLogin() {
 }
 
 async function loadHeader(){
-    const users = await getUser()
-    
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
 
