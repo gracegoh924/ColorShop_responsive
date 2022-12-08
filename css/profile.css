@@ -6,11 +6,13 @@
 .profile{
     width: auto;
     height: 300px;
+    border-radius: 20px;
+    margin: 30px;
     display:flex;
     justify-content: center;
     align-items: center;
     background-color:#02343F;
-    color:#F0EDCC;
+    color:#02343F;
     /* border-radius: 10px; */
 }
 
@@ -40,24 +42,16 @@
     width: 100%;
     display: flex; 
     flex-direction: row; 
-    justify-content: space-evenly; 
+    justify-content: center; 
     align-items: center; 
 }
 
-.button{
-    margin: 30px;
-    cursor: pointer;
-    background-color:#F0EDCC;
-    color:#02343F;
-    border-radius: 10px;
+.btn {
+    /* background-color: #F0EDCC; */
+    border: 1px dashed ;
+    font-weight: bold;
 }
 
-.button:hover {background-color: #F0EDCC}
-
-.button:active {
-  background-color: #02343F;
-  color:#F0EDCC;
-}
 
 .list{
     margin: 30px;
