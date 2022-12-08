@@ -1,8 +1,8 @@
 includehtml();
 
 
-async function loadPosts_3() {
-    const posts = await getPosts()
+async function loadBestposts() {
+    const posts = await getBestPosts()
     const me = await getName()
     const best_post = document.getElementById("best_post")
 
@@ -16,11 +16,11 @@ async function loadPosts_3() {
         postImage.setAttribute("onclick", "postDetail(this.id)")
 
         const postContent = document.createElement("p")
-        postContent.classList.add("content_3")
+        postContent.classList.add("content")
         postContent.innerText = post.content
 
         const postUser = document.createElement("p")
-        postUser.classList.add("user_3")
+        postUser.classList.add("user")
         postUser.innerText = post.user
 
         const line = document.createElement("hr")
@@ -29,12 +29,6 @@ async function loadPosts_3() {
         const postLike = document.createElement("i")
         postLike.setAttribute("id", "like" + post.id)
         postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
-        // postLike.setAttribute("onclick", "likePost(this.id)")
-        // if (post.likes.includes(me)) {
-        //     postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
-        // } else {
-        //     postLike.classList.add("heart", "fa-solid", "fa-heart")
-        // }
 
         const likeCount = document.createElement("p")
         likeCount.setAttribute("id", "like_count")
@@ -53,4 +47,4 @@ async function loadPosts_3() {
 }
 
 
-loadPosts_3()
+loadBestposts()
