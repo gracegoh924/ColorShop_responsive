@@ -39,8 +39,8 @@
 
 body {
     align-items: center;
-    background-image: url("https://wallpapers.com/images/hd/black-triangle-prism-in-space-k57fczv03qhibrbm.webp");
-    background-color: rgb(206, 236, 249);
+    /* background-image: url("https://wallpapers.com/images/hd/black-triangle-prism-in-space-k57fczv03qhibrbm.webp"); */
+    /* background-color: rgb(206, 236, 249); */
     background-blend-mode: multiply;
     background-attachment: fixed;
     background-position: center;
