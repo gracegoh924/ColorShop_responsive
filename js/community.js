@@ -73,12 +73,13 @@ async function loadPosts_3() {
 
         const postLike = document.createElement("i")
         postLike.setAttribute("id", "like" + post.id)
-        postLike.setAttribute("onclick", "likePost(this.id)")
-        if (post.likes.includes(me)) {
-            postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
-        } else {
-            postLike.classList.add("heart", "fa-solid", "fa-heart")
-        }
+        postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
+        // postLike.setAttribute("onclick", "likePost(this.id)")
+        // if (post.likes.includes(me)) {
+        //     postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
+        // } else {
+        //     postLike.classList.add("heart", "fa-solid", "fa-heart")
+        // }
 
         const likeCount = document.createElement("p")
         likeCount.setAttribute("id", "like_count")

@@ -1,125 +1,57 @@
 includehtml();
 
-// 이미지 업로드
-const dropArea = document.querySelector(".drag-area"),
-    dragText = dropArea.querySelector("header"),
-    button = dropArea.querySelector("button"),
-    input = dropArea.querySelector("input");
-let file;
 
-button.onclick = () => {
-    input.click();
-};
+async function loadPosts_3() {
+    const posts = await getPosts()
+    const me = await getName()
+    const best_post = document.getElementById("best_post")
 
-input.addEventListener("change", function () {
-    file = this.files[0];
-    dropArea.classList.add("active");
-    showFile();
-});
+    posts.forEach(post => {
+        const newPost = document.createElement("div")
+        newPost.classList.add("post_card")
 
-dropArea.addEventListener("dragover", (event) => {
-    event.preventDefault();
-    dropArea.classList.add("active");
-    dragText.textContent = "Release to Upload File";
-});
+        const postImage = document.createElement("img")
+        postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+        postImage.setAttribute("id", post.id)
+        postImage.setAttribute("onclick", "postDetail(this.id)")
 
-dropArea.addEventListener("dragleave", () => {
-    dropArea.classList.remove("active");
-    dragText.textContent = "Drag & Drop to Upload File";
-});
+        const postContent = document.createElement("p")
+        postContent.classList.add("content_3")
+        postContent.innerText = post.content
 
-dropArea.addEventListener("drop", (event) => {
-    event.preventDefault();
-    file = event.dataTransfer.files[0];
-    showFile();
-});
+        const postUser = document.createElement("p")
+        postUser.classList.add("user_3")
+        postUser.innerText = post.user
 
-function showFile() {
-    let fileType = file.type;
-    let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
-    if (validExtensions.includes(fileType)) {
-        let fileReader = new FileReader();
-        fileReader.onload = () => {
-            let fileURL = fileReader.result;
-            let imgTag = `<img src="${fileURL}" alt="">`;
-            dropArea.innerHTML = imgTag;
-        };
-        fileReader.readAsDataURL(file);
-    } else {
-        alert("이미지 파일이 아닙니다.");
-        dropArea.classList.remove("active");
-        dragText.textContent = "드래그 하여 이미지 업로드";
-    }
+        const line = document.createElement("hr")
+        line.classList.add("line")
+
+        const postLike = document.createElement("i")
+        postLike.setAttribute("id", "like" + post.id)
+        postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
+        // postLike.setAttribute("onclick", "likePost(this.id)")
+        // if (post.likes.includes(me)) {
+        //     postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
+        // } else {
+        //     postLike.classList.add("heart", "fa-solid", "fa-heart")
+        // }
+
+        const likeCount = document.createElement("p")
+        likeCount.setAttribute("id", "like_count")
+        likeCount.classList.add("likeCount")
+        likeCount.innerText = post.likes_count
+
+
+        best_post.append(newPost)
+        newPost.append(postImage)
+        newPost.append(postContent)
+        newPost.append(postUser)
+        newPost.append(line)
+        newPost.append(postLike)
+        newPost.append(likeCount)
+    })
 }
 
-// 화풍 설정
-async function selectImageStyle(imagemodel_id) {
-    const response = await fetch(
-        `http://127.0.0.1:8000/posts/choosemodel/${imagemodel_id}`,
-        {
-            method: "GET",
-        }
-    );
-
-    response_json = await response.json();
-    return response_json;
-}
-
-// 이미지 DB 업로드
-async function uploadImage() {
-    const imageData = new FormData();
-    imageData.append("before_image", file);
-    imageData.append("model", response_json.model);
-
-    const response = await fetch("http://127.0.0.1:8000/posts/upload/", {
-        method: "POST",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem("access"),
-        },
-        body: imageData,
-    });
-
-    if (response.status == 201) {
-        // 홈페이지에서 after_image 띄우기
-        const getimages = await getImages();
-        const after_image = document.getElementById("after_image");
-        console.log(getimages);
-        after_image.setAttribute(
-            "src",
-            `${backend_base_url}${getimages.after_image}`
-        );
-        return response;
-    } else {
-        if (file == null) {
-            alert("파일을 올려주세요");
-        } else if (response_json.model == null) {
-            alert("화풍을 선택해주세요");
-        } else {
-            alert("로그인 해주세요");
-        }
-    }
-}
-
-// 이미지 파일 변환
-async function transferImage() {
-    const beforeimg = document.getElementById("beforeimage").value;
-    const response = await fetch("http://127.0.0.1:8000/posts/upload/", {
-        headers: {
-            Authorization: localStorage.getItem("token"),
-        },
-        method: "PUT",
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        }),
-    });
-
-    if (response.status == 200) {
-        return response;
-    } else {
-        alert(response.status);
-    }
-}
 
 // 로그인 확인
 async function checkLogin() {
@@ -221,10 +153,6 @@ async function loadPosts() {
     });
 }
 
-loadPosts();
-
-
-
 twttr.events.bind(
     'click',
     function (ev) {
@@ -232,3 +160,5 @@ twttr.events.bind(
     }
 );
 
+checkLogin();
+loadPosts();

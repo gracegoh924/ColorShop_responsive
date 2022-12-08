@@ -87,5 +87,4 @@ buttonCloseModal.addEventListener("click", e => {
     document.body.style.overflowY = "visible";
 });
 
-
 loadUserinfo(userinfo_user_id);
