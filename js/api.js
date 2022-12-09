@@ -62,7 +62,7 @@ function logout() {
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
-    window.location.replace(`${frontend_base_url}/html/home.html`)
+    window.location.replace(`${frontend_base_url}home.html`)
     alert('로그아웃 하셨습니다')
 }
 

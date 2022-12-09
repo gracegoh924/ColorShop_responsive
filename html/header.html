@@ -38,12 +38,12 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a id="profile" class="dropdown-item" style="cursor: pointer;">프로필</a></li>
-                    <li><a id="user_info" class="dropdown-item" style="cursor: pointer;">회원정보</a></li>
+                    <li><a id="profile" class="dropdown-item" onclick="profileButton()" style="cursor: pointer;">프로필</a></li>
+                    <li><a id="user_info" class="dropdown-item" onclick="userinfoButton()" style="cursor: pointer;">회원정보</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" style="cursor: pointer;" onclick="location.href=`${frontend_base_url}/html/sign_in_up.html`">회원가입</a></li>
+                    <li><a class="dropdown-item" onclick="signinupButton()" style="cursor: pointer;">회원가입</a></li>
                     <li><a id="loginout" class="dropdown-item" style="cursor: pointer;">로그인</a></li>
                 </ul>
             </div>

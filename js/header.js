@@ -25,13 +25,19 @@ async function loadHeader(){
     }
 }
 
+// 드롭다운 이동
 function profileButton(user_id){
-    const url = `${frontend_base_url}/html/profile.html?id=${user_id}`
+    const url = `${frontend_base_url}profile.html?id=${user_id}`
     location.href=url
 }
 
 function userinfoButton(user_id){
-    const url = `${frontend_base_url}/html/user_info.html?id=${user_id}`
+    const url = `${frontend_base_url}user_info.html?id=${user_id}`
+    location.href=url
+}
+
+function signinupButton(){
+    const url = `${frontend_base_url}sign_in_up.html`
     location.href=url
 }
 
@@ -43,7 +49,7 @@ async function checkLogin() {
 
     if(name == null){
         loginoutButton.innerText = "로그인"
-        loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}/html/sign_in_up.html`") 
+        loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}sign_in_up.html`") 
     }else{
         loginoutButton.innerText = "로그아웃"
         loginoutButton.setAttribute("onclick", "logout()")
