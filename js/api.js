@@ -74,15 +74,6 @@ async function getProfile(profile_user_id){
     return response_json
 }
 
-async function getPosts(){
-    const response = await fetch(`${backend_base_url}/posts/community/`, {
-        method:'GET',
-    })
-    response_json = await response.json()
-    console.log(response_json)
-    return response_json
-}
-
 async function getPassword(userinfo_user_id){
     const response = await fetch(`${backend_base_url}/users/changepassword/${userinfo_user_id}/`, {
         mthod:'GET',
@@ -128,7 +119,6 @@ async function putPassword(userinfo_user_id, newPassword, newPassword2){
     })
 
     response_json = await response.json()
-    console.log(response_json)
     if(response.status == 201){
         alert('비밀번호를 변경했습니다')
         window.location.replace(`/html/user_info.html?id=${userinfo_user_id}`)
@@ -138,13 +128,11 @@ async function putPassword(userinfo_user_id, newPassword, newPassword2){
     }
 }
 
-async function putUserinfo(userinfo_user_id, profile_img, username, nickname, bio){
+async function putUserinfoImage(userinfo_user_id, profile_img, username){
     const userinfoData = new FormData()
     userinfoData.append("profile_img", profile_img)
     userinfoData.append("username", username)
-    userinfoData.append("nickname", nickname)
-    userinfoData.append("bio", bio)
-
+    
     const response = await fetch(`${backend_base_url}/users/${userinfo_user_id}/`, {
         headers:{
             'Authorization':'Bearer '+localStorage.getItem("access"),
@@ -157,13 +145,38 @@ async function putUserinfo(userinfo_user_id, profile_img, username, nickname, bi
     
     if(response.status == 200){
         alert('수정되었습니다')
+        window.location.reload()
         return response_json
     }else{
-        if(profile_img == null){
-            alert('프로필 사진을 선택해주세요')
-        }else{
-            alert('권한이 없습니다')
-        }
+        alert('권한이 없습니다')
+    }
+}
+
+
+async function putUserinfo(userinfo_user_id, username, nickname, bio){
+    const userinfoData = {
+        "username":username,
+        "nickname":nickname,
+        "bio":bio
+    }
+
+    const response = await fetch(`${backend_base_url}/users/${userinfo_user_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+            'content-type':'application/json'
+        },
+        method:'PUT',
+        body: JSON.stringify(userinfoData)
+    })
+
+    response_json = response.json()
+    
+    if(response.status == 200){
+        alert('수정되었습니다')
+        window.location.reload()
+        return response_json
+    }else{
+        alert('권한이 없습니다')
     }
 }
 
@@ -181,6 +194,22 @@ async function deleteUserinfo(userinfo_user_id){
     }
 }
 
+async function getBestPosts(){
+    const response = await fetch(`${backend_base_url}/posts/`, {
+        method:'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
+async function getPosts(){
+    const response = await fetch(`${backend_base_url}/posts/community/`, {
+        method:'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
 // 상세 페이지로 이동
 function postDetail(post_id){
     const url = `${frontend_base_url}/post_detail.html?id=${post_id}`
@@ -191,16 +220,6 @@ function postDetail(post_id){
 async function getPostDetail(post_id) {
     const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
         method: 'GET'
-    })
-
-    response_json = await response.json()
-    console.log(response_json)
-    return response_json
-}
-
-async function getComments(post_id){
-    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
-        method:'GET'
     })
 
     response_json = await response.json()
@@ -225,14 +244,6 @@ async function getLike() {
         method: 'GET'
     })
     
-    response_json = await response.json()
-    return response_json
-}
-
-async function getBestPosts(){
-    const response = await fetch(`${backend_base_url}/posts/`, {
-        method:'GET',
-    })
     response_json = await response.json()
     return response_json
 }

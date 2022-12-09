@@ -48,15 +48,93 @@ async function loadUserinfo(userinfo_user_id){
     }
 }
 
-async function updateUserinfo(){
-    const userinfoImage = document.getElementById("userinfo_image").files[0]
-    const userinfoUsername = document.getElementById("userinfo_username").value
-    const userinfoNickname = document.getElementById("userinfo_nickname").value
-    const userinfoBio = document.getElementById("userinfo_bio").value
-    
-     await putUserinfo(userinfo_user_id, userinfoImage, userinfoUsername, userinfoNickname, userinfoBio)
+const dropArea = document.querySelector(".before_image"),
+    image = dropArea.querySelector(".userinfo_image"),
+    button = dropArea.querySelector("button"),
+    input = dropArea.querySelector("input");
+let file;
 
+button.onclick = () => {
+    input.click();
+}
+
+input.addEventListener("change", function () {
+    file = this.files[0];
+    dropArea.classList.add("active");
+    showFile();
+})
+
+dropArea.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    dropArea.classList.add("active");
+    dragText.textContent = "Release to Upload File";
+})
+
+dropArea.addEventListener("dragleave", () => {
+    dropArea.classList.remove("active");
+    dragText.textContent = "Drag & Drop to Upload File";
+})
+
+dropArea.addEventListener("drop", (event) => {
+    event.preventDefault();
+    file = event.dataTransfer.files[0];
+    showFile();
+})
+
+function showFile() {
+    let fileType = file.type;
+    let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+    if (validExtensions.includes(fileType)) {
+        let fileReader = new FileReader();
+        fileReader.onload = () => {
+            let fileURL = fileReader.result;
+            image.setAttribute("src", `${fileURL}`)
+        }
+        fileReader.readAsDataURL(file);
+    } else {
+        alert("이미지 파일이 아닙니다.");
+        dropArea.classList.remove("active");
+        dragText.textContent = "드래그 하여 이미지 업로드";
+        window.location.reload()
+    }
+
+    button.remove()
+
+    const buttons = document.createElement("div")
+
+    const saveButton = document.createElement("button")
+    saveButton.setAttribute("onclick", "save()") 
+    saveButton.innerText = '저장'
+    
+    const cancelButton = document.createElement("button")
+    cancelButton.setAttribute("onclick", "cancel()")
+    cancelButton.innerText = '취소'
+
+    buttons.append(saveButton)
+    buttons.append(cancelButton)
+    dropArea.append(buttons)
+
+}
+
+async function save() {
+    const userinfoUsername = document.getElementById("userinfo_username")
+
+    await putUserinfoImage(userinfo_user_id, file, userinfoUsername.value)
+}
+
+function cancel() {
     window.location.reload()
+}
+
+async function updateUserinfo(){
+
+
+    const userinfoUsername = document.getElementById("userinfo_username")
+    const userinfoNickname = document.getElementById("userinfo_nickname")
+    const userinfoBio = document.getElementById("userinfo_bio")
+
+    await putUserinfo(userinfo_user_id, userinfoUsername.value, userinfoNickname.value, userinfoBio.value)
+
 }
 
 async function removeUserinfo(){
@@ -74,7 +152,6 @@ async function changePassword(){
 const modal = document.getElementById("post_modal");
 const buttonAddFeed = document.getElementById("button-addon");
 buttonAddFeed.addEventListener("click", e => {
-    modal.style.top = window.pageYOffset + 'px';
     modal.style.display = "flex";
     document.body.style.overflowY = "hidden";
 })

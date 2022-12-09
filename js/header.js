@@ -8,7 +8,7 @@ async function loadHeader(){
     }else{
         const user_id = parsed_payload.user_id
         const user = await getProfile(user_id)
-    
+
         const dropdownProfileImage = document.getElementById("dropdown_profile_image")
         dropdownProfileImage.setAttribute("src", `${backend_base_url}${user.profile_img}`)
         

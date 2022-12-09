@@ -1,8 +1,8 @@
 includehtml();
 
-
-async function loadBestposts() {
+async function loadBestPosts() {
     const posts = await getBestPosts()
+    console.log(posts)
 
     const best_post = document.getElementById("best_post")
     best_post.innerHTML = ''
@@ -26,6 +26,7 @@ async function loadBestposts() {
             postCardFooter.classList.add("post_card_footer")
                 
             const postUser = await getProfile(post.user_id)
+            console.log(postUser)
 
             const postUserCard = document.createElement("div")
             postUserCard.setAttribute("id", postUser.id)
@@ -72,4 +73,4 @@ function userDetail(user_id){
     location.href=url
 }
 
-loadPosts()
+loadBestPosts()
