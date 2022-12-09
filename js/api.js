@@ -1,5 +1,6 @@
+// URL 설정
 const backend_base_url = 'http://127.0.0.1:8000'
-const frontend_base_url = 'http://127.0.0.1:5500'
+const frontend_base_url = 'http://127.0.0.1:5500/html/'
 
 // 로그인
 async function handleLogin() {
@@ -39,27 +40,30 @@ async function handleLogin() {
     }
 }
 
-async function getUser(){
-    const response = await fetch(`${backend_base_url}/users/`, {
-        method:'GET'
-    })
-    response_json = await response.json()
-    return response_json
-}
-
-async function getName(){
+// 로그인 시 정보 가져오기
+async function getName() {
     const response = await fetch(`${backend_base_url}/users/mock/`, {
         headers:{
             'Authorization':'Bearer '+localStorage.getItem("access"),
         },
     })
+
     if (response.status == 200) {
         const payload = localStorage.getItem("payload");
         const payload_parse = JSON.parse(payload)
-        return payload_parse.username
+        return payload_parse.user_id
     } else {
         return null
     }
+}
+
+// 로그아웃
+function logout() {
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    localStorage.removeItem("payload")
+    window.location.replace(`${frontend_base_url}/html/home.html`)
+    alert('로그아웃 하셨습니다')
 }
 
 async function getProfile(profile_user_id){
@@ -77,6 +81,61 @@ async function getPosts(){
     response_json = await response.json()
     console.log(response_json)
     return response_json
+}
+
+async function getPassword(userinfo_user_id){
+    const response = await fetch(`${backend_base_url}/users/changepassword/${userinfo_user_id}/`, {
+        mthod:'GET',
+    })
+    if(response.status == 200){
+        response_json = await response.json()
+        return response_json
+    }else{
+        return null
+    }
+}
+
+async function postPassword(password) {
+    const response = await fetch(`${backend_base_url}/users/changepassword/${userinfo_user_id}/`, {
+        headers:{
+            "Authorization": "Bearer " +localStorage.getItem("access"),
+            'Content-type':'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(password)
+    })
+
+  if (response.status === 200) {
+      alert("비밀번호 확인 완료")
+  } else if (response.status === 400) {
+    alert("현재 비밀번호와 동일한 비밀번호를 입력해주세요")
+  } 
+}
+
+async function putPassword(userinfo_user_id, newPassword, newPassword2){
+    const changePasswordData = {
+        "password":newPassword,
+        "repassword":newPassword2
+    }
+
+    const response = await fetch(`${backend_base_url}/users/changepassword/${userinfo_user_id}/`,{
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+            'content-type':'application/json'
+        },
+        method:'PUT',
+        body:JSON.stringify(changePasswordData)
+    })
+
+    response_json = await response.json()
+    console.log(response_json)
+    if(response.status == 201){
+        alert('비밀번호를 변경했습니다')
+        window.location.replace(`/html/user_info.html?id=${userinfo_user_id}`)
+        return response_json
+    }else if(response.status == 400){
+        alert(response_json.password[0])
+    }
 }
 
 // 상세 페이지로 이동
@@ -110,11 +169,18 @@ async function putUserinfo(userinfo_user_id, profile_img, username, nickname, bi
         method:'PUT',
         body: userinfoData
     })
+
+    response_json = response.json()
     
     if(response.status == 200){
-        response_json = response.json()
         alert('수정되었습니다')
         return response_json
+    }else{
+        if(profile_img == null){
+            alert('프로필 사진을 선택해주세요')
+        }else{
+            alert('권한이 없습니다')
+        }
     }
 }
 
@@ -150,7 +216,6 @@ async function getLike() {
     })
     
     response_json = await response.json()
-    console.log(response_json)
     return response_json
 }
 
