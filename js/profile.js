@@ -2,7 +2,6 @@ includehtml();
 
 const profileUrlParams = new URLSearchParams(window.location.search)
 const profile_user_id = profileUrlParams.get('id')
-console.log(profile_user_id)
 
 async function loadProfile(profile_user_id){
     const profile = await getProfile(profile_user_id)
