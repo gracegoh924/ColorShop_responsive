@@ -26,12 +26,12 @@ async function loadHeader(){
 }
 
 function profileButton(user_id){
-    const url = `${frontend_base_url}/html/profile.html?id=${user_id}`
+    const url = `${frontend_base_url}/profile.html?id=${user_id}`
     location.href=url
 }
 
 function userinfoButton(user_id){
-    const url = `${frontend_base_url}/html/user_info.html?id=${user_id}`
+    const url = `${frontend_base_url}/user_info.html?id=${user_id}`
     location.href=url
 }
 

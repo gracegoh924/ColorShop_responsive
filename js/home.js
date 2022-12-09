@@ -66,35 +66,6 @@ async function checkLogin() {
     }
 }
 
-// 포스팅 모달창 띄우기
-const modal = document.getElementById("post_modal");
-const buttonAddFeed = document.getElementById("img_post_btn");
-buttonAddFeed.addEventListener("click", (e) => {
-    modal.style.top = window.pageYOffset + "px";
-    modal.style.display = "flex";
-    document.body.style.overflowY = "hidden";
-});
-
-// 포스팅 모달창 이미지 띄우기
-async function deepImages() {
-    const getimages = await getImages();
-    const deepimg = document.getElementById("deepimage");
-    deepimg.setAttribute("src", `${backend_base_url}${getimages.after_image}`);
-}
-
-// 포스팅 등록
-function postCreate() {
-    const content = document.getElementById("input_content").value;
-    postPost(content);
-}
-
-// 포스팅 모달창 닫기
-const buttonCloseModal = document.getElementById("close_modal");
-buttonCloseModal.addEventListener("click", (e) => {
-    modal.style.display = "none";
-    document.body.style.overflowY = "visible";
-});
-
 // 게시글 보기
 async function loadPosts() {
     const posts = await getPosts();
