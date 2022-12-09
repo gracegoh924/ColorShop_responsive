@@ -96,6 +96,8 @@ async function loadPosts_3() {
     })
 }
 
+
+
 // async function likePost(likeId) {
 //     const posts = await getPosts()
 //     console.log(posts)

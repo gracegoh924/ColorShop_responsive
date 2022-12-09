@@ -14,7 +14,6 @@
 
     <link rel="stylesheet" href="/css/auto_paint.css">
     <script src="/js/includehtml.js"></script>
-    <script src="/js/header.js"></script>
 
     <title>main</title>
 </head>
@@ -25,22 +24,23 @@
 
     <div class="sketch_container" style="background-color:#02343F;">
         <div class="child1">
-            <div class="before_image" id="before_image">
+            <div class="before_image">
                 <span>※ *.png / *.jpg (이미지파일)로 업로드해주세요 ※</span>
                 <header>드래그 하여 이미지 업로드</header>
                 <span>또는</span>
                 <button type="button" id="upload">컴퓨터에서 선택</button>
-                <input type="file" hidden>
+                <input type="file" id="before_img">
             </div>
         </div>
         <div class="btn_box">
             <div>
-                <button type="button" class="button" id="line_art" value="1" onclick="selectImageStyle(this.value)">line_art</button>
-                <button type="button" class="button" id="auto_paint" value="2" onclick="uploadImage()">auto_paint</button>
+                <button type="button" class="button" id="model1" value="1" onclick="chooseModel(this.value)">model1</button>
+                <button type="button" class="button" id="model2" value="2" onclick="chooseModel(this.value)">model2</button>
+                <button type="button" class="button" id="model3" value="3" onclick="chooseModel(this.value)">model3</button>
             </div>
             <div>
-                <button type="button" class="button" onclick="" id="img_upload_btn">이미지 변환</button>
-                <button type="button" class="button" onclick="" id="img_post_btn">공유하기</button>
+                <button type="button" class="button" id="img_upload_btn" onclick="postImage()">이미지 변환</button>
+                <button type="button" class="button" id="img_post_btn">공유하기</button>
             </div>
         </div>
         <div class="sketch_img_box">
@@ -59,6 +59,7 @@
 
     <script src="/js/auto_paint.js"></script>
     <script src="/js/api.js"></script>
+    <script src="/js/header.js"></script>
 </body>
 
 </html>
