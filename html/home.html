@@ -24,57 +24,58 @@
 <body style="background-color:#F0EDCC">
     <!-- 헤더 연결 -->
     <header include-html="/html/header.html" style="background-color:white"></header>
-
-    <div class="sketch_container" style="background-color:#02343F;">
-        <div class="sketch_img_box">
-            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F243FEA3356135E9E1B" alt="sketch_image" class="sketch_image">
-        </div>
-        <div class="btn_box">
-            <p class="sketch_text" style="color:#F0EDCC">Auto_painter 어쩌구 저쩌구</p>
-            <button style="" class="upload-btn btn-2"><b style="font-size:20px">내 스케치를 채색해보세요!</b></button>
-            <!-- <button class="sketch_btn" onClick="location.href='/html/upload.html'">Upload sketch image</button> -->
-        </div>
-        <div class="sketch_img_box">
-            <img src="/static/auto.png" alt="sketch_image" class="sketch_image">
-        </div>
-    </div>
-
-    <!-- <div class="info_container" style="background-color:#F0EDCC;">
-        <div class="info_img_box">
-            <img src="/static/auto.png" alt="info_image" class="info_image">
-        </div>
-        <div class="info_text_box">
-            <p class="info_text">info 어쩌구 저쩌구</p>
-        </div>
-    </div> -->
-
-    <div class="post_container">
-        <div class="post_box">
-            <div class="box_title1" style="margin-bottom: 20px;">
-                <p><h3><b>Best Post</b></h3></p>
+    
+    <div class="container">
+        <div class="sketch_container" style="background-color:#02343F;">
+            <div class="sketch_img_box">
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F243FEA3356135E9E1B" alt="sketch_image" class="sketch_image">
             </div>
-            <div>
-                <div class="best_post" id="best_post"></div>
+            <div class="btn_box">
+                <p class="sketch_text" style="color:#F0EDCC">Auto_painter 어쩌구 저쩌구</p>
+                <button class="upload-btn btn-2"><b style="font-size:20px">내 스케치를 채색해보세요!</b></button>
+                <!-- <button class="sketch_btn" onClick="location.href='/html/upload.html'">Upload sketch image</button> -->
+            </div>
+            <div class="sketch_img_box">
+                <img src="/static/auto.png" alt="sketch_image" class="sketch_image">
             </div>
         </div>
-        <div class="tweet_box">
-            <div class="box_title2" style="margin-bottom: 20px;">
-                <p><h3><b>Tweeter Timeline</b></h3></p>
+    
+        <!-- <div class="info_container" style="background-color:#F0EDCC;">
+            <div class="info_img_box">
+                <img src="/static/auto.png" alt="info_image" class="info_image">
             </div>
-            <div class="timeline">
-                <div class="twitter-timeline twitter-timeline-rendered"
-                    style="display: flex; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe
-                        id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"
-                        class=""
-                        style="position: static; visibility: visible; width: 363px; height: 7270px; display: block; flex-grow: 1;"
-                        title="Twitter Timeline"
-                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/colorshop_api?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOlsibGlua3RyLmVlIiwidHIuZWUiLCJ0ZXJyYS5jb20uYnIiLCJ3d3cubGlua3RyLmVlIiwid3d3LnRyLmVlIiwid3d3LnRlcnJhLmNvbS5iciJdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdGltZWxpbmVfMTIwMzQiOnsiYnVja2V0IjoidHJlYXRtZW50IiwidmVyc2lvbiI6bnVsbH0sInRmd190d2VldF9lZGl0X2JhY2tlbmQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3JlZnNyY19zZXNzaW9uIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19zaG93X2J1c2luZXNzX3ZlcmlmaWVkX2JhZGdlIjp7ImJ1Y2tldCI6Im9mZiIsInZlcnNpb24iOm51bGx9LCJ0ZndfY2hpbl9waWxsc18xNDc0MSI6eyJidWNrZXQiOiJjb2xvcl9pY29ucyIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfcmVzdWx0X21pZ3JhdGlvbl8xMzk3OSI6eyJidWNrZXQiOiJ0d2VldF9yZXN1bHQiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NlbnNpdGl2ZV9tZWRpYV9pbnRlcnN0aXRpYWxfMTM5NjMiOnsiYnVja2V0IjoiaW50ZXJzdGl0aWFsIiwidmVyc2lvbiI6bnVsbH0sInRmd19leHBlcmltZW50c19jb29raWVfZXhwaXJhdGlvbiI6eyJidWNrZXQiOjEyMDk2MDAsInZlcnNpb24iOm51bGx9LCJ0ZndfZHVwbGljYXRlX3NjcmliZXNfdG9fc2V0dGluZ3MiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3ZpZGVvX2hsc19keW5hbWljX21hbmlmZXN0c18xNTA4MiI6eyJidWNrZXQiOiJ0cnVlX2JpdHJhdGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmx1ZV92ZXJpZmllZF9iYWRnZSI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;origin=https%3A%2F%2Fpetalica.com%2Findex_en.html&amp;sessionId=f7b9a91249773a1cb8c2c4784d2e9532b2b8e511&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=a3525f077c700%3A1667415560940"></iframe>
+            <div class="info_text_box">
+                <p class="info_text">info 어쩌구 저쩌구</p>
+            </div>
+        </div> -->
+    
+        <div class="post_container">
+            <div class="post_box">
+                <div class="box_title1" style="margin-bottom: 20px;">
+                    <p><h3><b>Best Post</b></h3></p>
                 </div>
-                <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <div>
+                    <div class="best_post" id="best_post"></div>
+                </div>
+            </div>
+            <div class="tweet_box">
+                <div class="box_title2" style="margin-bottom: 20px;">
+                    <p><h3><b>Tweeter Timeline</b></h3></p>
+                </div>
+                <div class="timeline">
+                    <div class="twitter-timeline twitter-timeline-rendered"
+                        style="display: flex; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe
+                            id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"
+                            class=""
+                            style="position: static; visibility: visible; width: 363px; height: 7270px; display: block; flex-grow: 1;"
+                            title="Twitter Timeline"
+                            src="https://syndication.twitter.com/srv/timeline-profile/screen-name/colorshop_api?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOlsibGlua3RyLmVlIiwidHIuZWUiLCJ0ZXJyYS5jb20uYnIiLCJ3d3cubGlua3RyLmVlIiwid3d3LnRyLmVlIiwid3d3LnRlcnJhLmNvbS5iciJdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdGltZWxpbmVfMTIwMzQiOnsiYnVja2V0IjoidHJlYXRtZW50IiwidmVyc2lvbiI6bnVsbH0sInRmd190d2VldF9lZGl0X2JhY2tlbmQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3JlZnNyY19zZXNzaW9uIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19zaG93X2J1c2luZXNzX3ZlcmlmaWVkX2JhZGdlIjp7ImJ1Y2tldCI6Im9mZiIsInZlcnNpb24iOm51bGx9LCJ0ZndfY2hpbl9waWxsc18xNDc0MSI6eyJidWNrZXQiOiJjb2xvcl9pY29ucyIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfcmVzdWx0X21pZ3JhdGlvbl8xMzk3OSI6eyJidWNrZXQiOiJ0d2VldF9yZXN1bHQiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NlbnNpdGl2ZV9tZWRpYV9pbnRlcnN0aXRpYWxfMTM5NjMiOnsiYnVja2V0IjoiaW50ZXJzdGl0aWFsIiwidmVyc2lvbiI6bnVsbH0sInRmd19leHBlcmltZW50c19jb29raWVfZXhwaXJhdGlvbiI6eyJidWNrZXQiOjEyMDk2MDAsInZlcnNpb24iOm51bGx9LCJ0ZndfZHVwbGljYXRlX3NjcmliZXNfdG9fc2V0dGluZ3MiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3ZpZGVvX2hsc19keW5hbWljX21hbmlmZXN0c18xNTA4MiI6eyJidWNrZXQiOiJ0cnVlX2JpdHJhdGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmx1ZV92ZXJpZmllZF9iYWRnZSI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;origin=https%3A%2F%2Fpetalica.com%2Findex_en.html&amp;sessionId=f7b9a91249773a1cb8c2c4784d2e9532b2b8e511&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=a3525f077c700%3A1667415560940"></iframe>
+                    </div>
+                    <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
             </div>
         </div>
     </div>
-
     
     <!-- 푸터 연결 -->
     <footer include-html="/html/footer.html"></footer>

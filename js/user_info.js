@@ -64,7 +64,6 @@ async function removeUserinfo(){
 }
 
 async function changePassword(){
-    const changePasswordButton = document.getElementById("button-addon")
     const newPassword = document.getElementById("new_password").value
     const newPassword2 = document.getElementById("new_password2").value
 

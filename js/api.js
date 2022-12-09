@@ -138,23 +138,6 @@ async function putPassword(userinfo_user_id, newPassword, newPassword2){
     }
 }
 
-// 상세 페이지로 이동
-function postDetail(post_id){
-    const url = `${frontend_base_url}/post_detail.html?id=${post_id}`
-    location.href=url
-}
-
-// 상세 페이지 GET
-async function getPostDetail(post_id) {
-    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
-        method: 'GET'
-    })
-
-    response_json = await response.json()
-    console.log(response_json)
-    return response_json
-}
-
 async function putUserinfo(userinfo_user_id, profile_img, username, nickname, bio){
     const userinfoData = new FormData()
     userinfoData.append("profile_img", profile_img)
@@ -196,6 +179,33 @@ async function deleteUserinfo(userinfo_user_id){
         alert('삭제되었습니다')
         window.location.replace(`/html/profile.html?id=${userinfo_user_id}`)
     }
+}
+
+// 상세 페이지로 이동
+function postDetail(post_id){
+    const url = `${frontend_base_url}/post_detail.html?id=${post_id}`
+    location.href=url
+}
+
+// 상세 페이지 GET
+async function getPostDetail(post_id) {
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        method: 'GET'
+    })
+
+    response_json = await response.json()
+    console.log(response_json)
+    return response_json
+}
+
+async function getComments(post_id){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        method:'GET'
+    })
+
+    response_json = await response.json()
+    console.log(response_json)
+    return response_json
 }
 
 // 좋아요 post
