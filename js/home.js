@@ -117,12 +117,5 @@ async function loadPosts() {
     });
 }
 
-twttr.events.bind(
-    'click',
-    function (ev) {
-        console.log(ev);
-    }
-);
-
 checkLogin();
 loadBestposts()
