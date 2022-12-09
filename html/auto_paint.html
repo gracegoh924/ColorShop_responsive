@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/auto_paint.css">
+    <script src="/js/includehtml.js"></script>
+
+    <title>main</title>
+</head>
+
+<body>
+    <!-- 헤더 연결 -->
+    <header include-html="/html/header.html"></header>
+
+    <div class="sketch_container" style="background-color:#02343F;">
+        <div class="child1">
+            <div class="before_image">
+                <span>※ *.png / *.jpg (이미지파일)로 업로드해주세요 ※</span>
+                <header>드래그 하여 이미지 업로드</header>
+                <span>또는</span>
+                <button type="button" id="upload">컴퓨터에서 선택</button>
+                <input type="file" id="before_img">
+            </div>
+        </div>
+        <div class="btn_box">
+            <div>
+                <button type="button" class="button" id="model1" value="1" onclick="chooseModel(this.value)">model1</button>
+                <button type="button" class="button" id="model2" value="2" onclick="chooseModel(this.value)">model2</button>
+                <button type="button" class="button" id="model3" value="3" onclick="chooseModel(this.value)">model3</button>
+            </div>
+            <div>
+                <button type="button" class="button" id="img_upload_btn" onclick="postImage()">이미지 변환</button>
+                <button type="button" class="button" id="img_post_btn">공유하기</button>
+            </div>
+        </div>
+        <div class="sketch_img_box">
+            <img src="/static/auto.png" alt="sketch_image" class="sketch_image" onclick="window.open(this.src)" id="after_image">
+        </div>
+    </div>
+    
+    <div class="info_container" style="background-color:#F0EDCC;">
+        <div class="info_text_box">
+            <p class="info_text">선택한 기능에 따른 세부 설정 창</p>
+        </div>
+    </div>
+
+    <!-- 푸터 연결 -->
+    <footer include-html="/html/footer.html"></footer>
+
+    <script src="/js/auto_paint.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/header.js"></script>
+</body>
+
+</html>
