@@ -16,14 +16,15 @@
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <h1 onclick="location.href='/html/home.html'" style="cursor:pointer"><b><span style=color:dodgerblue>C</span>olor<span style=color:tomato>S</span>hop</b></h1>
+                <h1 onclick="location.href='/html/home.html'" style="cursor:pointer"><b><span style="color:dodgerblue">C</span>olor<span style=color:tomato>S</span>hop</b></h1>
             </ul>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a class="nav-link px-2 link-secondary" onclick="location.href='/html/auto_paint.html'">Auto_paint</a></li>
-                <li><a class="nav-link px-2 link-dark" onclick="location.href='/html/community.html'">Community</a></li>
+                <li><button class="btn btn-outline-light" onclick="location.href='/html/auto_paint.html'" style="cursor: pointer; margin-right:40px; border: none; color: gray;"><h3>Sketch</b></h3></button></li>
+                <li><button class="btn btn-outline-light" onclick="location.href='/html/community.html'" style="cursor: pointer; margin-left:40px; border: none; color: gray;"><h3>Community</b></h3></button></li>
             </ul>
-
+            
+        
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control" placeholder="검색" aria-label="Search" control-id="ControlID-2">
             </form>
@@ -38,13 +39,13 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a id="profile" class="dropdown-item">프로필</a></li>
-                    <li><a id="user_info" class="dropdown-item">회원정보</a></li>
+                    <li><a id="profile" class="dropdown-item" style="cursor: pointer;">프로필</a></li>
+                    <li><a id="user_info" class="dropdown-item" style="cursor: pointer;">회원정보</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" onclick="location.href=`${frontend_base_url}/sign_in_up.html`">회원가입</a></li>
-                    <li><a id="loginout" class="dropdown-item">로그인</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer;" onclick="location.href=`${frontend_base_url}/html/sign_in_up.html`">회원가입</a></li>
+                    <li><a id="loginout" class="dropdown-item" style="cursor: pointer;">로그인</a></li>
                 </ul>
             </div>
         </header>

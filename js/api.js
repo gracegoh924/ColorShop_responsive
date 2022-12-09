@@ -40,7 +40,6 @@ async function handleLogin() {
     }
 }
 
-
 async function getUser(){
     const response = await fetch(`${backend_base_url}/users/`, {
         method:'GET'
@@ -73,10 +72,11 @@ async function getProfile(profile_user_id){
 }
 
 async function getPosts(){
-    const response = await fetch(`${backend_base_url}/posts/`, {
+    const response = await fetch(`${backend_base_url}/posts/cummunity/`, {
         method:'GET',
     })
     response_json = await response.json()
+    console.log(response_json)
     return response_json
 }
 
@@ -150,6 +150,15 @@ async function getLike() {
         method: 'GET'
     })
     
+    response_json = await response.json()
+    console.log(response_json)
+    return response_json
+}
+
+async function getBestPosts(){
+    const response = await fetch(`${backend_base_url}/posts/`, {
+        method:'GET',
+    })
     response_json = await response.json()
     console.log(response_json)
     return response_json

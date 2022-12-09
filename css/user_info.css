@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+
+
 .userinfo{
     display: flex;
     flex-direction: column;
@@ -8,4 +11,30 @@
 .userinfo_image{
     width: 100px;
     height: 100px;
+}
+
+.postview-box {
+    background-color: #F0EDCC; 
+    width: 50%;
+    /* height: 700px;  */
+    padding: 60px;
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+
+.btn {
+    /* background-color: #F0EDCC; */
+    border: 1px dashed ;
+    font-weight: bold;
+
+
+}
+
+.btn:hover {
+    /* color:black; */
+    
+
 }
