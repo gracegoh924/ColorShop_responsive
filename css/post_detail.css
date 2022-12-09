@@ -169,8 +169,8 @@ body {
     transition: all 150ms ease-in-out;
 }
 
-.comment-box button:hover {
-    box-shadow: 0 0 10px 0 #02343F inset, 0 0 10px 4px #02343F;
+.comment-btn:hover {
+    box-shadow: 0px 0px 3px 3px cyan;
 }
 
 .comments button{
@@ -195,7 +195,12 @@ body {
     float: right;
 }
 
-.delete_back button{
+.btn {
+    border: 1px dashed;
+    margin-top: 10px;
+}
+
+/* .delete_back button{
     width: 80px;
     height: 40px;
     margin-top: 15px;
@@ -208,9 +213,9 @@ body {
     box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
-}
+} */
 
-.delete_back button:hover {
+/* .delete_back button:hover {
     box-shadow: 0 0 10px 0 #02343F inset, 0 0 10px 4px #02343F;
-}
+} */
 

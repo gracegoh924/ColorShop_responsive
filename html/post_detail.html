@@ -70,14 +70,18 @@
             <div id="create_comment" style="display: flex; justify-content: space-evenly; align-items: stretch;">
                 <input type="text" id="user_comment" class="form-control" style="width: 370px; height: 40px;"
                     placeholder="댓글을 입력해주세요">
-                <button id="btn_comment" class="comment-btn" onclick="addcomment()">입력</button>
+                <button id="btn_comment" class="comment-btn" onclick="addComment()">입력</button>
             </div>
             <div id="comment_list" class="comments">
             </div>
-            <div class="delete_back">
-                <button id="delete_post" class="post_register" onclick="deletePostMode()" style="cursor: pointer; font-size: 16px;">삭제</button>
-                <button id="close_modal" class="modal_close" onClick="location.href='home.html'" style="cursor: pointer; font-size: 16px;">돌아가기</button>
+            <div class="delete_back" style= "font-family: 'Poor Story', cursive;">
+                <button id="delete_post" type="button" class="btn btn-outline-success btn-lg" onclick="deletePostMode()" style="margin-right: 10px;">삭제하기</button>
+                <button id="close_modal" type="button" class="btn btn-outline-danger btn-lg" onClick="location.href='home.html'" style="margin-left: 10px;">돌아가기</button>
             </div>
+            <!-- <div class="delete_back">
+                <button id="기존버튼" class="post_register" onclick="deletePostMode()">삭제</button>
+                <button id="기존버튼" class="modal_close" onClick="location.href='home.html'">돌아가기</button>
+            </div> -->
         </div>
     </div>
 
