@@ -160,10 +160,10 @@
     cursor: pointer;
 }
 
-.content {
+.title {
     font-size: 20px;
     color: black;
-    border-bottom: 1px dashed gray;
+    margin: auto;
 }
 
 .post_card_footer {

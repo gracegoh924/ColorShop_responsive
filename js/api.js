@@ -189,8 +189,13 @@ async function deleteUserinfo(userinfo_user_id){
     })
 
     if(response.status == 204){
-        alert('삭제되었습니다')
-        window.location.replace(`/html/profile.html?id=${userinfo_user_id}`)
+        localStorage.removeItem("access")
+        localStorage.removeItem("refresh")
+        localStorage.removeItem("payload")
+        window.location.replace(`${frontend_base_url}home.html`)
+        alert('탈되하셨습니다.')
+    }else{
+        alert('권한이 없습니다')
     }
 }
 

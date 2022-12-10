@@ -26,7 +26,6 @@ async function loadBestPosts() {
             postCardFooter.classList.add("post_card_footer")
                 
             const postUser = await getProfile(post.user_id)
-            console.log(postUser)
 
             const postUserCard = document.createElement("div")
             postUserCard.setAttribute("id", postUser.id)
@@ -73,5 +72,4 @@ function userDetail(user_id){
     location.href=url
 }
 
-checkLogin();
 loadBestPosts()

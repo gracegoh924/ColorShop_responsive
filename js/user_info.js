@@ -127,19 +127,41 @@ function cancel() {
 }
 
 async function updateUserinfo(){
-
-
     const userinfoUsername = document.getElementById("userinfo_username")
     const userinfoNickname = document.getElementById("userinfo_nickname")
     const userinfoBio = document.getElementById("userinfo_bio")
 
     await putUserinfo(userinfo_user_id, userinfoUsername.value, userinfoNickname.value, userinfoBio.value)
-
 }
 
 async function removeUserinfo(){
-    const removeUserinfo = await deleteUserinfo(userinfo_user_id)
+    const userinfo = await getProfile(userinfo_user_id)
+    if(userinfo_user_id == userinfo){
+        await deleteUserinfo(userinfo_user_id)
+    }else{
+        
+    }
 }
+
+// 포스팅 모달창 띄우기
+const removeModal = document.getElementById("remove_modal");
+const removeButton = document.getElementById("remove_userinfo");
+removeButton.addEventListener("click", e => {
+    removeModal.style.display = "flex";
+    document.body.style.overflowY = "hidden";
+})
+
+async function removeUserinfo(){
+    await deleteUserinfo(userinfo_user_id)
+}
+
+// 포스팅 모달창 닫기
+const removeModalClose = document.getElementById("no_button");
+removeModalClose.addEventListener("click", e => {
+    removeModal.style.display = "none";
+    document.body.style.overflowY = "visible";
+});
+
 
 async function changePassword(){
     const newPassword = document.getElementById("new_password").value
@@ -149,17 +171,17 @@ async function changePassword(){
 }
 
 // 포스팅 모달창 띄우기
-const modal = document.getElementById("post_modal");
-const buttonAddFeed = document.getElementById("button-addon");
-buttonAddFeed.addEventListener("click", e => {
-    modal.style.display = "flex";
+const passwordModal = document.getElementById("password_modal");
+const passwordModalOpen = document.getElementById("button-addon");
+passwordModalOpen.addEventListener("click", e => {
+    passwordModal.style.display = "flex";
     document.body.style.overflowY = "hidden";
 })
 
 // 포스팅 모달창 닫기
-const buttonCloseModal = document.getElementById("close_modal");
-buttonCloseModal.addEventListener("click", e => {
-    modal.style.display = "none";
+const passwordModalClose = document.getElementById("password_modal_close");
+passwordModalClose.addEventListener("click", e => {
+    passwordModal.style.display = "none";
     document.body.style.overflowY = "visible";
 });
 

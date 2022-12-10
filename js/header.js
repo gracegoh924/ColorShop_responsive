@@ -27,13 +27,21 @@ async function loadHeader(){
 
 // 드롭다운 이동
 function profileButton(user_id){
-    const url = `${frontend_base_url}profile.html?id=${user_id}`
-    location.href=url
+    if(user_id == null){
+        alert('로그인해주세요')
+    }else{
+        const url = `${frontend_base_url}profile.html?id=${user_id}`
+        location.href=url
+    }
 }
 
 function userinfoButton(user_id){
-    const url = `${frontend_base_url}user_info.html?id=${user_id}`
-    location.href=url
+    if(user_id == null){
+        alert('로그인해주세요')
+    }else{
+        const url = `${frontend_base_url}user_info.html?id=${user_id}`
+        location.href=url
+    }
 }
 
 function signinupButton(){
