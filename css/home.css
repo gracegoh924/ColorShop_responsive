@@ -4,7 +4,7 @@
     font-size: large;
     /* flex: 1 1 auto; */
     width: 90%;
-    height: 25%;
+    height: 35%;
     margin: 10px;
     text-align: center;
     text-transform: uppercase;
@@ -62,12 +62,12 @@
 .sketch_img_box {
     width: 250px;
     height:300px;
-    margin: 10px;
+    margin: 30px;
     padding: 5px;
     display : flex;
     justify-content: center;
     align-items : center;
-    background-color: white;
+    background-color: transparent;
 }
 
 .sketch_image {

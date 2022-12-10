@@ -191,13 +191,14 @@ body {
 }
 
 .delete_back{
-    display: inline-block;
+    display: flex;
+    /* display: inline-block; */
+    margin-top: 10px;
     float: right;
 }
 
 .btn {
     border: 1px dashed;
-    margin-top: 10px;
 }
 
 /* .delete_back button{

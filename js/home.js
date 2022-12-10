@@ -73,4 +73,5 @@ function userDetail(user_id){
     location.href=url
 }
 
+checkLogin();
 loadBestPosts()
