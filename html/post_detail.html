@@ -67,16 +67,17 @@
             </div>
         </div>
         <div id="comment-box" class="comment-box">
-            <div id="create_comment" style="display: flex; justify-content: space-evenly; align-items: stretch;">
+            <div id="create_comment" class="create_comment">
                 <input type="text" id="user_comment" class="form-control" style="width: 370px; height: 40px;"
                     placeholder="댓글을 입력해주세요">
-                <button id="btn_comment" class="comment-btn" onclick="addComment()">입력</button>
+                <button type="button" id="btn_comment" class="btn btn-outline-danger" onclick="addComment()" style="margin-left:8px; border-radius:5px;"><b>OK</b></button>
+                <!-- <button class="comment-btn" >입력</button> -->
             </div>
             <div id="comment_list" class="comments">
             </div>
             <div class="delete_back" style= "font-family: 'Poor Story', cursive;">
-                <button id="delete_post" type="button" class="btn btn-outline-success btn-lg" onclick="deletePostMode()" style="margin-right: 10px;">삭제하기</button>
-                <button id="close_modal" type="button" class="btn btn-outline-danger btn-lg" onClick="location.href='home.html'" style="margin-left: 10px;">돌아가기</button>
+                <button id="delete_post" type="button" class="btn btn-outline-success" onclick="deletePostMode()" style="margin-right: 10px;"><b>삭제하기</b></button>
+                <button id="close_modal" type="button" class="btn btn-outline-danger" onClick="location.href='home.html'" style="margin-left: 10px;"><b>돌아가기</b></button>
             </div>
             <!-- <div class="delete_back">
                 <button id="기존버튼" class="post_register" onclick="deletePostMode()">삭제</button>
@@ -91,5 +92,6 @@
 
     <script src="/js/api.js"></script>
     <script src="/js/post_detail.js"></script>
+    <script src="/js/header.js"></script>
 </body>
 </html>
