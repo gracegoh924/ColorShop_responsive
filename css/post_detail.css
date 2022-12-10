@@ -144,6 +144,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: stretch;
+    height: auto;
 }
 
 .comments {
@@ -155,7 +156,7 @@ body {
     padding: 10px;
 }
 
-.comment-btn{
+/* .comment-btn{
     width: 60px;
     height: 40px;
     margin-left: 10px;
@@ -167,11 +168,7 @@ body {
     box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
-}
-
-.comment-btn:hover {
-    box-shadow: 0px 0px 3px 3px cyan;
-}
+} */
 
 .comments button{
     width: 90px;
