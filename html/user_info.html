@@ -39,18 +39,20 @@
                     <p>프로필</p>
                     <div class="form-control-sm">
                         <label>아이디</label>
-                        <input type="text" id="userinfo_username" class="form-control-plaintext">
+                        <input type="text" id="userinfo_username" class="form-control-plaintext" style="font-weight:bold; font-size:large;">
                     </div>
                     <div class="form-control-sm" style="display: flex;">
                         <label>비밀번호</label>
-                        <input type="password" id="userinfo_password" class="form-control" aria-describedby="button-addon" disabled readonly>
-                        <button type="button" id="button-addon" class="btn btn-outline-dark">변경</button>
+                        <div class="password_box">
+                            <input type="password" id="userinfo_password" class="form-control" aria-describedby="button-addon" disabled readonly>
+                            <button type="button" id="button-addon" class="btn btn-info" style="border:none; background-color:paleturquoise; margin-left:10px; min-width:fit-content;">변경</button>
+                        </div>
                     </div>
                     <div id="password_modal" class="container modal">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3>비밀번호 변경</h3>
-                                <button type="button" id="password_modal_close" class="btn btn-primary">닫기</button>
+                                <button type="button" id="password_modal_close" style="border: none;" class="btn btn-light">닫기</button>
                             </div>
                             <div class="modal-body">
                                 <label>변경할 비밀번호</label>
@@ -61,7 +63,7 @@
                                 <br><br>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" onclick="changePassword()">저장</button>
+                                <button type="button" class="btn btn-info" onclick="changePassword()" style="border:none; background-color:paleturquoise;">저장</button>
                             </div>
                         </div>
                     </div>
