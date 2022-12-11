@@ -35,14 +35,16 @@
 }
 
 .before_image button {
+    margin: 15px auto 30px auto;
     padding: 10px 25px;
-    font-size: 25px;
-    font-weight: 500;
+    font-family: Poor Story;
+    font-size: 20px;
+    font-weight: bold;
     border: none;
     outline: none;
     background: #02343F;
     color: #F0EDCC;
-    border-radius: 5px;
+    border-radius: 7px;
     cursor: pointer;
 }
 
@@ -72,13 +74,6 @@
     align-items: flex-start;
 }
 
-
-.btn {
-    border: 1px dashed;
-    /* font-family: 'Poor Story', cursive; */
-    /* font-weight: bold; */
-}
-
 .modal{
     width: 420px;
     height: 420px;
@@ -105,4 +100,16 @@
     display: flex;
     justify-content: space-evenly;
     align-items: stretch;
+    margin: 3px 0;
+}
+
+.x-mas button {
+    border: 1px dashed;
+    font-family: 'Poor Story', cursive;
+    font-weight: bold;
+    margin: 30px 20px 10px 20px;
+}
+
+.active button {
+    margin: 20px;
 }
