@@ -54,8 +54,6 @@ function showFile() {
     }
 }
 
-
-
 // 이미지 post
 async function postImage() {
     var imageData = new FormData();
@@ -96,16 +94,17 @@ buttonAddFeed.addEventListener("click", (e) => {
 });
 
 // 포스팅 모달창 이미지 띄우기
-async function deepImages() {
-    const getimages = await getImages();
+async function deepImage() {
+    const getimage = await getImage();
     const deepimg = document.getElementById("deepimage");
-    deepimg.setAttribute("src", `${backend_base_url}${getimages.after_image}`);
+    deepimg.setAttribute("src", `${backend_base_url}${getimage.after_image}`);
 }
 
 // 포스팅 등록
 function postCreate() {
+    const title = document.getElementById("input_title").value;
     const content = document.getElementById("input_content").value;
-    postPost(content);
+    postPost(title, content);
 }
 
 // 포스팅 모달창 닫기
