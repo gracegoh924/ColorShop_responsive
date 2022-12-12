@@ -187,6 +187,10 @@ body {
     box-shadow: 0 0 10px 0 #F0EDCC inset, 0 0 10px 4px #F0EDCC;
 }
 
+.create_comment button {
+    box-shadow: 0 0 5px 0 #F0EDCC inset, 0 0 5px 4px #F0EDCC;
+}
+
 .delete_back{
     display: flex;
     /* display: inline-block; */

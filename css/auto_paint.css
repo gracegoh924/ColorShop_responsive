@@ -10,12 +10,12 @@
     font-size: x-large;
     width: 300px;
     height:300px;
-    margin: 15px;
+    margin: 20px;
     display : flex;
     flex-direction: column;
     justify-content: center;
     align-items : center;
-    border:1px solid silver;
+    /* border: 1px solid silver; */
 }
 
 .btn {
@@ -143,11 +143,12 @@
     flex-direction: column;
     justify-content: center;
     align-items : center;
-    border:1px solid paleturquoise;
+    border: 1px solid darkcyan;
+    border-radius: 10px;
 }
 
 .before_image.active {
-    border: 2px solid #F0EDCC;
+    border: transparent;
 }
 
 .before_image .icon {
@@ -185,9 +186,10 @@
 }
 
 .before_image img {
+    height: 100%;
     width: 100%;
-    object-fit: cover;
-    border-radius: 20px;
+    object-fit: contain;
+    /* border-radius: 20px; */
 }
 
 .modal_overlay {
@@ -207,7 +209,6 @@
 }
 
 .modal_window {
-    
     background: #02343F;
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
@@ -240,7 +241,8 @@
 }
 
 .modal_text {
-    font-family: 'Jua', sans-serif;
+    font-family: 'Poor Story';
+    font-size: 20px;
     border: 2px solid rgb(213, 194, 194);
     outline-color: #FE6B8B;
     width: 770px;
@@ -254,17 +256,18 @@
 }
 
 .modal_button button {
-    font-family: 'Jua', sans-serif;
-    width: 80px;
-    height: 35px;
-    margin-top: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
+    font-family: 'Poor Story'; 
+    font-weight: bold;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    margin: 20px 15px;
+    padding: 8px 15px;
     background: #F0EDCC;
     color: #02343F;
     border-radius: 5px;
-    font-size: 18px;
     border: none;
+    cursor: pointer; 
 }
 
 .modal_button button:hover {
