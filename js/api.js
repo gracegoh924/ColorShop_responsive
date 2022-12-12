@@ -207,6 +207,14 @@ async function getBestPosts(){
     return response_json
 }
 
+async function getProfilePosts(user_id){
+    const response = await fetch(`${backend_base_url}/posts/profile/${user_id}`, {
+        method:'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
 async function getPosts(){
     const response = await fetch(`${backend_base_url}/posts/community/`, {
         method:'GET',
