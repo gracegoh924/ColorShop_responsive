@@ -11,6 +11,9 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
+    <!-- 구글 글씨체 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -41,13 +44,13 @@
         <div class="btn_box">
                 <span style="margin: 10px; font-family: 'Poor Story', cursive; color:#F0EDCC;">원하는 모델을 고른 후</span>
             <div>                
-                <button type="button" class="btn btn-outline-info" id="model1" value="1" onclick="chooseModel(this.value)">model1</button>
-                <button type="button" class="btn btn-outline-danger" id="model2" value="2" onclick="chooseModel(this.value)">model2</button>
-                <button type="button" class="btn btn-outline-warning" id="model3" value="3" onclick="chooseModel(this.value)">model3</button>
+                <button type="button" class="btn btn-outline-info" id="model1" value="1" onclick="chooseModel(this.value)">model<b> 1</b></button>
+                <button type="button" class="btn btn-outline-danger" id="model2" value="2" onclick="chooseModel(this.value)">model<b> 2</b></button>
+                <button type="button" class="btn btn-outline-warning" id="model3" value="3" onclick="chooseModel(this.value)">model<b> 3</b></button>
             </div>
-            <div style="margin: 15px; color:#F0EDCC;">▼</div>
+            <div style="margin: 17px; color:#F0EDCC;">▼</div>
             <div>
-                <button type="button" class="btn btn-outline-light" id="img_upload_btn" onclick="postImage()">이미지 변환</button>
+                <button type="button" class="btn btn-outline-light" id="img_upload_btn" style="margin-right: 5px;" onclick="postImage()">이미지 변환</button>
                 <button type="button" class="btn btn-outline-light" id="img_post_btn" onclick="deepImage()">공유하기</button>
             </div>
         </div>
@@ -65,19 +68,17 @@
                     <textarea id="input_title"
                         class="modal_text feed_content_textarea form-control col-sm-5" rows="1"
                         placeholder="제목을 작성해 주세요"
-                        style="background-color: #F0EDCC; font-size: 20px;"></textarea>
+                        style="background-color: #F0EDCC;"></textarea>
                 </div>
                 <div>
                     <textarea id="input_content"
                         class="modal_text feed_content_textarea form-control col-sm-5" rows="6"
                         placeholder="본문을 작성해 주세요"
-                        style="background-color: #F0EDCC; font-size: 20px;"></textarea>
+                        style="background-color: #F0EDCC;"></textarea>
                 </div>
                 <div class="modal_button">
-                    <button class="post_register" onclick="postCreate()"
-                        style="cursor: pointer; font-size: 16px;">등록하기</button>
-                    <button id="close_modal" class="modal_close"
-                        style="cursor: pointer; font-size: 16px;">돌아가기</button>
+                    <button class="post_register" onclick="postCreate()">등록하기</button>
+                    <button id="close_modal" class="modal_close">돌아가기</button>
                 </div>
             </div>
         </div>
