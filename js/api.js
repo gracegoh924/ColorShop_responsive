@@ -228,7 +228,6 @@ async function getPostDetail(post_id) {
     })
 
     response_json = await response.json()
-    console.log(response_json)
     return response_json
 }
 
@@ -260,7 +259,6 @@ async function getImage() {
     })
     response_json = await response.json()
     response_json_a = response_json[response_json.length - 1];
-    console.log(response_json_a)
 
     const payload = localStorage.getItem("payload");
     const payload_parse = JSON.parse(payload)
@@ -271,9 +269,7 @@ async function getImage() {
         return response_json_a
     }else{
         const result = response_json.filter(function (r) { return r.user == payload_parse.username })
-        console.log(result)
         const result_image = result[result.length -1]
-        console.log(result_image)
         return result_image
     }
 }
@@ -285,4 +281,40 @@ async function chooseModel(imagemodel_id){
     })
     model_json = await response.json()
     return model_json
+}
+
+// 게시글 POST
+async function postPost(title, content) {
+    const getimage = await getImage();
+    const response = await fetch(`${backend_base_url}/posts/`, {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            "image": getimage.id,
+            "title": title,
+            "content": content
+        })
+    })
+    response_json = await response.json()
+
+    if(response.status == 201){
+        alert('글 작성을 완료했습니다')
+        window.location.reload(`${frontend_base_url}/auto_paint.html`)
+    }else{
+        const postContent = document.getElementById('input_content')
+        const postTitle = document.getElementById('input_title')
+        const postImage = document.getElementById('deepimage')
+        if(postContent.value == ''){
+            alert('본문을 입력해주세요')
+        }else if(postTitle.value == ''){
+            alert('제목을 입력해주세요')
+        }else if(postImage.src == ''){
+            alert('변환된 이미지가 필요합니다!')
+        }else{
+            alert('로그인 해주세요')
+        }
+    }
 }
