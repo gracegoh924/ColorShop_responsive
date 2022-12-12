@@ -28,16 +28,17 @@ async function checkLogin() {
 async function loadPostDetail(post_id){
     const updatePostCancelButton = document.getElementById("update_post_cancel_button")
     const post = await getPostDetail(post_id)
+    const image = await getImageDetail(post.image_id)
 
     const postImage = document.getElementById("image")
     const postUser = document.getElementById("post_user")
     const postContent = document.getElementById("post_content")
     const postTime = document.getElementById("time")
 
-    postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+    postImage.setAttribute("src", `${backend_base_url}${image.after_image}`)
     postUser.innerText = post.user
     postContent.innerText = post.content
-    postTime.innerText = post.update_at
+    postTime.innerText = post.created_at
     
     // 상세 페이지 댓글 보기
     const comments = await getComments()
@@ -296,8 +297,6 @@ async function viewLike() {
     // 좋아요 여부
     const liked = await getLike()
     const me = await getName()
-    console.log(liked.likes)
-    console.log(me)
     const like_button = document.getElementById("like_button")
     if(liked.likes.includes(me)) {
         like_button.classList.add('like_heart')

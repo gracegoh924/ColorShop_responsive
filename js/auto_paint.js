@@ -68,7 +68,6 @@ async function postImage() {
     })
 
     if (response.status == 201) {
-        // 홈페이지에서 after_image 띄우기
         const getimages = await getImage();
         const after_image = document.getElementById("after_image")
         after_image.setAttribute("src", `${backend_base_url}${getimages.after_image}`)
