@@ -230,6 +230,7 @@ body {
     color: black;
 }
 
-.container {
-    padding: 100px;
+.community_container {
+    margin-bottom: 300px;
+    padding: 70px;
 }
