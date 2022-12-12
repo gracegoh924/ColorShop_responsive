@@ -72,9 +72,6 @@ async function postLikeListButton(){
     const result = posts.filter(function (post) { return post.likes == profile.username})
 
     for(let i = 0; i < result.length; i++){
-        console.log(result)
-        console.log(result[i].likes)
-        console.log(result[i].user)
         const postCol = document.createElement("div")
         postCol.classList.add("col")
 
@@ -83,7 +80,7 @@ async function postLikeListButton(){
         postCard.classList.add("h-100")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${result[i].image}`)
+        postImage.setAttribute("src", `${backend_base_url}`)
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")

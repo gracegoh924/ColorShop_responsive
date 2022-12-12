@@ -11,11 +11,11 @@
     width: 300px;
     height:300px;
     margin: 20px;
+    margin: 20px;
     display : flex;
     flex-direction: column;
     justify-content: center;
     align-items : center;
-    /* border: 1px solid silver; */
 }
 
 .btn {
@@ -44,7 +44,6 @@
     display : flex;
     justify-content: center;
     align-items : center;
-    background-color: white;
 }
 
 .sketch_image {
@@ -81,7 +80,6 @@
     display : flex;
     justify-content: center;
     align-items : center;
-    border:1px solid blue;
 }
 
 .info_text {
@@ -143,8 +141,6 @@
     flex-direction: column;
     justify-content: center;
     align-items : center;
-    border: 1px solid darkcyan;
-    border-radius: 10px;
 }
 
 .before_image.active {

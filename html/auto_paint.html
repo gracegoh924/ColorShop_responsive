@@ -50,12 +50,12 @@
             </div>
             <div style="margin: 17px; color:#F0EDCC;">▼</div>
             <div>
-                <button type="button" class="btn btn-outline-light" id="img_upload_btn" style="margin-right: 5px;" onclick="postImage()">이미지 변환</button>
+                <button type="button" class="btn btn-outline-light" id="img_upload_btn" onclick="postImage()">채색하기</button>
                 <button type="button" class="btn btn-outline-light" id="img_post_btn" onclick="deepImage()">공유하기</button>
             </div>
         </div>
         <div class="sketch_img_box">
-            <img src="/static/auto.png" alt="sketch_image" class="sketch_image" onclick="window.open(this.src)" id="after_image">
+            <img src="/static/resultbox.PNG" alt="sketch_image" class="sketch_image" onclick="window.open(this.src)" id="after_image">
         </div>
             <!-- 포스팅 모달 -->
         <div id="post_modal" class="modal_overlay">
@@ -86,7 +86,23 @@
     
     <div class="info_container" style="background-color:#F0EDCC;">
         <div class="info_text_box">
-            <p class="info_text">선택한 기능에 따른 세부 설정 창</p>
+            <span class="info_text">ColorShop 자동 채색 기능 이용방법
+            <br>
+            1. 채색하고자 하는 스케치를 png 또는 jpg 형태의 이미지파일로 업로드 해주세요.
+            <br>
+            2. 3가지의 채색 모델 중 하나를 선택하고 채색하기 버튼을 누르면 오른쪽에 결과 이미지가 나타납니다.
+            <br>
+            3. 변환된 이미지로 게시글을 작성해 ColorShop 커뮤니티에 올려보세요! 커뮤니티에서는 다른 사람들의 이미지를 보고 댓글과 좋아요를 남길 수 있습니다.
+            <br>
+            4. 좋아요를 많이 받은 게시글은 사이트 메인페이지에 게시됩니다! ColorShop으로 여러분이 그린 그림을 채색해보세요!
+            <br>
+            <br>
+            <br>
+            ※ 주의사항 ※
+            <br>
+            이미 채색 되어있는 이미지를 채색하려고 하면 오히려 이상해질 수 있습니다.
+            <br>
+            ColorShop은 사전 학습된 AI 모델을 통해 채색 제공 된 이미지를 제공해 드리지만 고도로 학습된 모델이 아니기 때문에 만족스럽지 못한 결과가 나올 수 있습니다.
         </div>
     </div>
 

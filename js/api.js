@@ -276,7 +276,7 @@ async function getImage() {
 
 // 채색 모델 설정
 async function chooseModel(imagemodel_id){ 
-    const response = await fetch(`${backend_base_url}/posts/choosemodel/${imagemodel_id}`, {
+    const response = await fetch(`${backend_base_url}/posts/choosemodel/${imagemodel_id}/`, {
         method:'GET',
     })
     model_json = await response.json()
@@ -317,4 +317,14 @@ async function postPost(title, content) {
             alert('로그인 해주세요')
         }
     }
+}
+
+// 이미지 상세 GET
+async function getImageDetail(image_id) {
+    const response = await fetch(`${backend_base_url}/posts/image/${image_id}/`, {
+        method: 'GET'
+    })
+    
+    response_json = await response.json()
+    return response_json
 }
