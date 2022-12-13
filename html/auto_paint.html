@@ -31,7 +31,7 @@
 
     <div class="sketch_container">
         <div class="before_image_box">
-            <div class="drag-area">
+            <div class="before_image" id="before_image">
                 <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
                 <span class="material-symbols-outlined" style="font-size: 50px;">add_photo_alternate</span>
                 <header>드래그해서 스케치 이미지 업로드</header>
@@ -39,11 +39,6 @@
                 <button type="button" class="btn btn-outline-light" id="upload">컴퓨터에서 선택</button>
                 <input type="file" id="before_img" hidden>
             </div>
-            <!-- <span style="font-size:23px; margin-bottom: 5px;"><b>드래그해서 스케치 업로드</b></span>
-            <span style="font-size:20px; margin: 5px;">또는</span>
-            <button type="button" id="upload" style="margin:10px"><b>컴퓨터에서 선택</b></button>
-            <input type="file" id="before_img" hidden>
-            <span style="color:white; font-size:15px;"><b>jpg</b> 또는 <b>png</b> 파일로 업로드해주세요.</b></span> -->
         </div>
 
         <div class="btn_box">
@@ -64,9 +59,8 @@
                     onclick="deepImage()">공유하기</button>
             </div>
         </div>
-        <div class="sketch_img_box">
-            <img src="/static/resultbox.PNG" alt="sketch_image" class="sketch_image" onclick="window.open(this.src)"
-                id="after_image">
+        <div class="after_img_box">
+            <img src="/static/resultbox.PNG" alt="sketch_image" class="sketch_image" onclick="window.open(this.src)" id="after_image">
         </div>
 
         <div id="post_modal" class="modal_overlay">
