@@ -17,7 +17,7 @@ async function loadBestPosts() {
             newPost.classList.add("new_post")
 
             const postImage = document.createElement("img")
-            const images = await getImageDetail(post.id)
+            const images = await getImageDetail(post.image.id)
 
             postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
             postImage.setAttribute("id", post.id)

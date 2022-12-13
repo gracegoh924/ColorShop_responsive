@@ -62,7 +62,7 @@ async function getUsername() {
     if (response.status == 200) {
         const payload = localStorage.getItem("payload");
         const payload_parse = JSON.parse(payload)
-        return payload_parse.user_id
+        return payload_parse.username
     } else {
         return null
     }

@@ -1,7 +1,7 @@
 includehtml();
 
 // 이미지 띄우기
-let dropArea = document.querySelector(".before_image"),
+const dropArea = document.querySelector(".before_image_box"),
     dragText = dropArea.querySelector("header"),
     button = dropArea.querySelector("button"),
     input = dropArea.querySelector("input");
@@ -20,12 +20,12 @@ input.addEventListener("change", function () {
 dropArea.addEventListener("dragover", (event) => {
     event.preventDefault();
     dropArea.classList.add("active");
-    dragText.textContent = "Release to Upload File";
+    dragText.textContent = "파일을 내려놓으세요";
 })
 
 dropArea.addEventListener("dragleave", () => {
     dropArea.classList.remove("active");
-    dragText.textContent = "Drag & Drop to Upload File";
+    dragText.textContent = "드래그해서 스케치 이미지 업로드";
 })
 
 dropArea.addEventListener("drop", (event) => {
