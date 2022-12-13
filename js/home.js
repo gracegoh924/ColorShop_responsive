@@ -4,6 +4,12 @@ async function loadBestPosts() {
     const posts = await getBestPosts()
     const best_post = document.getElementById("best_post")
     best_post.innerHTML = ''
+    posts.sort(function(a, b)  {
+        if(a.likes_count > b.likes_count) return 1;
+        if(a.likes_count === b.likes_count) return 0;
+        if(a.likes_count < b.likes_count) return -1;
+      });
+      posts.reverse()
 
     const postUI = async () => {
         for(let post of posts){      
