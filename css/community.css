@@ -19,7 +19,7 @@ body {
 :root {
     --accent: white;
     --border-width: 3px;
-    --border-radius: 10px;
+    --border-radius: 55px;
     --font-size: 22px;
 }
 
@@ -29,10 +29,8 @@ body {
     margin-top: 20px;
     display: flex;
     align-items: center;
-    margin: 0;
     padding-top: 30px;
     font-family: sans-serif;
-
 }
 
 .radio-container {
@@ -104,17 +102,6 @@ body {
     transform-style: preserve-3d;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Jua', sans-serif
-}
-
-body {
-    background: #101322;
-    color: silver;
-}
-
 .gallery {
     column-count: 4;
 }
@@ -124,7 +111,6 @@ body {
     height: auto !important;
     margin-bottom: 20px;
     cursor: pointer;
-    background-color: white;
 }
 
 .gallery img:hover {
@@ -151,9 +137,8 @@ body {
     height: 280px;
     border-radius: 10px;
     background-color: white;
-    margin-bottom: 20px;
+    margin: 20px 0;
     position: relative;
-    background-color: #7b9acc;
     cursor: pointer;
 }
 
