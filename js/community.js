@@ -1,6 +1,5 @@
 includehtml();
 
-// 라디오버튼 시작
 const st = {};
 
 st.flap = document.querySelector("#flap");
@@ -32,62 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("click", (e) => st.clickHandler(e));
-// 라디오버튼 끝
-
-
-// async function loadPosts() {
-//     const posts = await getPosts()
-//     const post_list = document.getElementById("post_list")
-
-//     const postUI = async () => {
-//         for (let post of posts) {
-//             const newPost = document.createElement("div")
-//             newPost.classList.add("post_list")
-//             newPost.setAttribute("id", post.id)
-//             newPost.setAttribute("onclick", "postDetail(this.id)")
-
-//             const postImage = document.createElement("img")
-//             const images = await getImageDetail(post.image_id)
-//             postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
-
-//             const postContent = document.createElement("span")
-//             postContent.classList.add("content")
-//             postContent.innerText = post.content
-
-//             post_list.append(newPost)
-//             newPost.append(postImage)
-//             newPost.append(postContent)
-//         }
-//     }
-//     postUI()
-// }
-
-// async function loadPosts_2() {
-//     const posts = await getPosts()
-//     const post_list = document.getElementById("post_list_2")
-
-//     const postUI = async () => {
-//         for (let post of posts) {
-//             const newPost = document.createElement("div")
-//             newPost.classList.add("post_list")
-//             newPost.setAttribute("id", post.id)
-//             newPost.setAttribute("onclick", "postDetail(this.id)")
-
-//             const postImage = document.createElement("img")
-//             const images = await getImageDetail(post.image_id)
-//             postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
-
-//             const postContent = document.createElement("span")
-//             postContent.classList.add("content")
-//             postContent.innerText = post.content
-
-//             post_list.append(newPost)
-//             newPost.append(postImage)
-//             newPost.append(postContent)
-//         }
-//     }
-//     postUI()
-// }
 
 async function loadPosts_3() {
     const posts = await getPosts()
@@ -143,28 +86,4 @@ async function loadPosts_3() {
     postUI()
 }
 
-
-
-// async function likePost(likeId) {
-//     const posts = await getPosts()
-//     console.log(posts)
-//     const like_button = document.getElementById(`${likeId}`)
-//     console.log(like_button)
-//     console.log(like_button.classList)
-
-//     if(like_button.classList == 'heart fa-solid fa-heart') {
-//         const response = await postLike(post_id)
-//         like_button.classList.add('like_heart')
-//         // like_count.innerText = "좋아요 " + (count + num1) + "개"
-//     }else{
-//         const response = await postLike()
-//         like_button.classList.remove('like_heart')
-//         // like_count.innerText = "좋아요 " + (count - num1) + "개"
-//     }
-// }
-
-
-// loadPosts()
-// loadPosts_2()
 loadPosts_3()
-

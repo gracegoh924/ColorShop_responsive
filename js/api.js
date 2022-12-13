@@ -1,4 +1,3 @@
-// URL 설정
 const backend_base_url = 'http://127.0.0.1:8000'
 const frontend_base_url = 'http://127.0.0.1:5500/html/'
 
@@ -19,12 +18,10 @@ async function handleLogin() {
     })
 
     if (response.status == 200) {
-        // 로컬스토리지에 토큰 저장
         const response_json = await response.json()
         localStorage.setItem("access", response_json.access);
         localStorage.setItem("refresh", response_json.refresh);
 
-        // 로컬스토리지에 토큰 정보 저장
         const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
@@ -32,8 +29,6 @@ async function handleLogin() {
         }).join(''));
 
         localStorage.setItem("payload", jsonPayload);
-
-        // 로그인이 성공하면 홈으로 이동
         location.replace("/html/community.html")
     }else{
         alert('아이디 혹은 비밀번호를 잘못입력했습니다')
@@ -168,7 +163,6 @@ async function putUserinfoImage(userinfo_user_id, profile_img, username){
     }
 }
 
-
 async function putUserinfo(userinfo_user_id, username, nickname, bio){
     const userinfoData = {
         "username":username,
@@ -187,7 +181,6 @@ async function putUserinfo(userinfo_user_id, username, nickname, bio){
 
     response_json = response.json()
 
-    
     if(response.status == 200){
         alert('수정되었습니다')
         window.location.reload()

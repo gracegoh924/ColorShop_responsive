@@ -16,7 +16,6 @@ body {
     margin: auto;
 }
 
-/* 라디오버튼 시작 */
 :root {
     --accent: white;
     --border-width: 3px;
@@ -30,6 +29,10 @@ body {
     margin-top: 20px;
     display: flex;
     align-items: center;
+    margin: 0;
+    padding-top: 30px;
+    font-family: sans-serif;
+
 }
 
 .radio-container {
@@ -100,9 +103,19 @@ body {
     transition: transform 0s linear .25s;
     transform-style: preserve-3d;
 }
-/* 라디오 버튼 끝 */
 
-/* .gallery {
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Jua', sans-serif
+}
+
+body {
+    background: #101322;
+    color: silver;
+}
+
+.gallery {
     column-count: 4;
 }
 
@@ -116,36 +129,7 @@ body {
 
 .gallery img:hover {
     filter: brightness(70%);
-} */
-
-/* .gallery_2 {
-    width: fit-content;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 20px;
 }
-
-.gallery_2 img {
-    width: 100%;
-    height: 210px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    background-color: white;
-}
-
-.gallery_2 img:hover {
-    filter: brightness(70%);
-} */
-
-/* .content {
-    position: absolute;
-    bottom: 25px;
-    left: 15px;
-    z-index: 1;
-    font-size: 20px;
-    color: white;
-    opacity: 0;
-} */
 
 .post_list {
     position: relative;
@@ -208,35 +192,17 @@ body {
     color: black;
 }
 
-/* .line {
-    position: absolute;
-    text-align: left;
-    bottom: 18px;
-    width: 100%;
-    size: 1px;
-    color: black;
-} */
-
 .heart {
     position: absolute;
     bottom: 42px;
     right: 30px;
     font-size: 18px;
     color: gray;
-    /* cursor: pointer; */
 }
-
-/* .heart:hover {
-    filter: brightness(80%);
-} */
 
 .like_heart {
     color: red
 }
-
-/* .like_heart:hover {
-    filter: brightness(80%);
-} */
 
 .likeCount {
     position: absolute;
