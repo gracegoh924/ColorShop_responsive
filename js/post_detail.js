@@ -1,30 +1,8 @@
 includehtml();
 
-// 게시글 url 가져오기 
 const urlParams = new URLSearchParams(window.location.search)
 const post_id = urlParams.get('id')
 
-// 로그인 확인
-async function checkLogin() {
-    const name = await getName();
-    const loginoutButton = document.getElementById("loginout")
-
-    if(name){
-        loginoutButton.innerText = "로그아웃"
-        loginoutButton.setAttribute("onclick", "logout()")
-    }else{
-        loginoutButton.innerText = "로그인"
-        loginoutButton.setAttribute("onclick", "location.href='/login.html'")
-        
-        const update_post = document.getElementById("update_post")
-        const delete_post = document.getElementById("delete_post")
-
-        update_post.style.visibility = "hidden"
-        delete_post.style.visibility = "hidden"   
-    }
-}
-
-// 상세 페이지 게시글 보기
 async function loadPostDetail(post_id){
     const post = await getPostDetail(post_id)
     const image = await getImageDetail(post.image_id)
@@ -38,11 +16,11 @@ async function loadPostDetail(post_id){
     postUser.innerText = post.user
     postTitle.innerText = post.title
     postContent.innerText = post.content
-    
+
     // 상세 페이지 댓글 보기
     const comments = await getComments(post_id)
     const comment_list = document.getElementById("comment_list")
-    comment_list.innerHTML = '' // 댓글 삭제
+    comment_list.innerHTML = ''
     
     // 댓글 생성
     for(let i = 0; i < comments.length; i++){        
@@ -80,7 +58,6 @@ async function loadPostDetail(post_id){
         updateCommentButton.setAttribute("type", "button")
         updateCommentButton.setAttribute("id", `${comments[i].id}`)
         updateCommentButton.setAttribute("onclick", "updateCommentMode(this.id)")
-        console.log(updateCommentButton)
 
         // 댓글 삭제 버튼
         const deleteCommentButton = document.createElement("button")
@@ -110,12 +87,12 @@ async function loadPostDetail(post_id){
             deleteCommentButton.style.display = "flex"
         }
     }
+    const updatePostButtons = document.getElementById("update_post")
+    const deletePostButtons = document.getElementById("delete_post")
+
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
-    
-    const updatePostButtons = document.getElementById("update_post")
-    const deletePostButtons = document. getElementById("delete_post")
-  
+
     if(parsed_payload == null || parsed_payload.username != postUser.innerText){
         updatePostButtons.style.display = "none"
         deletePostButtons.style.display = "none"
@@ -170,7 +147,6 @@ async function updatePostMode(){
 // 게시글 수정
 async function updatePost(){
     const post = await getPostDetail(post_id)
-
     var inputPostContent = document.getElementById("input_post_content")
     await putPost(post_id, post.image_id, post.title, inputPostContent.value)
 
@@ -249,7 +225,6 @@ async function updateCommentMode(comment_id){
         const updateCommentButton = document.getElementById(`${comment_id}`)
         updateCommentButton.setAttribute("onclick", "updateComment(this.id)")
         updateCommentButton.innerText = '수정 완료'
-        console.log(updateCommentButton)
 
         // 댓글 수정 취소 버튼
         const updateCommentCancelButton = document.createElement("button")
@@ -308,7 +283,7 @@ async function deleteCommenteMode(comment_id){
 // 댓글 작성
 async function addComment() {
     const createComment = document.getElementById("user_comment")
-    console.log(createComment.value)
+
     if (createComment.value == ''){
         alert('댓글을 입력해주세요')
     }else{
@@ -323,7 +298,8 @@ async function addComment() {
 async function viewLike() {
     // 좋아요 여부
     const liked = await getLike()
-    const me = await getName()
+    const me = await getUsername()
+
     const like_button = document.getElementById("like_button")
     if(liked.likes.includes(me)) {
         like_button.classList.add('like_heart')
@@ -353,6 +329,5 @@ async function likePost() {
     }
 }
 
-checkLogin()
 loadPostDetail(post_id)
 viewLike()

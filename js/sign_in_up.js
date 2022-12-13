@@ -38,8 +38,6 @@ async function handleSignup() {
 
     const Response = await response.json()
 
-    console.log(Response)
-
     if (response.status === 201){
         alert("회원가입 성공!");
         container.classList.remove("right-panel-active");
@@ -58,7 +56,6 @@ async function handleSignup() {
         sign_up_Alert.innerText = Response.nickname[0]
     }
     }
-
   }
 
   async function handleLogin(){
@@ -75,9 +72,11 @@ async function handleSignup() {
             "password":password
         })
     })
+
     const response_json = await response.json()
     localStorage.setItem("access", response_json.access);
     localStorage.setItem("refresh", response_json.refresh);
+
     if (response.status === 200){
         alert("로그인이 완료되었습니다!");
         location.href="home.html"
@@ -93,3 +92,4 @@ async function handleSignup() {
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
   }
+  
