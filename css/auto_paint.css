@@ -1,0 +1,265 @@
+body {
+    background-color: #F0EDCC;
+}
+
+.sketch_container {
+    width: 100%;
+    height: 400px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.btn_box {
+    font-size: x-large;
+    width: 300px;
+    height:300px;
+    display : flex;
+    margin: 0 100px;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+}
+
+.btn {
+    border: 1px dashed;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.sketch_text {
+    height: 40%;
+    justify-content: center;
+    align-items : center;
+}
+
+.sketch_btn {
+    justify-content: center;
+    align-items : center;
+    cursor: pointer;
+}
+
+.sketch_img_box {
+    width: 250px;
+    height:300px;
+    margin-left: 10px;
+    padding: 5px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.sketch_image {
+    height: 100%;
+}
+
+.info_container {
+    width: 100%;
+    height: 400px;
+    padding: 100px 50px 0px 50px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.info_text_box {
+    width: 900px;
+    height: 300px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.info_image {
+    height: 100%;
+}
+
+
+
+.info_text {
+    font-size: 15px;
+}
+
+.post_container {
+    width: 100%;
+    height: 760px;
+    display : flex;
+    justify-content: center;
+    align-items : center;
+}
+
+.post_box {
+    width: 750px;
+    height: 100%;
+    margin-top: 100px;
+    margin-right: 10px;
+}
+
+.post_box_title {
+    margin-left: 25px;
+}
+
+.card_row_1 {
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items : center;
+}
+
+.card_row_2 {
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items : center;
+}
+
+.card_box {
+    width: 220px;
+    margin: 10px
+
+}
+
+.crawling_box {
+    width: 400px;
+    height: 100%;
+    margin-top: 100px;
+    margin-left: 10px;
+    border:1px solid purple;
+}
+
+.before_image {
+    width: 300px;
+    height:300px;
+    margin-right: 10px;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items : center;
+}
+
+.before_image.active {
+    border: transparent;
+}
+
+.before_image .icon {
+    font-size: 100px;
+    color: #F0EDCC;
+}
+
+.before_image header {
+    font-size: 30px;
+    font-weight: 500;
+    color: #F0EDCC;
+}
+
+.before_image span {
+    font-size: 25px;
+    font-weight: 500;
+    color: #F0EDCC;
+    margin: 10px 0 15px 0;
+}
+
+.before_image button {
+    padding: 10px 25px;
+    font-size: 25px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #F0EDCC;
+    color: #02343F;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.before_image button:hover {
+    box-shadow: 0 0 10px 0 #F0EDCC inset, 0 0 10px 4px #F0EDCC;
+}
+
+.before_image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    /* border-radius: 20px; */
+}
+
+.modal_overlay {
+    width: 100%;
+    height: 100%;
+    position: relative; z-index:999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    z-index: 999;
+}
+
+.modal_window {
+    background: #02343F;
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid #02343F;
+    width: 800px;
+    height: 870px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_image {
+    width: 770px;
+    height: 500px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal_image img {
+    width: 100%;
+    height: 100%;
+}
+
+.modal_post_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.modal_text {
+    font-family: 'Poor Story';
+    font-size: 20px;
+    border: 2px solid rgb(213, 194, 194);
+    outline-color: #FE6B8B;
+    width: 770px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal_button {
+    text-align: center;
+}
+
+.modal_button button {
+    font-family: 'Poor Story'; 
+    font-weight: bold;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    margin: 20px 15px;
+    padding: 8px 15px;
+    background: #F0EDCC;
+    color: #02343F;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; 
+}
+
+.modal_button button:hover {
+    box-shadow: 0 0 5px 0 #F0EDCC inset, 0 0 5px 4px #F0EDCC;
+}

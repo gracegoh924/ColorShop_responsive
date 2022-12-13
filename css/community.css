@@ -1,21 +1,112 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
+/* 라디오버튼 시작 */
+:root {
+    --accent: lightcyan;
+    --border-width: 3px;
+    --border-radius: 55px;
+    --font-size: 20px;
+}
+
+.radio-body {
+    width: 250px;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding-top: 30px;
+    /* background-color: #333; */
+    font-family: sans-serif;
+}
+
+.radio-container {
+    perspective: 800px;
+}
+
+.toggle {
+    position: relative;
+    border: solid var(--border-width) var(--accent);
+    border-radius: var(--border-radius);
+    transition: transform cubic-bezier(0, 0, 0.30, 2) .4s;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.toggle>input[type="radio"] {
+    display: none;
+}
+
+.toggle>#choice1:checked~#flap {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice1:checked~#flap>.content1 {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice2:checked~#flap {
+    transform: rotateY(0deg);
+}
+
+.toggle>label {
+    display: inline-block;
+    min-width: 70px;
+    padding: 10px 20px 10px 20px;
+    font-size: var(--font-size);
+    text-align: center;
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.toggle>label,
+.toggle>#flap {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.toggle>#flap {
+    position: absolute;
+    top: calc(0px - var(--border-width));
+    left: 50%;
+    height: calc(100% + var(--border-width) * 2);
+    width: 51%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size);
+    background-color: var(--accent);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .5s;
+}
+
+.toggle>#flap>.content1 {
+    color: #333;
+    transition: transform 0s linear .25s;
+    transform-style: preserve-3d;
+}
+/* 라디오 버튼 끝 */
+
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Jua', sans-serif
 }
-
 
 body {
-    background: #02343F;
-    color: #F0EDCC;
+    background: #101322;
+    color: silver;
 }
 
-#gallery {
+.gallery {
     column-count: 4;
 }
 
-#gallery img {
+.gallery img {
     width: 100% !important;
     height: auto !important;
     margin-bottom: 20px;
@@ -23,12 +114,11 @@ body {
     background-color: white;
 }
 
-#gallery img:hover {
+.gallery img:hover {
     filter: brightness(70%);
 }
 
 .gallery_2 {
-    height: 200px;
     width: fit-content;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -37,7 +127,7 @@ body {
 
 .gallery_2 img {
     width: 100%;
-    height: 200px;
+    height: 210px;
     margin-bottom: 20px;
     cursor: pointer;
     background-color: white;
@@ -74,7 +164,7 @@ body {
 
 .gallery_3 .post_card {
     width: 100%;
-    height: 300px;
+    height: 310px;
     background-color: white;
     margin-bottom: 20px;
     position: relative;
@@ -82,7 +172,7 @@ body {
 
 .gallery_3 img {
     width: 100%;
-    height: 200px;
+    height: 210px;
     cursor: pointer;
 }
 
@@ -138,4 +228,9 @@ body {
     left: 38px;
     font-size: 15px;
     color: black;
+}
+
+.community_container {
+    margin-bottom: 300px;
+    padding: 70px;
 }

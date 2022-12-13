@@ -1,40 +1,81 @@
 includehtml();
 
+// 라디오버튼 시작
+const st = {};
+
+st.flap = document.querySelector("#flap");
+st.toggle = document.querySelector(".toggle");
+
+st.choice1 = document.querySelector("#choice1");
+st.choice2 = document.querySelector("#choice2");
+
+st.flap.addEventListener("transitionend", () => {
+  if (st.choice1.checked) {
+    st.toggle.style.transform = "rotateY(-15deg)";
+    setTimeout(() => (st.toggle.style.transform = ""), 400);
+  } else {
+    st.toggle.style.transform = "rotateY(15deg)";
+    setTimeout(() => (st.toggle.style.transform = ""), 400);
+  }
+});
+
+st.clickHandler = (e) => {
+  if (e.target.tagName === "LABEL") {
+    setTimeout(() => {
+      st.flap.children[0].textContent = e.target.textContent;
+    }, 250);
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  st.flap.children[0].textContent = st.choice2.nextElementSibling.textContent;
+});
+
+document.addEventListener("click", (e) => st.clickHandler(e));
+// 라디오버튼 끝
+
+
 async function loadPosts() {
     const posts = await getPosts()
     const post_list = document.getElementById("post_list")
 
-    posts.forEach(post => {
-        const newPost = document.createElement("div")
-        newPost.classList.add("post_list")
-        newPost.setAttribute("id", post.id)
-        newPost.setAttribute("onclick", "postDetail(this.id)")
+    const postUI = async () => {
+        for(let post of posts){
+          const newPost = document.createElement("div")
+          newPost.classList.add("post_list")
+          newPost.setAttribute("id", post.id)
+          newPost.setAttribute("onclick", "postDetail(this.id)")
 
-        const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+          const postImage = document.createElement("img")
+          const images = await getImageDetail(post.image_id)
+          postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
 
-        const postContent = document.createElement("span")
-        postContent.classList.add("content")
-        postContent.innerText = post.content
+          const postContent = document.createElement("span")
+          postContent.classList.add("content")
+          postContent.innerText = post.content
 
-        post_list.append(newPost)
-        newPost.append(postImage)
-        newPost.append(postContent)
-    })
+          post_list.append(newPost)
+          newPost.append(postImage)
+          newPost.append(postContent)
+        }
+    }
+    postUI()
 }
 
 async function loadPosts_2() {
     const posts = await getPosts()
     const post_list = document.getElementById("post_list_2")
 
-    posts.forEach(post => {
+    const postUI = async () => {
+      for(let post of posts){
         const newPost = document.createElement("div")
         newPost.classList.add("post_list")
         newPost.setAttribute("id", post.id)
         newPost.setAttribute("onclick", "postDetail(this.id)")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+        const images = await getImageDetail(post.image_id)
+        postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
 
         const postContent = document.createElement("span")
         postContent.classList.add("content")
@@ -43,7 +84,9 @@ async function loadPosts_2() {
         post_list.append(newPost)
         newPost.append(postImage)
         newPost.append(postContent)
-    })
+      }
+    }
+    postUI()
 }
 
 async function loadPosts_3() {
@@ -51,12 +94,14 @@ async function loadPosts_3() {
     const me = await getName()
     const post_list = document.getElementById("post_list_3")
 
-    posts.forEach(post => {
+    const postUI = async () => {
+      for(let post of posts){
         const newPost = document.createElement("div")
         newPost.classList.add("post_card")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+        const images = await getImageDetail(post.image_id)
+        postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
         postImage.setAttribute("id", post.id)
         postImage.setAttribute("onclick", "postDetail(this.id)")
 
@@ -74,12 +119,6 @@ async function loadPosts_3() {
         const postLike = document.createElement("i")
         postLike.setAttribute("id", "like" + post.id)
         postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
-        // postLike.setAttribute("onclick", "likePost(this.id)")
-        // if (post.likes.includes(me)) {
-        //     postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
-        // } else {
-        //     postLike.classList.add("heart", "fa-solid", "fa-heart")
-        // }
 
         const likeCount = document.createElement("p")
         likeCount.setAttribute("id", "like_count")
@@ -94,7 +133,9 @@ async function loadPosts_3() {
         newPost.append(line)
         newPost.append(postLike)
         newPost.append(likeCount)
-    })
+      }
+    }
+    postUI()
 }
 
 

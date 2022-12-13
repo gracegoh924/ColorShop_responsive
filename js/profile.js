@@ -2,7 +2,6 @@ includehtml();
 
 const profileUrlParams = new URLSearchParams(window.location.search)
 const profile_user_id = profileUrlParams.get('id')
-console.log(profile_user_id)
 
 async function loadProfile(profile_user_id){
     const profile = await getProfile(profile_user_id)
@@ -19,7 +18,7 @@ async function loadProfile(profile_user_id){
 
 async function postListButton(){
     const profile = await getProfile(profile_user_id)
-    const posts = await getPosts()
+    const posts = await getBestPosts()
     
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
@@ -63,7 +62,7 @@ async function postListButton(){
 
 async function postLikeListButton(){
     const profile = await getProfile(profile_user_id)
-    const posts = await getPosts()
+    const posts = await getBestPosts()
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
 
@@ -73,9 +72,6 @@ async function postLikeListButton(){
     const result = posts.filter(function (post) { return post.likes == profile.username})
 
     for(let i = 0; i < result.length; i++){
-        console.log(result)
-        console.log(result[i].likes)
-        console.log(result[i].user)
         const postCol = document.createElement("div")
         postCol.classList.add("col")
 
@@ -84,7 +80,7 @@ async function postLikeListButton(){
         postCard.classList.add("h-100")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${result[i].image}`)
+        postImage.setAttribute("src", `${backend_base_url}`)
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")

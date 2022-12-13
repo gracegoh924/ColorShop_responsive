@@ -144,6 +144,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     align-items: stretch;
+    height: auto;
 }
 
 .comments {
@@ -155,7 +156,7 @@ body {
     padding: 10px;
 }
 
-.comment-btn{
+/* .comment-btn{
     width: 60px;
     height: 40px;
     margin-left: 10px;
@@ -167,11 +168,7 @@ body {
     box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
-}
-
-.comment-box button:hover {
-    box-shadow: 0 0 10px 0 #02343F inset, 0 0 10px 4px #02343F;
-}
+} */
 
 .comments button{
     width: 90px;
@@ -190,12 +187,22 @@ body {
     box-shadow: 0 0 10px 0 #F0EDCC inset, 0 0 10px 4px #F0EDCC;
 }
 
+.create_comment button {
+    box-shadow: 0 0 5px 0 #F0EDCC inset, 0 0 5px 4px #F0EDCC;
+}
+
 .delete_back{
-    display: inline-block;
+    display: flex;
+    /* display: inline-block; */
+    margin-top: 10px;
     float: right;
 }
 
-.delete_back button{
+.btn {
+    border: 1px dashed;
+}
+
+/* .delete_back button{
     width: 80px;
     height: 40px;
     margin-top: 15px;
@@ -208,9 +215,9 @@ body {
     box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
-}
+} */
 
-.delete_back button:hover {
+/* .delete_back button:hover {
     box-shadow: 0 0 10px 0 #02343F inset, 0 0 10px 4px #02343F;
-}
+} */
 
