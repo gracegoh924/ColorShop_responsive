@@ -97,20 +97,24 @@ async function getPassword(userinfo_user_id){
     }
 }
 
-async function postPassword(password) {
+async function postPassword(userinfo_user_id, newPassword) {
     const response = await fetch(`${backend_base_url}/users/changepassword/${userinfo_user_id}/`, {
         headers:{
             "Authorization": "Bearer " +localStorage.getItem("access"),
             'Content-type':'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(password)
+        body: JSON.stringify(newPassword)
     })
 
-  if (response.status === 200) {
-      alert("비밀번호 확인 완료")
-  } else if (response.status === 400) {
-    alert("현재 비밀번호와 동일한 비밀번호를 입력해주세요")
+    response_json = response.json()
+
+  if(response.status === 200) {
+      console.log(response_json)
+      return response_json
+    }
+    else if (response.status === 400) {
+        alert("현재 비밀번호와 동일한 비밀번호를 입력해주세요")
   } 
 }
 
@@ -130,6 +134,8 @@ async function putPassword(userinfo_user_id, newPassword, newPassword2){
     })
 
     response_json = await response.json()
+    console.log(response_json)
+
     if(response.status == 201){
         alert('비밀번호를 변경했습니다')
         window.location.replace(`/html/user_info.html?id=${userinfo_user_id}`)

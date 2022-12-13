@@ -58,7 +58,6 @@ async function postListButton(){
         postCol.appendChild(postCard)
         postList.appendChild(postCol)
     }
-    postUI()
 }
 
 async function postLikeListButton(){
@@ -90,11 +89,11 @@ async function postLikeListButton(){
         
         const postUsername = document.createElement("small")
         postUsername.classList.add("card-text")
-        postUsername.innerText = post.user
+        postUsername.innerText = result[i].user
 
         const postLikes = document.createElement("small")
         postLikes.classList.add("card-text")
-        postLikes.innerText = '좋아요 (' + post.likes_count + ')'
+        postLikes.innerText = '좋아요 (' + result[i].likes_count + ')'
 
         postCardFooter.appendChild(postUsername)
         postCardFooter.appendChild(postLikes)

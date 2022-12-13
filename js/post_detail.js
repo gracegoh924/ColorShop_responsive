@@ -283,7 +283,7 @@ async function deleteCommenteMode(comment_id){
 // 댓글 작성
 async function addComment() {
     const createComment = document.getElementById("user_comment")
-    console.log(createComment.value)
+
     if (createComment.value == ''){
         alert('댓글을 입력해주세요')
     }else{
