@@ -1,7 +1,7 @@
 includehtml();
 
 // 이미지 띄우기
-const dropArea = document.querySelector(".before_image"),
+let dropArea = document.querySelector(".before_image"),
     dragText = dropArea.querySelector("header"),
     button = dropArea.querySelector("button"),
     input = dropArea.querySelector("input");
@@ -43,7 +43,7 @@ function showFile() {
         let fileReader = new FileReader();
         fileReader.onload = () => {
             let fileURL = fileReader.result;
-            let imgTag = `<img src="${fileURL}" alt="">`;
+            let imgTag = `<img src="${fileURL}" alt=""><span class="delBtn" onclick="delImg(this)">x</span>`;
             dropArea.innerHTML = imgTag;
         }
         fileReader.readAsDataURL(file);
@@ -52,6 +52,48 @@ function showFile() {
         dropArea.classList.remove("active");
         dragText.textContent = "드래그 하여 이미지 업로드";
     }
+}
+
+function delImg(_this){
+    dropArea.classList.remove("active");
+    let before_div = `<span style="font-size:23px; margin-bottom: 5px;"><b>드래그해서 스케치 업로드</b></span>
+    <span style="font-size:20px; margin: 5px;">또는</span>
+    <button type="button" id="upload" style="margin:10px"><b>컴퓨터에서 선택</b></button>
+    <input type="file" id="before_img" hidden>
+    <span style="color:#eee; font-size:15px;"><b>jpg</b> 또는 <b>png</b> 파일로 업로드해주세요.</b></span>`
+    dropArea.innerHTML = before_div;
+
+    dropArea = document.querySelector(".before_image"),
+    dragText = dropArea.querySelector("header"),
+    button = dropArea.querySelector("button"),
+    input = dropArea.querySelector("input");
+
+    button.onclick = () => {
+        input.click();
+    }
+
+    input.addEventListener("change", function () {
+        file = this.files[0];
+        dropArea.classList.add("active");
+        showFile();
+    })
+    
+    dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        dropArea.classList.add("active");
+        dragText.textContent = "Release to Upload File";
+    })
+    
+    dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("active");
+        dragText.textContent = "Drag & Drop to Upload File";
+    })
+    
+    dropArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        file = event.dataTransfer.files[0];
+        showFile();
+    })
 }
 
 // 이미지 post

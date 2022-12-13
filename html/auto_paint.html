@@ -31,14 +31,13 @@
     <header include-html="/html/header.html" style="background-color: white;"></header>
 
     <div class="sketch_container" style="background-color:#02343F;">
-        <div class="child1">
-            <div class="before_image">
+        <div class="before_img_box">
+            <div class="before_image" id="before_image">
                 <span style="font-size:23px; margin-bottom: 5px;"><b>드래그해서 스케치 업로드</b></span>
                 <span style="font-size:20px; margin: 5px;">또는</span>
                 <button type="button" id="upload" style="margin:10px"><b>컴퓨터에서 선택</b></button>
                 <input type="file" id="before_img" hidden>
                 <span style="color:#eee; font-size:15px;"><b>jpg</b> 또는 <b>png</b> 파일로 업로드해주세요.</b></span>
-
             </div>
         </div>
         <div class="btn_box">
@@ -54,7 +53,7 @@
                 <button type="button" class="btn btn-outline-light" id="img_post_btn" onclick="deepImage()">공유하기</button>
             </div>
         </div>
-        <div class="sketch_img_box">
+        <div class="after_img_box">
             <img src="/static/resultbox.PNG" alt="sketch_image" class="sketch_image" onclick="window.open(this.src)" id="after_image">
         </div>
             <!-- 포스팅 모달 -->

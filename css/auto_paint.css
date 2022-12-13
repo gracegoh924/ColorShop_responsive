@@ -39,7 +39,7 @@ body {
     cursor: pointer;
 }
 
-.sketch_img_box {
+.after_img_box {
     width: 250px;
     height:300px;
     margin-left: 10px;
@@ -137,8 +137,22 @@ body {
     align-items : center;
 }
 
-.before_image.active {
-    border: transparent;
+#before_image.active {
+    position: relative;
+}
+span.delBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 13px;
+    background-color: #000;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    line-height: 16px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
 }
 
 .before_image .icon {
