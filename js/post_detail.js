@@ -299,6 +299,8 @@ async function viewLike() {
     // 좋아요 여부
     const liked = await getLike()
     const me = await getUsername()
+    console.log(liked)
+    console.log(me)
 
     const like_button = document.getElementById("like_button")
     if(liked.likes.includes(me)) {
