@@ -18,7 +18,7 @@ async function loadProfile(profile_user_id){
 
 async function postListButton(){
     const profile = await getProfile(profile_user_id)
-    const posts = await getBestPosts()
+    const posts = await getPosts()
     
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
@@ -26,7 +26,7 @@ async function postListButton(){
     postList.innerHTML = ''
     postLikeList.innerHTML = ''
 
-    const result = posts.filter(function (post) { return post.user == profile.username})
+    const result = posts.filter(function (post) {return post.user == profile.username})
 
     for(let i = 0; i < result.length; i++){
         const postCol = document.createElement("div")
@@ -37,7 +37,7 @@ async function postListButton(){
         postCard.classList.add("h-100")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${result[i].image}`)
+        postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
@@ -62,14 +62,16 @@ async function postListButton(){
 
 async function postLikeListButton(){
     const profile = await getProfile(profile_user_id)
-    const posts = await getBestPosts()
+    const posts = await getPosts()
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
 
     postList.innerHTML = ''
     postLikeList.innerHTML = ''
 
-    const result = posts.filter(function (post) { return post.likes == profile.username})
+    const result = posts.filter(function (post) { return post.likes.includes(profile.username) == true})
+    console.log(profile.username)
+    console.log(result)
 
     for(let i = 0; i < result.length; i++){
         const postCol = document.createElement("div")
@@ -80,7 +82,7 @@ async function postLikeListButton(){
         postCard.classList.add("h-100")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}`)
+        postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
