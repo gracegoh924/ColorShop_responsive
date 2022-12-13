@@ -17,12 +17,11 @@
 
     <link rel="stylesheet" href="/css/home.css">
     <script src="/js/includehtml.js"></script>
-
+    
     <title>main</title>
 </head>
 
 <body style="background-color:#F0EDCC">
-    <!-- 헤더 연결 -->
     <header include-html="/html/header.html" style="background-color:white"></header>
     
         <div class="sketch_container" style="background-color:#02343F;">
@@ -30,7 +29,7 @@
                 <img src="/static/test.png" alt="sketch_image" class="sketch_image">
             </div>
             <div class="btn_box">
-                <button class="upload-btn btn-2" onclick="location.href='/html/auto_paint.html'"><b style="font-size:20px">스케치를 채색해보세요! ▶<br>click here</span></b></button>
+                <button class="upload-btn btn-2" onclick="autoPaint()"><b style="font-size:20px">스케치를 채색해보세요! ▶<br>click here</span></b></button>
             </div>
             <div class="sketch_img_box">
                 <img src="/static/main_img.gif" alt="sketch_image" class="sketch_image">
@@ -63,7 +62,6 @@
             </div>
         </div>
     
-    <!-- 푸터 연결 -->
     <footer include-html="/html/footer.html"></footer>
     
     <script src="/js/api.js"></script>

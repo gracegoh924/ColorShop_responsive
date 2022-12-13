@@ -74,8 +74,6 @@ body {
     height: 100%;
 }
 
-
-
 .info_text {
     font-size: 15px;
 }
@@ -193,7 +191,6 @@ span.delBtn{
     height: 100%;
     width: 100%;
     object-fit: contain;
-    /* border-radius: 20px; */
 }
 
 .modal_overlay {

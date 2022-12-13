@@ -4,6 +4,12 @@ async function loadBestPosts() {
     const posts = await getBestPosts()
     const best_post = document.getElementById("best_post")
     best_post.innerHTML = ''
+    posts.sort(function(a, b)  {
+        if(a.likes_count > b.likes_count) return 1;
+        if(a.likes_count === b.likes_count) return 0;
+        if(a.likes_count < b.likes_count) return -1;
+      });
+      posts.reverse()
 
     const postUI = async () => {
         for(let post of posts){      
@@ -11,15 +17,16 @@ async function loadBestPosts() {
             newPost.classList.add("new_post")
 
             const postImage = document.createElement("img")
-            const images = await getImageDetail(post.image.id)
+            const images = await getImageDetail(post.id)
+
             postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
             postImage.setAttribute("id", post.id)
             postImage.setAttribute("onclick", "postDetail(this.id)")
             postImage.classList.add("post_image")
     
-            const postContent = document.createElement("p")
-            postContent.classList.add("title")
-            postContent.innerText = post.title
+            const postTitle = document.createElement("p")
+            postTitle.classList.add("title")
+            postTitle.innerText = post.title
 
             const postCardFooter = document.createElement("div")
             postCardFooter.classList.add("post_card_footer")
@@ -58,7 +65,7 @@ async function loadBestPosts() {
             postCardFooter.append(postUserCard)
             postCardFooter.append(postLikeCard)
             newPost.append(postImage)
-            newPost.append(postContent)
+            newPost.append(postTitle)
             newPost.append(postCardFooter)
             best_post.append(newPost)
         }
