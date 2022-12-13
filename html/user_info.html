@@ -72,6 +72,10 @@
                     <label>자기 소개</label>
                     <textarea id="userinfo_bio" class="form-control" style="margin:3px 0"></textarea>
                 </div>
+                <div class="x-mas">
+                    <button type="button" id="update_userinfo" class="btn btn-outline-success btn-lg" onclick="updateUserinfo()">수정하기</button>
+                    <button type="button" id="remove_userinfo" class="btn btn-outline-danger btn-lg">탈퇴하기</button>
+                </div>
                 <div id="remove_modal" class="container modal">
                     <div class="modal-content" style="align-items: center;">
                         <div class="modal-header">
@@ -85,10 +89,6 @@
                             <button type="button" id="no_button" class="btn btn-light">아니오</button>
                         </div>
                     </div>
-                </div>
-                <div class="x-mas">
-                    <button type="button" id="update_userinfo" class="btn btn-outline-success btn-lg" onclick="updateUserinfo()">수정하기</button>
-                    <button type="button" id="remove_userinfo" class="btn btn-outline-danger btn-lg">탈퇴하기</button>
                 </div>
             </div>
         </div>

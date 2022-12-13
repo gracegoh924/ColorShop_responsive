@@ -22,6 +22,21 @@ async function loadHeader(){
     }
 }
 
+function home(){
+    const url = `${frontend_base_url}home.html`
+    location.href=url
+}
+
+function autoPaint(){
+    const url = `${frontend_base_url}auto_paint.html`
+    location.href=url
+}
+
+function community(){
+    const url = `${frontend_base_url}community.html`
+    location.href=url
+}
+
 // 드롭다운 이동
 function profileButton(user_id){
     if(user_id == null){

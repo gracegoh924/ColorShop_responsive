@@ -38,6 +38,10 @@ async function postListButton(){
 
         const postImage = document.createElement("img")
         postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
+        postImage.setAttribute("id", result[i].id)
+        postImage.setAttribute("onclick", "postDetail(this.id)")
+        postImage.classList.add("post_image")
+
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
@@ -82,6 +86,10 @@ async function postLikeListButton(){
         const postImage = document.createElement("img")
 
         postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
+        postImage.setAttribute("id", result[i].id)
+        postImage.setAttribute("onclick", "postDetail(this.id)")
+        postImage.classList.add("post_image")
+
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
