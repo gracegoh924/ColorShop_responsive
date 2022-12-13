@@ -57,6 +57,22 @@ async function getName() {
     }
 }
 
+async function getUsername() {
+    const response = await fetch(`${backend_base_url}/users/mock/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+        },
+    })
+
+    if (response.status == 200) {
+        const payload = localStorage.getItem("payload");
+        const payload_parse = JSON.parse(payload)
+        return payload_parse.user_id
+    } else {
+        return null
+    }
+}
+
 // 로그아웃
 function logout() {
     localStorage.removeItem("access")
@@ -170,6 +186,7 @@ async function putUserinfo(userinfo_user_id, username, nickname, bio){
     })
 
     response_json = response.json()
+
     
     if(response.status == 200){
         alert('수정되었습니다')

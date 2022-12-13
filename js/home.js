@@ -12,13 +12,14 @@ async function loadBestPosts() {
 
             const postImage = document.createElement("img")
             const images = await getImageDetail(post.image)
+            
             postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
             postImage.setAttribute("id", post.id)
             postImage.setAttribute("onclick", "postDetail(this.id)")
             postImage.classList.add("post_image")
     
             const postContent = document.createElement("p")
-            postContent.classList.add("title")
+            postContent.classList.add("title"
             postContent.innerText = post.title
 
             const postCardFooter = document.createElement("div")

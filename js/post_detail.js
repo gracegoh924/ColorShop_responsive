@@ -38,7 +38,7 @@ async function loadPostDetail(post_id){
     postUser.innerText = post.user
     postTitle.innerText = post.title
     postContent.innerText = post.content
-    
+
     // 상세 페이지 댓글 보기
     const comments = await getComments(post_id)
     const comment_list = document.getElementById("comment_list")
@@ -110,12 +110,12 @@ async function loadPostDetail(post_id){
             deleteCommentButton.style.display = "flex"
         }
     }
+    const updatePostButtons = document.getElementById("update_post")
+    const deletePostButtons = document.getElementById("delete_post")
+
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
-    
-    const updatePostButtons = document.getElementById("update_post")
-    const deletePostButtons = document. getElementById("delete_post")
-  
+
     if(parsed_payload == null || parsed_payload.username != postUser.innerText){
         updatePostButtons.style.display = "none"
         deletePostButtons.style.display = "none"
@@ -323,7 +323,8 @@ async function addComment() {
 async function viewLike() {
     // 좋아요 여부
     const liked = await getLike()
-    const me = await getName()
+    const me = await getUsername()
+
     const like_button = document.getElementById("like_button")
     if(liked.likes.includes(me)) {
         like_button.classList.add('like_heart')
