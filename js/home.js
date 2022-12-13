@@ -2,7 +2,6 @@ includehtml();
 
 async function loadBestPosts() {
     const posts = await getBestPosts()
-
     const best_post = document.getElementById("best_post")
     best_post.innerHTML = ''
 
@@ -12,14 +11,14 @@ async function loadBestPosts() {
             newPost.classList.add("new_post")
 
             const postImage = document.createElement("img")
-            postImage.setAttribute("src", `${backend_base_url}${post.image}`)
+            postImage.setAttribute("src", `${backend_base_url}${post.image.after_image}`)
             postImage.setAttribute("id", post.id)
             postImage.setAttribute("onclick", "postDetail(this.id)")
             postImage.classList.add("post_image")
     
             const postContent = document.createElement("p")
             postContent.classList.add("content")
-            postContent.innerText = post.content
+            postContent.innerText = post.title
 
             const postCardFooter = document.createElement("div")
             postCardFooter.classList.add("post_card_footer")
