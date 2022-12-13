@@ -67,7 +67,7 @@ async function getUsername() {
     if (response.status == 200) {
         const payload = localStorage.getItem("payload");
         const payload_parse = JSON.parse(payload)
-        return payload_parse.username
+        return payload_parse.user_id
     } else {
         return null
     }
@@ -186,6 +186,7 @@ async function putUserinfo(userinfo_user_id, username, nickname, bio){
     })
 
     response_json = response.json()
+
     
     if(response.status == 200){
         alert('수정되었습니다')
@@ -217,6 +218,14 @@ async function deleteUserinfo(userinfo_user_id){
 
 async function getBestPosts(){
     const response = await fetch(`${backend_base_url}/posts/`, {
+        method:'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
+async function getProfilePosts(user_id){
+    const response = await fetch(`${backend_base_url}/posts/profile/${user_id}`, {
         method:'GET',
     })
     response_json = await response.json()

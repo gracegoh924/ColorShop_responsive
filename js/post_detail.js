@@ -110,9 +110,11 @@ async function loadPostDetail(post_id){
             deleteCommentButton.style.display = "flex"
         }
     }
-
     const updatePostButtons = document.getElementById("update_post")
     const deletePostButtons = document.getElementById("delete_post")
+
+    var payload = localStorage.getItem("payload")
+    var parsed_payload = await JSON.parse(payload)
 
     if(parsed_payload == null || parsed_payload.username != postUser.innerText){
         updatePostButtons.style.display = "none"
@@ -322,8 +324,7 @@ async function viewLike() {
     // 좋아요 여부
     const liked = await getLike()
     const me = await getUsername()
-    console.log(liked)
-    console.log(me)
+
     const like_button = document.getElementById("like_button")
     if(liked.likes.includes(me)) {
         like_button.classList.add('like_heart')
