@@ -2,7 +2,6 @@ includehtml();
 
 async function loadBestPosts() {
     const posts = await getBestPosts()
-
     const best_post = document.getElementById("best_post")
     best_post.innerHTML = ''
 

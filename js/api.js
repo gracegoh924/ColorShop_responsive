@@ -336,3 +336,104 @@ async function getImageDetail(image_id) {
     response_json = await response.json()
     return response_json
 }
+
+async function putPost(post_id, image, title, content){
+    const postData = new FormData()
+    postData.append("image", image)
+    postData.append("title", title)
+    postData.append("content", content)
+
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        headers:{
+            'Authorization': 'Bearer ' + localStorage.getItem("access"),
+        },
+        method:'PUT',
+        body:postData
+    })
+    
+    if(response.status == 200){
+        response_json = response.json()
+        alert('수정되었습니다')
+        return response_json
+    }else{
+        alert('권한이 없습니다.')
+    }
+}
+
+async function deletePost(post_id){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access")
+        },
+        method:'DELETE',
+    })
+
+    if(response.status == 204){
+        alert('삭제되었습니다')
+        window.location.replace(`${frontend_base_url}/home.html`)
+    }else{
+        alert('권한이 없습니다.')
+    }
+}
+
+async function getComments(post_id){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/`, {
+        method:'GET'
+    })
+
+    response_json = response.json()
+    return response_json
+}
+
+async function postComment(post_id, content){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method:'POST',
+        body:JSON.stringify({"content":content})
+    })
+    
+    if(response.status == 200){
+        response_json = response.json()
+        alert('댓글이 작성되었습니다')
+        return response_json
+    }else{
+        alert('로그인해주세요')
+    }
+}
+
+async function putComment(post_id, comment_id, content){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/${comment_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method:'PUT',
+        body:JSON.stringify({"content":content})
+    })
+    
+    if(response.status == 200){
+        response_json = response.json()
+        alert('댓글이 수정되었습니다')
+        window.location.reload()
+        return response_json
+    }else{
+        alert('로그인해주세요')
+    }
+}
+
+async function deleteComment(post_id, comment_id){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/${comment_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access")
+        },
+        method:'DELETE',
+    })
+
+    if(response.status == 204){
+        alert('댓글이 삭제되었습니다')
+        window.location.reload()
+    }
+}
