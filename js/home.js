@@ -5,19 +5,21 @@ async function loadBestPosts() {
     const best_post = document.getElementById("best_post")
     best_post.innerHTML = ''
 
-    posts.forEach(post => {        
-        async function getPost() {
+    const postUI = async () => {
+        for(let post of posts){      
             const newPost = document.createElement("div")
             newPost.classList.add("new_post")
 
             const postImage = document.createElement("img")
-            postImage.setAttribute("src", `${backend_base_url}${post.image.after_image}`)
+            const images = await getImageDetail(post.image)
+            
+            postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
             postImage.setAttribute("id", post.id)
             postImage.setAttribute("onclick", "postDetail(this.id)")
             postImage.classList.add("post_image")
     
             const postContent = document.createElement("p")
-            postContent.classList.add("content")
+            postContent.classList.add("title")
             postContent.innerText = post.title
 
             const postCardFooter = document.createElement("div")
@@ -61,8 +63,8 @@ async function loadBestPosts() {
             newPost.append(postCardFooter)
             best_post.append(newPost)
         }
-        getPost()
-    })
+    }
+    postUI()
 }
 
 function userDetail(user_id){
