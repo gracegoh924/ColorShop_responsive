@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
-
-
 .userinfo{
     display: flex;
     flex-direction: column;
@@ -66,7 +63,6 @@
 .postview-box {
     background-color: #F0EDCC; 
     width: 50%;
-    /* height: 700px;  */
     padding: 60px;
     border-radius: 20px;
     margin: auto;

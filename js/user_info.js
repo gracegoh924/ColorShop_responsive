@@ -138,8 +138,6 @@ async function removeUserinfo(){
     const userinfo = await getProfile(userinfo_user_id)
     if(userinfo_user_id == userinfo){
         await deleteUserinfo(userinfo_user_id)
-    }else{
-        
     }
 }
 

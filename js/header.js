@@ -1,12 +1,8 @@
 async function loadHeader(){
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
-    console.log(payload)
 
-    if(parsed_payload == null){
-        const dropdownUsername = document.getElementById("dropdown_username")
-        dropdownUsername.innerText = ''
-    }else{
+    if(parsed_payload != null){
         const user_id = parsed_payload.user_id
         const user = await getProfile(user_id)
 
@@ -24,6 +20,21 @@ async function loadHeader(){
         userinfo.setAttribute("id", `${user_id}`)
         userinfo.setAttribute("onclick", "userinfoButton(this.id)")
     }
+}
+
+function home(){
+    const url = `${frontend_base_url}home.html`
+    location.href=url
+}
+
+function autoPaint(){
+    const url = `${frontend_base_url}auto_paint.html`
+    location.href=url
+}
+
+function community(){
+    const url = `${frontend_base_url}community.html`
+    location.href=url
 }
 
 // 드롭다운 이동
@@ -57,7 +68,7 @@ async function checkLogin() {
     loginoutButton.innerText = ''
 
     if(name == null){
-        loginoutButton.innerText = "로그인"
+        loginoutButton.innerText = "로그인/회원가입"
         loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}sign_in_up.html`") 
     }else{
         loginoutButton.innerText = "로그아웃"

@@ -38,6 +38,10 @@ async function postListButton(){
 
         const postImage = document.createElement("img")
         postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
+        postImage.setAttribute("id", result[i].id)
+        postImage.setAttribute("onclick", "postDetail(this.id)")
+        postImage.classList.add("post_image")
+
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
@@ -58,7 +62,6 @@ async function postListButton(){
         postCol.appendChild(postCard)
         postList.appendChild(postCol)
     }
-    postUI()
 }
 
 async function postLikeListButton(){
@@ -71,8 +74,6 @@ async function postLikeListButton(){
     postLikeList.innerHTML = ''
 
     const result = posts.filter(function (post) { return post.likes.includes(profile.username) == true})
-    console.log(profile.username)
-    console.log(result)
 
     for(let i = 0; i < result.length; i++){
         const postCol = document.createElement("div")
@@ -85,6 +86,10 @@ async function postLikeListButton(){
         const postImage = document.createElement("img")
 
         postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
+        postImage.setAttribute("id", result[i].id)
+        postImage.setAttribute("onclick", "postDetail(this.id)")
+        postImage.classList.add("post_image")
+
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
@@ -92,11 +97,11 @@ async function postLikeListButton(){
         
         const postUsername = document.createElement("small")
         postUsername.classList.add("card-text")
-        postUsername.innerText = post.user
+        postUsername.innerText = result[i].user
 
         const postLikes = document.createElement("small")
         postLikes.classList.add("card-text")
-        postLikes.innerText = '좋아요 (' + post.likes_count + ')'
+        postLikes.innerText = '좋아요 (' + result[i].likes_count + ')'
 
         postCardFooter.appendChild(postUsername)
         postCardFooter.appendChild(postLikes)

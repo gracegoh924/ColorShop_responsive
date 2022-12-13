@@ -1,8 +1,11 @@
+.home_container{
+    width: 80%;
+    margin: auto;
+}
+
 /* 채색버튼 시작 */
 .upload-btn {
-    /* font-weight: bold; */
     font-size: large;
-    /* flex: 1 1 auto; */
     width: 90%;
     height: 35%;
     margin: 10px;
@@ -12,27 +15,26 @@
     background-size: 200% auto;
     color: white;
     text-shadow: 0px 0px 1px silver;
-    /* box-shadow: 0 0 5px #eee; */
     border-radius: 10px;
     border: none;
 }
+
 .upload-btn:hover {
-    color: black;
-    /* text-shadow: silver; */
+    color: white;
     background-position: right center; /* change the direction of the change here */
 }
+
 .btn-2 {
-    background-image: linear-gradient(to right, turquoise 0%, lightskyblue 51%, aquamarine 100%);
+    background-image: linear-gradient(to right, #FBEAEB 0%, #2E3C7E 51%, #FBEAEB 100%);
 }
-/* 채색버튼 끝 */
 
 .sketch_container {
-    width: 100%;
-    height: 400px;
+    height: 500px;
+    border-radius: 10px;
     display : flex;
     justify-content: center;
     align-items : center;
-    background-color: #02343F;
+    background-color: #2E3C7E;
 }
 
 .btn_box {
@@ -59,8 +61,8 @@
 }
 
 .sketch_img_box {
-    width: 250px;
-    height:300px;
+    width: 350px;
+    height:350px;
     margin: 30px;
     padding: 5px;
     display : flex;
@@ -71,6 +73,7 @@
 
 .sketch_image {
     height: 100%;
+    border-radius: 10px;
 }
 
 .info_container {
@@ -113,13 +116,14 @@
 .post_container {
     width: 100%;
     height: 760px;
+    margin: auto;
     display : flex;
     justify-content: center;
     align-items : center;
 }
 
 .post_box {
-    width: 750px;
+    width: 60%;
     height: 100%;
     margin-top: 100px;
     margin-right: 30px;
@@ -142,35 +146,52 @@
 .best_post {
     width: fit-content;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 20px;
 }
 
 .new_post {
     width: 100%;
-    height: auto;
+    height: 280px;
+    border-radius: 10px;
     margin-bottom: 20px;
     background-color: white;
+    position: relative;
+}
+
+.new_post:hover {
+    filter: brightness(85%);
 }
 
 .post_image {
     width: 100%;
-    height: 200px;
+    height: 220px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
     cursor: pointer;
 }
 
 .title {
-    font-size: 20px;
+    position: absolute;
+    bottom: 18px;
+    left: 10px;
+    font-size: 16px;
     color: black;
-    margin: auto;
 }
 
 .post_card_footer {
-    display: flex;
-    justify-content: space-between;
+    position: absolute;
+    bottom: -17px;
+    left: 0px;
+    font-size: 16px;
+    color: black;
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .post_user_card {
+    width: 70%;
     display: flex;
     margin: 5px;
     cursor: pointer;
@@ -183,11 +204,13 @@
 }
 
 .user {
+    width: 125px;
     font-size: 16px;
     color: black;
 }
 
 .post_like_card {
+    width: 30%;
     display: flex;
     margin: 5px;
 }
@@ -208,13 +231,11 @@
 }
 
 .box_title1 {
-    /* color:lightseagreen; */
-    color:darkturquoise;
-    text-shadow: 0px 0px 2px paleturquoise;
+    color:black;
 }
 
 .tweet_box {
-    width: 500px;
+    width: 40%;
     height: 100%;
     margin-top: 100px;
     margin-left: 10px;
@@ -222,8 +243,7 @@
 
 .tweet_box .box_title2 {
     margin-left: 0px;
-    color: dodgerblue;
-    text-shadow: 0px 0px 2px lightblue;   
+    color: black;
 }
 
 .timeline {
