@@ -1,6 +1,7 @@
 async function loadHeader(){
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
+    console.log(payload)
 
     if(parsed_payload != null){
         const user_id = parsed_payload.user_id
