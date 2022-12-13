@@ -7,7 +7,6 @@ async function loadHeader(user_id){
     const dropdownUsername = document.getElementById("username")
     dropdownUsername.innerText = user.username
 
-    console.log(user_id)
     const profile = document.getElementById("profile")
     profile.setAttribute("id", `${user_id}`)
     profile.setAttribute("onclick", "profileButton(this.id)")

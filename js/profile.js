@@ -26,7 +26,7 @@ async function postListButton(){
     postList.innerHTML = ''
     postLikeList.innerHTML = ''
 
-    const result = posts.filter(function (post) { return post.user == profile.username})
+    const result = posts.filter(function (post) {return post.user == profile.username})
 
     for(let i = 0; i < result.length; i++){
         const postCol = document.createElement("div")
@@ -37,7 +37,7 @@ async function postListButton(){
         postCard.classList.add("h-100")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}${result[i].image}`)
+        postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
@@ -58,6 +58,7 @@ async function postListButton(){
         postCol.appendChild(postCard)
         postList.appendChild(postCol)
     }
+    postUI()
 }
 
 async function postLikeListButton(){
@@ -69,7 +70,7 @@ async function postLikeListButton(){
     postList.innerHTML = ''
     postLikeList.innerHTML = ''
 
-    const result = posts.filter(function (post) { return post.likes == profile.username})
+    const result = posts.filter(function (post) { return post.likes.includes(profile.username) == true})
 
     for(let i = 0; i < result.length; i++){
         const postCol = document.createElement("div")
@@ -80,7 +81,8 @@ async function postLikeListButton(){
         postCard.classList.add("h-100")
 
         const postImage = document.createElement("img")
-        postImage.setAttribute("src", `${backend_base_url}`)
+
+        postImage.setAttribute("src", `${backend_base_url}${result[i].image.after_image}`)
         postImage.classList.add("card-img-top")
 
         const postCardFooter = document.createElement("div")
@@ -88,11 +90,11 @@ async function postLikeListButton(){
         
         const postUsername = document.createElement("small")
         postUsername.classList.add("card-text")
-        postUsername.innerText = result[i].user
+        postUsername.innerText = post.user
 
         const postLikes = document.createElement("small")
         postLikes.classList.add("card-text")
-        postLikes.innerText = '좋아요 (' + result[i].likes_count + ')'
+        postLikes.innerText = '좋아요 (' + post.likes_count + ')'
 
         postCardFooter.appendChild(postUsername)
         postCardFooter.appendChild(postLikes)

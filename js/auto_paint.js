@@ -17,7 +17,6 @@ input.addEventListener("change", function () {
     showFile();
 })
 
-
 dropArea.addEventListener("dragover", (event) => {
     event.preventDefault();
     dropArea.classList.add("active");
@@ -34,7 +33,6 @@ dropArea.addEventListener("drop", (event) => {
     file = event.dataTransfer.files[0];
     showFile();
 })
-
 
 function showFile() {
     let fileType = file.type;

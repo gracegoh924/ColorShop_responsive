@@ -1,49 +1,26 @@
 includehtml();
 
-// 게시글 url 가져오기 
 const urlParams = new URLSearchParams(window.location.search)
 const post_id = urlParams.get('id')
 
-// 로그인 확인
-async function checkLogin() {
-    const name = await getName();
-    const loginoutButton = document.getElementById("loginout")
-
-    if(name){
-        loginoutButton.innerText = "로그아웃"
-        loginoutButton.setAttribute("onclick", "logout()")
-    }else{
-        loginoutButton.innerText = "로그인"
-        loginoutButton.setAttribute("onclick", "location.href='/login.html'")
-        
-        const update_post = document.getElementById("update_post")
-        const delete_post = document.getElementById("delete_post")
-
-        update_post.style.visibility = "hidden"
-        delete_post.style.visibility = "hidden"   
-    }
-}
-
-// 상세 페이지 게시글 보기
 async function loadPostDetail(post_id){
-    const updatePostCancelButton = document.getElementById("update_post_cancel_button")
     const post = await getPostDetail(post_id)
     const image = await getImageDetail(post.image_id)
 
     const postImage = document.getElementById("image")
     const postUser = document.getElementById("post_user")
+    const postTitle = document.getElementById("post_title")
     const postContent = document.getElementById("post_content")
-    const postTime = document.getElementById("time")
 
     postImage.setAttribute("src", `${backend_base_url}${image.after_image}`)
     postUser.innerText = post.user
+    postTitle.innerText = post.title
     postContent.innerText = post.content
-    postTime.innerText = post.created_at
-    
+
     // 상세 페이지 댓글 보기
-    const comments = await getComments()
+    const comments = await getComments(post_id)
     const comment_list = document.getElementById("comment_list")
-    comment_list.innerHTML = '' // 댓글 삭제
+    comment_list.innerHTML = ''
     
     // 댓글 생성
     for(let i = 0; i < comments.length; i++){        
@@ -77,14 +54,14 @@ async function loadPostDetail(post_id){
 
         // 댓글 수정 버튼    
         const updateCommentButton = document.createElement("button")
-        updateCommentButton.innerText = '\u00a0수정\u00a0'
+        updateCommentButton.innerText = '수정'
         updateCommentButton.setAttribute("type", "button")
         updateCommentButton.setAttribute("id", `${comments[i].id}`)
         updateCommentButton.setAttribute("onclick", "updateCommentMode(this.id)")
 
         // 댓글 삭제 버튼
         const deleteCommentButton = document.createElement("button")
-        deleteCommentButton.innerText = '\u00a0삭제\u00a0'
+        deleteCommentButton.innerText = '삭제'
         deleteCommentButton.setAttribute("type", "button")
         deleteCommentButton.setAttribute("id", `${comments[i].id}`)
         deleteCommentButton.setAttribute("onclick", "deleteCommenteMode(this.id)")
@@ -97,6 +74,31 @@ async function loadPostDetail(post_id){
         newComment.appendChild(newCommentContent)
         newComment.appendChild(commentButtons)
         comment_list.appendChild(newComment)
+        
+        const commentUser = document.getElementById(`comment_user_${comments[i].id}`)
+        var payload = localStorage.getItem("payload")
+        var parsed_payload = await JSON.parse(payload)
+    
+        if(parsed_payload == null || parsed_payload.username != commentUser.innerText){
+            updateCommentButtons.style.display = "none"
+            deleteCommentButton.style.display = "none"
+        }else{
+            updateCommentButtons.style.display = "flex"
+            deleteCommentButton.style.display = "flex"
+        }
+    }
+    const updatePostButtons = document.getElementById("update_post")
+    const deletePostButtons = document.getElementById("delete_post")
+
+    var payload = localStorage.getItem("payload")
+    var parsed_payload = await JSON.parse(payload)
+
+    if(parsed_payload == null || parsed_payload.username != postUser.innerText){
+        updatePostButtons.style.display = "none"
+        deletePostButtons.style.display = "none"
+    }else{
+        updatePostButtons.style.display = "flex"
+        deletePostButtons.style.display = "flex"
     }
 }
 
@@ -144,8 +146,9 @@ async function updatePostMode(){
 
 // 게시글 수정
 async function updatePost(){
+    const post = await getPostDetail(post_id)
     var inputPostContent = document.getElementById("input_post_content")
-    await putPost(post_id, inputPostContent.value)
+    await putPost(post_id, post.image_id, post.title, inputPostContent.value)
 
     inputPostContent.remove() // 게시글 수정란 삭제
     
@@ -160,7 +163,7 @@ async function updatePost(){
 
     // 게시글 수정 취소 버튼 삭제
     const updatePostCancelButton = document.getElementById("update_post_cancel_button")
-    updatePostCancelButton.innerHTML = ''
+    updatePostCancelButton.remove()
     
     loadPostDetail(post_id)
 }
@@ -182,7 +185,7 @@ function updatePostCancelButton(){
 
     // 게시글 수정 취소 버튼 삭제
     const updatePostCancelButton = document.getElementById("update_post_cancel_button")
-    updatePostCancelButton.innerHTML = ''
+    updatePostCancelButton.remove()
 
     loadPostDetail(post_id)
 }
@@ -221,14 +224,13 @@ async function updateCommentMode(comment_id){
         // 댓글 수정 완료 버튼(수정 -> 수정 완료)
         const updateCommentButton = document.getElementById(`${comment_id}`)
         updateCommentButton.setAttribute("onclick", "updateComment(this.id)")
-
-        updateCommentButton.innerText = '\u00a0수정 완료\u00a0'
+        updateCommentButton.innerText = '수정 완료'
 
         // 댓글 수정 취소 버튼
         const updateCommentCancelButton = document.createElement("button")
         updateCommentCancelButton.setAttribute("id", `${comment_id}`)
         updateCommentCancelButton.setAttribute("onclick", "updateCommentCancelButton(this.id)")
-        updateCommentCancelButton.innerText = '\u00a0수정 취소\u00a0'
+        updateCommentCancelButton.innerText = '수정 취소'
 
         // 댓글 수정 취소 버튼 붙이기
         const updateCommentButtons = document.getElementById(`update_comment_buttons_${comment_id}`)
@@ -281,11 +283,11 @@ async function deleteCommenteMode(comment_id){
 // 댓글 작성
 async function addComment() {
     const createComment = document.getElementById("user_comment")
-    
+    console.log(createComment.value)
     if (createComment.value == ''){
         alert('댓글을 입력해주세요')
     }else{
-        const comment = await postComment(post_id, createComment.value)
+        await postComment(post_id, createComment.value)
     }
     
     loadPostDetail(post_id)
@@ -296,7 +298,8 @@ async function addComment() {
 async function viewLike() {
     // 좋아요 여부
     const liked = await getLike()
-    const me = await getName()
+    const me = await getUsername()
+
     const like_button = document.getElementById("like_button")
     if(liked.likes.includes(me)) {
         like_button.classList.add('like_heart')
@@ -326,6 +329,5 @@ async function likePost() {
     }
 }
 
-viewLike()
-checkLogin()
 loadPostDetail(post_id)
+viewLike()

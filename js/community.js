@@ -1,6 +1,7 @@
 includehtml();
+
 var list_filter = "new"
-// 라디오버튼 시작
+
 const st = {};
 
 st.flap = document.querySelector("#flap");
@@ -25,20 +26,18 @@ st.flap.addEventListener("transitionend", () => {
 });
 
 st.clickHandler = (e) => {
-  if (e.target.tagName === "LABEL") {
-    setTimeout(() => {
-      st.flap.children[0].textContent = e.target.textContent;
-    }, 250);
-  }
+    if (e.target.tagName === "LABEL") {
+        setTimeout(() => {
+            st.flap.children[0].textContent = e.target.textContent;
+        }, 250);
+    }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  st.flap.children[0].textContent = st.choice2.nextElementSibling.textContent;
+    st.flap.children[0].textContent = st.choice2.nextElementSibling.textContent;
 });
 
 document.addEventListener("click", (e) => st.clickHandler(e));
-// 라디오버튼 끝
-
 
 async function loadPosts() {
     const posts = await getPosts()
@@ -95,7 +94,6 @@ async function loadPosts_2() {
 
 async function loadPosts_3() {
     const posts = await getPosts()
-    const me = await getName()
     const post_list = document.getElementById("post_list_3")
     const gallery = document.getElementById('post_list_3')
     gallery.innerHTML=""
@@ -154,27 +152,4 @@ async function loadPosts_3() {
     postUI()
 }
 
-
-// async function likePost(likeId) {
-//     const posts = await getPosts()
-//     console.log(posts)
-//     const like_button = document.getElementById(`${likeId}`)
-//     console.log(like_button)
-//     console.log(like_button.classList)
-
-//     if(like_button.classList == 'heart fa-solid fa-heart') {
-//         const response = await postLike(post_id)
-//         like_button.classList.add('like_heart')
-//         // like_count.innerText = "좋아요 " + (count + num1) + "개"
-//     }else{
-//         const response = await postLike()
-//         like_button.classList.remove('like_heart')
-//         // like_count.innerText = "좋아요 " + (count - num1) + "개"
-//     }
-// }
-
-
-// loadPosts()
-// loadPosts_2()
 loadPosts_3()
-

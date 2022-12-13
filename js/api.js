@@ -1,4 +1,3 @@
-// URL 설정
 const backend_base_url = 'http://127.0.0.1:8000'
 const frontend_base_url = 'http://127.0.0.1:5500/html/'
 
@@ -19,12 +18,10 @@ async function handleLogin() {
     })
 
     if (response.status == 200) {
-        // 로컬스토리지에 토큰 저장
         const response_json = await response.json()
         localStorage.setItem("access", response_json.access);
         localStorage.setItem("refresh", response_json.refresh);
 
-        // 로컬스토리지에 토큰 정보 저장
         const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
@@ -32,8 +29,6 @@ async function handleLogin() {
         }).join(''));
 
         localStorage.setItem("payload", jsonPayload);
-
-        // 로그인이 성공하면 홈으로 이동
         location.replace("/html/community.html")
     }else{
         alert('아이디 혹은 비밀번호를 잘못입력했습니다')
@@ -42,6 +37,22 @@ async function handleLogin() {
 
 // 로그인 시 정보 가져오기
 async function getName() {
+    const response = await fetch(`${backend_base_url}/users/mock/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+        },
+    })
+
+    if (response.status == 200) {
+        const payload = localStorage.getItem("payload");
+        const payload_parse = JSON.parse(payload)
+        return payload_parse.user_id
+    } else {
+        return null
+    }
+}
+
+async function getUsername() {
     const response = await fetch(`${backend_base_url}/users/mock/`, {
         headers:{
             'Authorization':'Bearer '+localStorage.getItem("access"),
@@ -152,7 +163,6 @@ async function putUserinfoImage(userinfo_user_id, profile_img, username){
     }
 }
 
-
 async function putUserinfo(userinfo_user_id, username, nickname, bio){
     const userinfoData = {
         "username":username,
@@ -170,7 +180,7 @@ async function putUserinfo(userinfo_user_id, username, nickname, bio){
     })
 
     response_json = response.json()
-    
+
     if(response.status == 200){
         alert('수정되었습니다')
         window.location.reload()
@@ -201,6 +211,14 @@ async function deleteUserinfo(userinfo_user_id){
 
 async function getBestPosts(){
     const response = await fetch(`${backend_base_url}/posts/`, {
+        method:'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
+async function getProfilePosts(user_id){
+    const response = await fetch(`${backend_base_url}/posts/profile/${user_id}`, {
         method:'GET',
     })
     response_json = await response.json()
@@ -327,4 +345,105 @@ async function getImageDetail(image_id) {
     
     response_json = await response.json()
     return response_json
+}
+
+async function putPost(post_id, image, title, content){
+    const postData = new FormData()
+    postData.append("image", image)
+    postData.append("title", title)
+    postData.append("content", content)
+
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        headers:{
+            'Authorization': 'Bearer ' + localStorage.getItem("access"),
+        },
+        method:'PUT',
+        body:postData
+    })
+    
+    if(response.status == 200){
+        response_json = response.json()
+        alert('수정되었습니다')
+        return response_json
+    }else{
+        alert('권한이 없습니다.')
+    }
+}
+
+async function deletePost(post_id){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access")
+        },
+        method:'DELETE',
+    })
+
+    if(response.status == 204){
+        alert('삭제되었습니다')
+        window.location.replace(`${frontend_base_url}/home.html`)
+    }else{
+        alert('권한이 없습니다.')
+    }
+}
+
+async function getComments(post_id){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/`, {
+        method:'GET'
+    })
+
+    response_json = response.json()
+    return response_json
+}
+
+async function postComment(post_id, content){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method:'POST',
+        body:JSON.stringify({"content":content})
+    })
+    
+    if(response.status == 200){
+        response_json = response.json()
+        alert('댓글이 작성되었습니다')
+        return response_json
+    }else{
+        alert('로그인해주세요')
+    }
+}
+
+async function putComment(post_id, comment_id, content){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/${comment_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access"),
+            'content-type': 'application/json',
+        },
+        method:'PUT',
+        body:JSON.stringify({"content":content})
+    })
+    
+    if(response.status == 200){
+        response_json = response.json()
+        alert('댓글이 수정되었습니다')
+        window.location.reload()
+        return response_json
+    }else{
+        alert('로그인해주세요')
+    }
+}
+
+async function deleteComment(post_id, comment_id){
+    const response = await fetch(`${backend_base_url}/posts/${post_id}/comment/${comment_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access")
+        },
+        method:'DELETE',
+    })
+
+    if(response.status == 204){
+        alert('댓글이 삭제되었습니다')
+        window.location.reload()
+    }
 }

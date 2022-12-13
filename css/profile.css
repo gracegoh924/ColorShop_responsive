@@ -13,14 +13,12 @@
     align-items: center;
     background-color:#02343F;
     color:#02343F;
-    /* border-radius: 10px; */
 }
 
 .profile_image{
     width: 200px;
     height: 200px;
     padding: 10px 10px;
-    /* border-radius: 10px; */
     margin: 20px 20px;
     background-color: #F0EDCC;
 }
@@ -29,7 +27,6 @@
     width: 500px;
     height: 200px;
     padding: 20px 20px;
-    /* border-radius: 10px; */
     margin: 20px 20px;
     display:flex;
     flex-direction: column;
@@ -47,7 +44,6 @@
 }
 
 .btn {
-    /* background-color: #F0EDCC; */
     border: 1px dashed ;
     font-weight: bold;
 }
@@ -57,7 +53,6 @@
     margin: 30px;
     background-color:#F0EDCC;
     color:#02343F;
-    /* border-radius: 10px; */
 }
 
 .post-list{
