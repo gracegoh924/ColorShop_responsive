@@ -3,12 +3,6 @@
 * {
     margin: 0;
     padding: 0;
-    /* font-family:'Jua', sans-serif */
-    /* font-family: 'Cinzel', serif; */
-}
-
-body {
-    /* background: #02343F; */
 }
 
 .userbutton button{
@@ -156,20 +150,6 @@ body {
     padding: 10px;
 }
 
-/* .comment-btn{
-    width: 60px;
-    height: 40px;
-    margin-left: 10px;
-    background-color: #02343F;
-    color: #F0EDCC;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
-} */
-
 .comments button{
     width: 90px;
     height: 40px;
@@ -193,7 +173,6 @@ body {
 
 .delete_back{
     display: flex;
-    /* display: inline-block; */
     margin-top: 10px;
     float: right;
 }
@@ -201,23 +180,3 @@ body {
 .btn {
     border: 1px dashed;
 }
-
-/* .delete_back button{
-    width: 80px;
-    height: 40px;
-    margin-top: 15px;
-    margin-left: 10px;
-    background-color: #02343F;
-    color: #F0EDCC;
-    border: none;
-    padding: 8px;
-    border-radius: 5px;
-    box-shadow: 0 0 40px 40px #02343F inset, 0 0 0 0 #02343F;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
-} */
-
-/* .delete_back button:hover {
-    box-shadow: 0 0 10px 0 #02343F inset, 0 0 10px 4px #02343F;
-} */
-

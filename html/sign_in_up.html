@@ -3,16 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <title>colorshop_signup</title>
+    <title>colorshop_sign_in_up</title>
     <link rel="stylesheet" href="/css/sign_in_up.css" />
 </head>
 
 <body>
-    <div class="main_logo"><ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <h1 onclick="location.href='/html/home.html'" style="font-size: 80px; cursor:pointer;"><b><span style="color:dodgerblue">C</span>olor<span style=color:tomato>S</span>hop</b></h1>
-    </ul></div>
+    <div class="main_logo">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <h1 onclick="location.href='/html/home.html'" style="font-size: 80px; cursor:pointer"><b><span style="color:dodgerblue">C</span>olor<span style=color:tomato>S</span>hop</b></h1>
+        </ul>
+    </div>
+
     <div class="container right-panel-active">
-        <!-- Sign Up -->
         <div class="container__form container--signup">
             <form action="#" class="form" id="form1">
                 <h2 class="form__title">Sign Up</h2>
@@ -29,7 +31,6 @@
             </div>
         </div>
 
-        <!-- Sign In -->
         <div class="container__form container--signin">
             <form action="#" class="form" id="form2">
                 <h2 class="form__title">Sign In</h2>
@@ -40,10 +41,8 @@
                 </div>
                 <button onclick="handleLogin()" class="btn">Sign In</button>
             </form>
-
         </div>
 
-        <!-- Overlay -->
         <div class="container__overlay">
             <div class="overlay">
                 <div class="overlay__panel overlay--left">
@@ -57,5 +56,4 @@
     </div>
     <script src="/js/sign_in_up.js"></script>
 </body>
-
 </html>

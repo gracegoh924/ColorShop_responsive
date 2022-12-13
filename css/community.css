@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-/* 라디오버튼 시작 */
 :root {
     --accent: lightcyan;
     --border-width: 3px;
@@ -16,7 +15,6 @@
     align-items: center;
     margin: 0;
     padding-top: 30px;
-    /* background-color: #333; */
     font-family: sans-serif;
 }
 
@@ -88,8 +86,6 @@
     transition: transform 0s linear .25s;
     transform-style: preserve-3d;
 }
-/* 라디오 버튼 끝 */
-
 
 * {
     margin: 0;
@@ -207,20 +203,11 @@ body {
     left: 14px;
     font-size: 18px;
     color: gray;
-    /* cursor: pointer; */
 }
-
-/* .heart:hover {
-    filter: brightness(80%);
-} */
 
 .like_heart {
     color: red
 }
-
-/* .like_heart:hover {
-    filter: brightness(80%);
-} */
 
 .likeCount {
     position: absolute;

@@ -2,10 +2,7 @@ async function loadHeader(){
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
 
-    if(parsed_payload == null){
-        const dropdownUsername = document.getElementById("dropdown_username")
-        dropdownUsername.innerText = ''
-    }else{
+    if(parsed_payload != null){
         const user_id = parsed_payload.user_id
         const user = await getProfile(user_id)
 
@@ -56,7 +53,7 @@ async function checkLogin() {
     loginoutButton.innerText = ''
 
     if(name == null){
-        loginoutButton.innerText = "로그인"
+        loginoutButton.innerText = "로그인/회원가입"
         loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}sign_in_up.html`") 
     }else{
         loginoutButton.innerText = "로그아웃"

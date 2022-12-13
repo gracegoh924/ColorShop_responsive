@@ -1,8 +1,5 @@
-/* 채색버튼 시작 */
 .upload-btn {
-    /* font-weight: bold; */
     font-size: large;
-    /* flex: 1 1 auto; */
     width: 90%;
     height: 35%;
     margin: 10px;
@@ -12,19 +9,18 @@
     background-size: 200% auto;
     color: white;
     text-shadow: 0px 0px 1px silver;
-    /* box-shadow: 0 0 5px #eee; */
     border-radius: 10px;
     border: none;
 }
+
 .upload-btn:hover {
     color: black;
-    /* text-shadow: silver; */
-    background-position: right center; /* change the direction of the change here */
+    background-position: right center;
 }
+
 .btn-2 {
     background-image: linear-gradient(to right, turquoise 0%, lightskyblue 51%, aquamarine 100%);
 }
-/* 채색버튼 끝 */
 
 .sketch_container {
     width: 100%;
@@ -208,7 +204,6 @@
 }
 
 .box_title1 {
-    /* color:lightseagreen; */
     color:darkturquoise;
     text-shadow: 0px 0px 2px paleturquoise;
 }

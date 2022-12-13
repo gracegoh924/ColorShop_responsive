@@ -71,8 +71,6 @@ async function postLikeListButton(){
     postLikeList.innerHTML = ''
 
     const result = posts.filter(function (post) { return post.likes.includes(profile.username) == true})
-    console.log(profile.username)
-    console.log(result)
 
     for(let i = 0; i < result.length; i++){
         const postCol = document.createElement("div")

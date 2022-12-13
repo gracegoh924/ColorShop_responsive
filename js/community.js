@@ -138,8 +138,6 @@ async function loadPosts_3() {
     postUI()
 }
 
-
-
 // async function likePost(likeId) {
 //     const posts = await getPosts()
 //     console.log(posts)
@@ -162,4 +160,3 @@ async function loadPosts_3() {
 loadPosts()
 loadPosts_2()
 loadPosts_3()
-
