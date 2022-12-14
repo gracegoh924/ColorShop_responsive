@@ -148,15 +148,15 @@
 
 .title_3 {
     position: absolute;
-    bottom: 16px;
+    /* bottom: 42px; */
     left: 14px;
-    font-size: 24px;
+    font-size: px;
     color: black;
 }
 
 .content_3 {
     position: absolute;
-    bottom: -12px;
+    bottom: 20px;
     left: 14px;
     font-size: 18px;
     color: black;
@@ -164,17 +164,17 @@
 
 .user_3 {
     position: absolute;
-    bottom: -12px;
+    bottom: -8px;
     right: 10px;
-    font-size: 20px;
+    font-size: 17px;
     color: black;
 }
 
 .heart {
     position: absolute;
-    bottom: 42px;
-    right: 30px;
-    font-size: 18px;
+    left: 14px;
+    bottom: 11px;
+    font-size: 15px;
     color: gray;
 }
 
@@ -184,8 +184,8 @@
 
 .likeCount {
     position: absolute;
-    bottom: 17px;
-    right: 10px;
+    bottom: -11px;
+    left: 35px;
     font-size: 20px;
     color: black;
 }
