@@ -29,7 +29,8 @@
 }
 
 .before_image_box img {
-    width: 100%;
+    width: 100% !important;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -114,7 +115,8 @@
 }
 
 .sketch_image {
-    width: 100%;
+    width: 100% !important;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -167,21 +169,21 @@
     border-radius: 10px;
     border: 1px solid #2E3C7E;
     width: 600px;
-    height: 680px;
+    height: 760px;
     display: flex;
     flex-direction: column;
 }
 
 .modal_image {
     width: 520px;
-    height: 320px;
+    height: 400px;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .modal_image img {
-    width: 100%;
+    width: 100% !important;
     height: 100%;
 }
 
