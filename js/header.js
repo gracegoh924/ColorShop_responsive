@@ -1,25 +1,7 @@
-async function loadHeader(){
-    var payload = localStorage.getItem("payload")
-    var parsed_payload = await JSON.parse(payload)
-
-    if(parsed_payload != null){
-        const user_id = parsed_payload.user_id
-        const user = await getProfile(user_id)
-
-        const dropdownProfileImage = document.getElementById("dropdown_profile_image")
-        dropdownProfileImage.setAttribute("src", `${backend_base_url}${user.profile_img}`)
-        
-        const dropdownUsername = document.getElementById("dropdown_username")
-        dropdownUsername.innerText = user.username + '님, '
-    
-        const profile = document.getElementById("profile")
-        profile.setAttribute("id", `${user_id}`)
-        profile.setAttribute("onclick", "profileButton(this.id)")
-    
-        const userinfo = document.getElementById("user_info")
-        userinfo.setAttribute("id", `${user_id}`)
-        userinfo.setAttribute("onclick", "userinfoButton(this.id)")
-    }
+console.log('1')
+window.onload = function (){
+    checkLogin()
+    dropdawn()
 }
 
 function home(){
@@ -63,18 +45,45 @@ function signinupButton(){
 
 // 로그인 확인
 async function checkLogin() {
-    const name = await getName();
+    const name = await getName()
+
+    console.log('2')
+    
     const loginoutButton = document.getElementById("loginout")
-    loginoutButton.innerText = ''
+    loginoutButton.innertext = ''
 
     if(name == null){
-        loginoutButton.innerText = "로그인/회원가입"
+        loginoutButton.innertext = "로그인/회원가입"
         loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}sign_in_up.html`") 
     }else{
-        loginoutButton.innerText = "로그아웃"
+        loginoutButton.innertext = "로그아웃"
         loginoutButton.setAttribute("onclick", "logout()")
     }
 }
 
-loadHeader();
-checkLogin();
+async function dropdawn(){
+    var payload = localStorage.getItem("payload")
+    var parsed_payload = await JSON.parse(payload)
+
+    if(parsed_payload != null){
+        const user_id = parsed_payload.user_id
+        const user = await getProfile(user_id)
+
+    console.log('3')
+    console.log(user)
+            
+    const dropdownProfileImage = document.getElementById("dropdown_profile_image")
+    dropdownProfileImage.setAttribute("src", `${backend_base_url}${user.profile_img}`)
+    
+    const dropdownUsername = document.getElementById("dropdown_username")
+    dropdownUsername.innertext = user.username + '님, '
+
+    const profile = document.getElementById("profile")
+    profile.setAttribute("id", `${user.id}`)
+    profile.setAttribute("onclick", "profileButton(this.id)")
+
+    const userinfo = document.getElementById("user_info")
+    userinfo.setAttribute("id", `${user.id}`)
+    userinfo.setAttribute("onclick", "userinfoButton(this.id)")
+    }
+}

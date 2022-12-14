@@ -211,7 +211,8 @@
 
 .post_like_card {
     width: 30%;
-    display: flex;
+    display: grid;
+    flex-direction: row;
     margin: 5px;
 }
 
@@ -221,13 +222,17 @@
 }
 
 .like_heart {
-    color: red
+    color: red;
+    position: absolute;
+    right: 25px;
 }
 
 .likeCount {
     font-size: 15px;
     color: black;
     margin: 0px 5px;
+    position: absolute;
+    right: 7px;
 }
 
 .box_title1 {
