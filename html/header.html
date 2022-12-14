@@ -1,42 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- 구글 폰트 -->
-
-    <link rel="stylesheet" href="/css/header.css">
-
-    <title>header</title>
-</head>
-
 <body>
     <div class="header_container">
         <div class="logo">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <h1 onclick="location.href='/html/home.html'" style="cursor:pointer"><b><span
+                <h1 onclick="home()" style="cursor:pointer"><b><span
                             style="color:#00539C">C</span>olor<span
                             style=color:#ed6a66>S</span>hop</b></h1>
             </ul>
         </div>
-
+        
         <div class="button_box">
-            <button class="page_button" type="button" onclick="location.href='/html/auto_paint.html'"
-                style="background-color: #FBEAEB; margin-right:40px; border: none;  cursor: pointer; display: inline-block;">
+            <button class="page_button" type="button" onclick="autoPaint()"
+                style="background-color: white; margin-right:40px; border: none;  cursor: pointer; display: inline-block;">
                 <h5>AutoPaint</b></h5>
             </button>
-            <button class="page_button" type="button" onclick="location.href='/html/community.html'"
-                style="background-color: #FBEAEB; border: none; cursor: pointer; display: inline-block;">
+            <button class="page_button" type="button" onclick="community()"
+                style="background-color: white; border: none; cursor: pointer; display: inline-block;">
                 <h5>Community</b></h5>
             </button>
         </div>
-
-
-
-
 
         <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
             <input type="search" class="form-control" placeholder="검색" aria-label="Search" control-id="ControlID-2">
@@ -65,9 +46,8 @@
                 <li><a id="loginout" class="dropdown-item" style="cursor: pointer;" onclick="signinupButton()">로그인/회원가입</a></li>
             </ul>
         </div>
+
     </div>
-    <script src="/js/api.js"></script>
-    <script src="/js/header.js"></script>
+
 </body>
 
-</html>

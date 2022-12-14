@@ -4,7 +4,7 @@
 }
 
 :root {
-    --accent: #ed6a66;
+    --accent: #00539C;
     --border-width: 2px;
     --border-radius: 10px;
     --font-size: 12px;
@@ -18,7 +18,6 @@
     margin: 0;
     padding-top: 30px;
     font-family: sans-serif;
-
 }
 
 .radio-container {
@@ -90,12 +89,6 @@
     transform-style: preserve-3d;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Jua', sans-serif
-}
-
 .gallery {
     column-count: 4;
 }
@@ -105,7 +98,6 @@
     height: auto !important;
     margin-bottom: 20px;
     cursor: pointer;
-    background-color: white;
 }
 
 .gallery img:hover {
@@ -129,17 +121,18 @@
 
 .gallery_3 .post_card {
     width: 100%;
-    height: 280px;
-    border-radius: 10px;
+    height: 300px;
+    border: solid 1px;
+    border-radius: 3px;
     background-color: white;
-    margin-bottom: 20px;
+    margin: 20px 0;
     position: relative;
     cursor: pointer;
 }
 
 .gallery_3 img {
     width: 100%;
-    height: 210px;
+    height: 230px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -150,15 +143,15 @@
 
 .title_3 {
     position: absolute;
-    bottom: 16px;
+    /* bottom: 42px; */
     left: 14px;
-    font-size: 24px;
+    font-size: px;
     color: black;
 }
 
 .content_3 {
     position: absolute;
-    bottom: -12px;
+    bottom: 20px;
     left: 14px;
     font-size: 18px;
     color: black;
@@ -166,17 +159,17 @@
 
 .user_3 {
     position: absolute;
-    bottom: -12px;
+    bottom: -8px;
     right: 10px;
-    font-size: 20px;
+    font-size: 17px;
     color: black;
 }
 
 .heart {
     position: absolute;
-    bottom: 42px;
-    right: 30px;
-    font-size: 18px;
+    left: 14px;
+    bottom: 11px;
+    font-size: 15px;
     color: gray;
 }
 
@@ -186,8 +179,8 @@
 
 .likeCount {
     position: absolute;
-    bottom: 17px;
-    right: 10px;
+    bottom: -11px;
+    left: 35px;
     font-size: 20px;
     color: black;
 }

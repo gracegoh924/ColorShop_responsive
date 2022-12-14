@@ -14,16 +14,17 @@ signUpBtn.addEventListener("click", () => {
 
 fistForm.addEventListener("submit", (e) => e.preventDefault());
 secondForm.addEventListener("submit", (e) => e.preventDefault());
-
+window.onload = () => {
+    container.classList.remove("right-panel-active");
+}
 async function handleSignup() {
-
     const username = document.getElementById("signup_username").value
     const password = document.getElementById("signup_password").value
     const password_check = document.getElementById("signup_password_check").value
     const nickname = document.getElementById("nickname").value
     const sign_up_Alert = document.getElementById("sign_up_Alert")
 
-    const response = await fetch('http://127.0.0.1:8000/users/', {
+    const response = await fetch('https://ai-color.shop/users/', {
         headers: {
             'content-type' : 'application/json',
         },
@@ -62,7 +63,7 @@ async function handleSignup() {
     const Username = document.getElementById("Username").value
     const password = document.getElementById("password").value
     const Alert = document.getElementById("alert")
-    const response = await fetch('http://127.0.0.1:8000/users/api/token/',{
+    const response = await fetch('https://ai-color.shop/users/api/token/',{
         headers : {
             'content-type' : 'application/json',
         },

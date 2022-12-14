@@ -17,7 +17,7 @@
     justify-content: center;
     align-items : center;
     border-radius: 10px;
-    background-color: #2E3C7E;
+    background-color: #F0EDCC;
 }
 
 .before_image_box {
@@ -26,6 +26,8 @@
     margin-left: 80px;
     border: solid black 2px;
     border-radius: 10px;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 .before_image_box img {
@@ -35,7 +37,7 @@
     border-radius: 10px;
 }
 
-.drag-area {
+.before_image {
     margin-top: 60px;
     display: flex;
     align-items: center;
@@ -44,25 +46,25 @@
     overflow: hidden;
 }
 
-.drag-area .icon {
+.before_image .icon {
     font-size: 100px;
-    color: white;
+    color: black;
 }
 
-.drag-area header {
+.before_image header {
     font-size: 20px;
     font-weight: 500;
-    color: white;
+    color: black;
 }
 
-.drag-area span {
+.before_image span {
     font-size: 15px;
     font-weight: 500;
-    color: white;
+    color: black;
     margin: 10px 0 15px 0;
 }
 
-.drag-area button {
+.before_image button {
     padding: 10px 25px;
     font-size: 20px;
     height: 50px;
@@ -105,13 +107,15 @@
     cursor: pointer;
 }
 
-.sketch_img_box {
+.after_img_box {
     flex: 1;
     height: 350px;
     margin-right: 80px;
     align-items : center;
     border: solid black 2px;
     border-radius: 10px;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 .sketch_image {
@@ -163,11 +167,11 @@
 }
 
 .modal_window {
-    background: #2E3C7E;
+    background: #F0EDCC;
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
     border-radius: 10px;
-    border: 1px solid #2E3C7E;
+    border: 1px solid #F0EDCC;
     width: 600px;
     height: 760px;
     display: flex;

@@ -28,12 +28,12 @@
 }
 
 #alert_box_login {
+    
+   margin-bottom: -35px;
     max-width: 350px;
-    position: fixed;
     font-size: small;
     text-align: center;
     padding-top: 2px;
-    top: 485px;
     color: rgba(252, 88, 88, 0.794);
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .form__title {
-    font-weight: 300;
+    font-weight: 500;
     margin: 0;
     margin-bottom: 1.25rem;
 }
@@ -192,7 +192,10 @@ body {
     text-transform: uppercase;
     transition: transform 80ms ease-in;
 }
-
+.btn:hover{
+    box-shadow: 0 0.7rem 1.0rem rgba(0, 0, 0, 0.25),
+    0 0.3rem 0.3rem rgba(0, 0, 0, 0.22);
+}
 .form>.btn {
     margin-top: 50px;
 }
