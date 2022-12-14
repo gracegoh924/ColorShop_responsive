@@ -144,7 +144,7 @@ async function loadPosts_3() {
         newPost.append(postImage)
         newPost.append(postContent)
         newPost.append(postUser)
-        newPost.append(line)
+        // newPost.append(line)
         newPost.append(postLike)
         newPost.append(likeCount)
       }

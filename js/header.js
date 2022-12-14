@@ -1,11 +1,27 @@
+console.log(1)
 async function loadHeader(){
+    console.log(2)
+    const name = await getName();
+    const loginoutButton = document.getElementById("loginout")
+    loginoutButton.innerText = ''
+
+    if(name == null){
+        loginoutButton.innerText = "로그인/회원가입"
+        loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}sign_in_up.html`") 
+    }else{
+        console.log(3)
+        loginoutButton.innerText = "로그아웃"
+        loginoutButton.setAttribute("onclick", "logout()")
+    }
+
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
 
     if(parsed_payload != null){
+        console.log(4)
         const user_id = parsed_payload.user_id
         const user = await getProfile(user_id)
-
+        
         const dropdownProfileImage = document.getElementById("dropdown_profile_image")
         dropdownProfileImage.setAttribute("src", `${backend_base_url}${user.profile_img}`)
         
@@ -39,6 +55,7 @@ function community(){
 
 // 드롭다운 이동
 function profileButton(user_id){
+    console.log(5)
     if(user_id == null){
         alert('로그인해주세요')
     }else{
@@ -48,6 +65,7 @@ function profileButton(user_id){
 }
 
 function userinfoButton(user_id){
+    console.log(6)
     if(user_id == null){
         alert('로그인해주세요')
     }else{
@@ -61,20 +79,6 @@ function signinupButton(){
     location.href=url
 }
 
-// 로그인 확인
-async function checkLogin() {
-    const name = await getName();
-    const loginoutButton = document.getElementById("loginout")
-    loginoutButton.innerText = ''
-
-    if(name == null){
-        loginoutButton.innerText = "로그인/회원가입"
-        loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}sign_in_up.html`") 
-    }else{
-        loginoutButton.innerText = "로그아웃"
-        loginoutButton.setAttribute("onclick", "logout()")
-    }
-}
-
-loadHeader();
-checkLogin();
+window.addEventListener("load", function(){
+    loadHeader()
+})
