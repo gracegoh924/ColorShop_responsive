@@ -33,39 +33,46 @@
             <div class="image-container">
                 <img id="image" class="image">
             </div>
-            <div class="image-footer">
+
+            <div class="user-info">
                 <p id="post_title"></p>
+                <div class="like_container">
+                    <div class="heart_box">
+                        <i onclick="likePost()" id="like_button" class="heart fa-solid fa-heart"></i>
+                    </div>
+                    <div class="count_box">
+                        <p class="like_count" id="like_count">좋아요 0개</p>
+                    </div>
+                </div>
+                <p id="post_user"></p>
             </div>
-            <p id="post_user"></p>
+
+
             <div class="new_post_content">
                 <div id="new_post_content" class="content-box">
                     <p id="post_content" class="content"></p>
                 </div>
                 <div id="post_buttons" class="post_buttons">
                     <div id="update_post_buttons">
-                        <p id="update_post" onclick="updatePostMode()" style="cursor:pointer; width: 100px;"><span class="material-symbols-outlined">edit</span>수정</p>
-                    </div> 
-                </div>
-            </div>
-            <div class="like_container">
-                <div class="heart_box">
-                    <i onclick="likePost()" id="like_button" class="heart fa-solid fa-heart"></i>
-                </div>
-                <div class="count_box">
-                    <p class="like_count" id="like_count">좋아요 0개</p>
+                        <p id="update_post" onclick="updatePostMode()" style="cursor:pointer; width: 100px;"><span
+                                class="material-symbols-outlined">edit</span>수정</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="comment-box" class="comment-box">
             <div id="create_comment" class="create_comment">
                 <input type="text" id="user_comment" class="form-control" placeholder="댓글을 입력해주세요">
-                <button type="button" id="btn_comment" class="btn btn-primary" onclick="addComment()" style="padding: 0 10px; background-color:transparent; color:#02343F; margin-left:8px; border:none; border-radius:6px; font-size:large; min-width:fit-content;"><b>OK</b></button>
+                <button type="button" id="btn_comment" class="btn btn-primary" onclick="addComment()"
+                    style="padding: 0 10px; background-color:transparent; color:black;; margin-left:8px; border:none; border-radius:6px; font-size:large; min-width:fit-content;"><b>OK</b></button>
             </div>
             <div id="comment_list" class="comments">
             </div>
-            <div class="delete_back" style= "font-family: 'Poor Story', cursive;">
-                <button id="delete_post" type="button" class="btn btn-outline-success btn-lg" onclick="deletePostMode()" style="margin-right: 10px;"><b>삭제하기</b></button>
-                <button id="close_modal" type="button" class="btn btn-outline-danger btn-lg" onclick="home()" style="margin-left: 10px;"><b>돌아가기</b></button>
+            <div class="delete_back" style="font-family: 'Poor Story', cursive;">
+                <button id="delete_post" type="button" class="btn btn-outline-dark btn-lg" onclick="deletePostMode()"
+                    style="margin-right: 10px;"><b>삭제하기</b></button>
+                <button id="close_modal" type="button" class="btn btn-outline-dark btn-lg" onclick="home()"
+                    style="margin-left: 10px;"><b>돌아가기</b></button>
             </div>
         </div>
     </div>
@@ -76,4 +83,5 @@
     <script src="/js/post_detail.js"></script>
 
 </body>
+
 </html>

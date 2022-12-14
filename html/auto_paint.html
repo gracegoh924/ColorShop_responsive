@@ -38,13 +38,13 @@
                 <span class="material-symbols-outlined" style="font-size: 50px;">add_photo_alternate</span>
                 <header>드래그해서 스케치 이미지 업로드</header>
                 <span>또는</span>
-                <button type="button" class="btn btn-outline-light" id="upload">컴퓨터에서 선택</button>
+                <button type="button" class="btn btn-outline-dark" id="upload">컴퓨터에서 선택</button>
                 <input type="file" id="before_img" hidden>
             </div>
         </div>
 
         <div class="btn_box">
-            <span style="margin: 15px; color: white;">원하는 모델을 고른 후</span>
+            <span style="margin: 15px; color: black;">원하는 모델을 고른 후</span>
             <div>
                 <button type="button" class="btn btn-outline-info" id="model1" value="1"
                     onclick="chooseModel(this.value)">model<b> 1</b></button>
@@ -53,11 +53,11 @@
                 <button type="button" class="btn btn-outline-warning" id="model3" value="3"
                     onclick="chooseModel(this.value)">model<b> 3</b></button>
             </div>
-            <div style="margin: 15px; color:white;">▼</div>
+            <div style="margin: 15px; color:black;">▼</div>
             <div>
-                <button type="button" class="btn btn-outline-light" id="img_upload_btn"
+                <button type="button" class="btn btn-outline-dark" id="img_upload_btn"
                     onclick="postImage()">채색하기</button>
-                <button type="button" class="btn btn-outline-light" id="img_post_btn"
+                <button type="button" class="btn btn-outline-dark" id="img_post_btn"
                     onclick="deepImage()">공유하기</button>
             </div>
         </div>
@@ -80,14 +80,14 @@
                         placeholder="본문을 작성해 주세요" style="background-color: white;"></textarea>
                 </div>
                 <div class="modal_button">
-                    <button type="button" class="btn btn-outline-light" onclick="postCreate()">등록하기</button>
-                    <button type="button" class="btn btn-outline-light" id="close_modal">돌아가기</button>
+                    <button type="button" class="btn btn-outline-dark" onclick="postCreate()">등록하기</button>
+                    <button type="button" class="btn btn-outline-dark" id="close_modal">돌아가기</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="info_container" style="background-color:#FBEAEB;">
+    <div class="info_container" style="background-color:white">
         <div class="info_text_box">
             <span class="info_text">
                 <h5><b><span style="color:dodgerblue">C</span><span style=color:black>olor</span><span
