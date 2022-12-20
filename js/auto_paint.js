@@ -41,7 +41,7 @@ function showFile() {
         let fileReader = new FileReader();
         fileReader.onload = () => {
             let fileURL = fileReader.result;
-            let imgTag = `<img src="${fileURL}" alt=""><span class="delBtn" onclick="delImg(this)">x</span>`;
+            let imgTag = `<img src="${fileURL}" alt="" style="position: relative; z-index: 1;"><span class="delBtn" onclick="delImg(this)" style="position: absolute; z-index: 2;">x</span>`;
             dropArea.innerHTML = imgTag;
         }
         fileReader.readAsDataURL(file);

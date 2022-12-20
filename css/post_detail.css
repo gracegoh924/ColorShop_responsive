@@ -22,7 +22,7 @@
 .postview-box {
     background-color: #F0EDCC; 
     width: 68%;
-    height: 800px; 
+    height: auto; 
     padding: 20px;
     border-radius: 20px;
     margin: auto;
@@ -42,8 +42,8 @@
 }
 
 .image {
-    width: 100%;
-    height: 100%;
+    width: 512px;
+    height: 512px;
     object-fit: cover;
     border-radius: 20px;
     margin: auto;
@@ -146,7 +146,7 @@
     color: #F0EDCC;
     margin-top: 10px;
     border-radius: 10px;
-    height: 635px;
+    min-height: 676px;
     padding: 10px;
 }
 

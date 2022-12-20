@@ -127,9 +127,6 @@ async function loadPosts_3() {
         postUser.classList.add("user_3")
         postUser.innerText = post.user
 
-        const line = document.createElement("hr")
-        line.classList.add("line")
-
         const postLike = document.createElement("i")
         postLike.setAttribute("id", "like" + post.id)
         postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
@@ -144,7 +141,6 @@ async function loadPosts_3() {
         newPost.append(postImage)
         newPost.append(postContent)
         newPost.append(postUser)
-        newPost.append(line)
         newPost.append(postLike)
         newPost.append(likeCount)
       }

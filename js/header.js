@@ -1,12 +1,16 @@
 async function loadHeader(){
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
+    console.log(parsed_payload)
 
     if(parsed_payload != null){
         const user_id = parsed_payload.user_id
+        console.log(user_id)
         const user = await getProfile(user_id)
+        console.log(user)
 
         const dropdownProfileImage = document.getElementById("dropdown_profile_image")
+        console.log(dropdownProfileImage)
         dropdownProfileImage.setAttribute("src", `${backend_base_url}${user.profile_img}`)
         
         const dropdownUsername = document.getElementById("dropdown_username")
