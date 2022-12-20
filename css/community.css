@@ -11,10 +11,9 @@
 }
 
 .radio-body {
-    width: 200px;
-    height: 100px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 0;
     padding-top: 30px;
     font-family: sans-serif;
@@ -22,6 +21,8 @@
 
 .radio-container {
     perspective: 800px;
+    width: 150px;
+    height: 100px;
 }
 
 .toggle {
@@ -183,4 +184,9 @@
     left: 35px;
     font-size: 20px;
     color: black;
+}
+
+.search {
+    width: 80%;
+    margin: auto;
 }

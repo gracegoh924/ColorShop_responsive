@@ -105,8 +105,10 @@ function includehtml(callback) {
         }
     }
 
-    checkLogin()
-    dropdawn()
+    window.onload = function(){
+        checkLogin()
+        dropdawn()
+    }
 
     setTimeout(function () {
     }, 0);
