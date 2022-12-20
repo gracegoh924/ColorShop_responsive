@@ -138,7 +138,7 @@ async function searchPost() {
   let query = Object.keys(params)
       .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
       .join('&');
-  let url = 'https://www.ai-color.shop/posts/search?' + query;
+  let url = 'http://127.0.0.1:8000/posts/search/?' + query;
 
   fetch(url)
       .then(data => data.json())
