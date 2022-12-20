@@ -41,6 +41,18 @@
                     <div id="flap"><span class="content1">productive</span></div>
                 </form>
             </div>
+            <div class="search_container">
+                <form role="search">
+                    <select id="search_select" class="form-select-sm" style="align-self: flex-end;">
+                        <option selected>전체</option>
+                        <option>제목</option>
+                        <option>내용</option>
+                        <option>작성자</option>
+                    </select>
+                    <input type="search" id="search_text" name="search_text" class="form-control-sm" placeholder="검색" aria-label="Search" control-id="ControlID-2">
+                    <button type="button" id="btn" class="btn btn-outline-secondary" onclick="searchPost()"><span class="material-symbols-outlined">search</span></button>
+                </form>
+            </div>
         </div>
         <div>
             <div class="gallery_3" id="post_list_3">

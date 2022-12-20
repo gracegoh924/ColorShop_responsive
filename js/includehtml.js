@@ -41,17 +41,14 @@ function signinupButton(){
 async function checkLogin() {
     const name = await getName()
 
-    console.log('2')
-    
     const loginoutButton = document.getElementById("loginout")
-    console.log(loginoutButton)
-    loginoutButton.innertext = ''
+    loginoutButton.innerText = ''
 
     if(name == null){
-        loginoutButton.innertext = "로그인/회원가입"
+        loginoutButton.innerText = "로그인/회원가입"
         loginoutButton.setAttribute("onclick", "location.href=`${frontend_base_url}sign_in_up.html`") 
     }else{
-        loginoutButton.innertext = "로그아웃"
+        loginoutButton.innerText = "로그아웃"
         loginoutButton.setAttribute("onclick", "logout()")
     }
 }
@@ -64,23 +61,19 @@ async function dropdawn(){
         const user_id = parsed_payload.user_id
         const user = await getProfile(user_id)
 
-    console.log('3')
-    console.log(user)
-            
-    const dropdownProfileImage = document.getElementById("dropdown_profile_image")
-    console.log(dropdownProfileImage)
-    dropdownProfileImage.setAttribute("src", `${backend_base_url}${user.profile_img}`)
-    
-    const dropdownUsername = document.getElementById("dropdown_username")
-    dropdownUsername.innertext = user.username + '님, '
+        const dropdownProfileImage = document.getElementById("dropdown_profile_image")
+        dropdownProfileImage.setAttribute("src", `${backend_base_url}${user.profile_img}`)
+        
+        const dropdownUsername = document.getElementById("dropdown_username")
+        dropdownUsername.innerText = user.username + '님, '
 
-    const profile = document.getElementById("profile")
-    profile.setAttribute("id", `${user.id}`)
-    profile.setAttribute("onclick", "profileButton(this.id)")
+        const profile = document.getElementById("profile")
+        profile.setAttribute("id", `${user.id}`)
+        profile.setAttribute("onclick", "profileButton(this.id)")
 
-    const userinfo = document.getElementById("user_info")
-    userinfo.setAttribute("id", `${user.id}`)
-    userinfo.setAttribute("onclick", "userinfoButton(this.id)")
+        const userinfo = document.getElementById("user_info")
+        userinfo.setAttribute("id", `${user.id}`)
+        userinfo.setAttribute("onclick", "userinfoButton(this.id)")
     }
 }
 
@@ -112,16 +105,10 @@ function includehtml(callback) {
         }
     }
 
-
-
-    console.log('1')
-
-    checkLogin()
-    dropdawn()
-
-  
-    
-
+    window.onload = function(){
+        checkLogin()
+        dropdawn()
+    }
 
     setTimeout(function () {
     }, 0);
