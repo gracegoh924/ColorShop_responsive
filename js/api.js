@@ -453,3 +453,25 @@ async function deleteComment(post_id, comment_id){
         window.location.reload()
     }
 }
+
+async function getImages(){
+    const response = await fetch(`${backend_base_url}/posts/image/`, {
+        method: 'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
+async function deleteImage(image_id){
+    const response = await fetch(`${backend_base_url}/posts/image/${image_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access")
+        },
+        method:'DELETE',
+    })
+
+    if(response.status == 204){
+        alert('이미지가 삭제되었습니다')
+        window.location.reload()
+    }
+}
