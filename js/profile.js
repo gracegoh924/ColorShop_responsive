@@ -27,7 +27,7 @@ async function loadProfile(profile_user_id){
 async function postImageListButton(){
     const profile = await getProfile(profile_user_id)
     const images = await getImages()
-    console.log(images)
+
     const postImageList = document.getElementById("post_image_list")
     const postList = document.getElementById("post_list")
     const postLikeList = document.getElementById("post_like_list")
@@ -173,11 +173,25 @@ async function postLikeListButton(){
 }
 
 async function removeImage(image_id){
-    if (confirm("이 이미지의 게시글도 같이 삭제될 수 있습니다. \n 정말 삭제하시겠습니까??") == true){
-        deleteImage(image_id)
+    const posts = await getPosts()
+    const result = posts.filter(function (post) { return post.image.id == image_id})
+
+    if(result == ''){  
+        if (confirm(`현재 이미지만 삭제됩니다.\n삭제하시겠습니까?`) == true){
+            deleteImage(image_id)
+        }else{
+            return;
+        }
     }else{
-        return;
+        for(let i = 0; i < result.length; i++){
+            if (confirm(`제목: ${result[i].title}\n이 게시글도 같이 삭제됩니다.\n정말 삭제하시겠습니까??`) == true){
+                deleteImage(image_id)
+            }else{
+                return;
+            }
+        }
     }
+
 }
 
 loadProfile(profile_user_id);

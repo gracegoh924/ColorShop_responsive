@@ -89,6 +89,12 @@ async function postImage() {
         return response
     }else{
         if(file == null){
+            var loading = document.getElementById('loading_image')
+            var afterImage = document.getElementById('after_image')
+            
+            loading.style.display = 'none'
+            afterImage.style.display = 'block'
+    
             alert('파일을 올려주세요')
         }else if(model_json.model_path == null){
             alert('채색 모델을 선택해주세요')
@@ -98,20 +104,36 @@ async function postImage() {
     }
 }
 
-// 포스팅 모달창 띄우기
-const modal = document.getElementById("post_modal");
-const buttonAddFeed = document.getElementById("img_post_btn");
-buttonAddFeed.addEventListener("click", (e) => {
-    modal.style.top = window.pageYOffset + "px";
-    modal.style.display = "flex";
-    document.body.style.overflowY = "hidden";
-});
 
 // 포스팅 모달창 이미지 띄우기
 async function deepImage() {
+    const name = await getName()
     const getimage = await getImage();
+
     const deepimg = document.getElementById("deepimage");
-    deepimg.setAttribute("src", `${backend_base_url}${getimage.after_image}`);
+    const after_image = document.getElementById("after_image")
+    
+    if(after_image.getAttribute("src") == "/static/resultbox3.png"){
+        if(name){alert('채색을 먼저 해주세요')}
+    }else{
+        deepimg.setAttribute("src", `${backend_base_url}${getimage.after_image}`);
+
+        // 포스팅 모달창 띄우기
+        const modal = document.getElementById("post_modal");
+        const buttonAddFeed = document.getElementById("img_post_btn");
+        buttonAddFeed.addEventListener("click", (e) => {
+            modal.style.top = window.pageYOffset + "px";
+            modal.style.display = "flex";
+            document.body.style.overflowY = "hidden";
+        });
+
+        // 포스팅 모달창 닫기
+        const buttonCloseModal = document.getElementById("close_modal");
+        buttonCloseModal.addEventListener("click", (e) => {
+            modal.style.display = "none";
+            document.body.style.overflowY = "visible";
+        }); 
+    }
 }
 
 // 포스팅 등록
@@ -121,9 +143,26 @@ function postCreate() {
     postPost(title, content);
 }
 
-// 포스팅 모달창 닫기
-const buttonCloseModal = document.getElementById("close_modal");
-buttonCloseModal.addEventListener("click", (e) => {
-    modal.style.display = "none";
-    document.body.style.overflowY = "visible";
-});
+async function getUser(){
+    const name = await getName()
+
+    if(name){
+        // 포스팅 모달창 띄우기
+        const modal = document.getElementById("post_modal");
+        const buttonAddFeed = document.getElementById("img_post_btn");
+        buttonAddFeed.addEventListener("click", (e) => {
+            modal.style.top = window.pageYOffset + "px";
+            modal.style.display = "flex";
+            document.body.style.overflowY = "hidden";
+        });
+        
+        // 포스팅 모달창 닫기
+        const buttonCloseModal = document.getElementById("close_modal");
+        buttonCloseModal.addEventListener("click", (e) => {
+            modal.style.display = "none";
+            document.body.style.overflowY = "visible";
+        });       
+    }else{
+        return;
+    }
+}
