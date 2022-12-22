@@ -96,6 +96,12 @@ function delImg(_this){
 
 // 이미지 post
 async function postImage() {
+    var loading = document.getElementById('loading_image')
+    var afterImage = document.getElementById('after_image')
+
+    loading.style.display = 'block'
+    afterImage.style.display = 'none'
+
     var imageData = new FormData();
     imageData.append("before_image", file);
     imageData.append("model", model_json.model_path)
@@ -108,6 +114,12 @@ async function postImage() {
     })
 
     if (response.status == 201) {
+        var loading = document.getElementById('loading_image')
+        var afterImage = document.getElementById('after_image')
+        
+        loading.style.display = 'none'
+        afterImage.style.display = 'block'
+
         const getimages = await getImage();
         const after_image = document.getElementById("after_image")
         after_image.setAttribute("src", `${backend_base_url}${getimages.after_image}`)
