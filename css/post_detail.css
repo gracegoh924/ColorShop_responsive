@@ -21,7 +21,7 @@
 
 .postview-box {
     background-color: #F0EDCC; 
-    max-width: 60%;
+    width: 1000px;
     height: fit-content; 
     padding: 20px;
     gap: 20px;
