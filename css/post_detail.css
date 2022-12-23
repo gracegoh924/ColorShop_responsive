@@ -21,7 +21,7 @@
 
 .postview-box {
     background-color: #F0EDCC; 
-    width: fit-content;
+    max-width: 60%;
     height: fit-content; 
     padding: 20px;
     gap: 20px;
@@ -32,7 +32,7 @@
 }
 
 .image-box {
-    width: 60%;
+    width: 65%;
     height: auto;
     padding: 20px;
     border-radius: 5px;
@@ -81,12 +81,13 @@
 
 .new_post_content {
     background:white;
-    min-height: 100px;
+    max-height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
     border-radius: 5px;
+    overflow: scroll;
 }
 
 .content-box{
@@ -97,11 +98,12 @@
 .post_buttons {
     min-width: fit-content;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    /* justify-content: flex-end; */
     align-items: flex-end;
     color: black;
     border: none;
-    /* padding: 8px; */
+    padding: 10px;
     border-radius: 5px;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
@@ -140,7 +142,7 @@
 }
 
 .comment-box {
-    width: fit-content;
+    width: 35%;
     height: auto;
     padding: 20px;
 }
@@ -158,6 +160,7 @@
     border-radius: 5px;
     height: 80%;
     padding: 10px;
+    overflow: scroll;
 }
 
 .comments button {
@@ -188,10 +191,6 @@
 
 .delete_back{
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
     float: right;
-}
-
-.btn {
-    border: 1px sold;
 }
