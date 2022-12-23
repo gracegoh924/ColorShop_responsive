@@ -5,6 +5,11 @@
 
 /* 채색버튼 시작 */
 .upload-btn {
+    overflow: hidden;
+    text-overflow: hidden;
+    white-space: nowrap;
+    word-break: break-all;
+    display: inline-block;
     font-size: large;
     width: 90%;
     height: 35%;
@@ -144,20 +149,20 @@
 }
 
 .best_post {
-    width: fit-content;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 20px;
 }
 
 .new_post {
-    width: 100%;
     height: 280px;
-    border: solid 1px ;
+    border: solid 1px;
     border-radius: 5px;
     margin-bottom: 20px;
     background-color: white;
     position: relative;
+    display: block;
 }
 
 .new_post:hover {
@@ -173,51 +178,67 @@
 }
 
 .title {
-    position: absolute;
-    bottom: 18px;
-    left: 10px;
+    position: relative;
+    top: 1%;
     font-size: 16px;
     color: black;
+    overflow: hidden;
+    display: block;
+    padding: 0px 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .post_card_footer {
-    position: absolute;
-    bottom: -17px;
-    left: 0px;
+    position: relative;
+    top: -5%;
     font-size: 16px;
     color: black;
-    display : flex;
-    flex-direction: row;
-    justify-content: center;
+    display: block;
+    justify-content: flex-start;
+    height: 30px;
+    max-width: calc(100%);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .post_user_card {
     width: 70%;
     display: flex;
-    margin: 5px;
     cursor: pointer;
+    position: absolute;
+    overflow: hidden;
 }
 
 .post_user_image {
     width: 20px;
     height: 20px;
-    margin: 0px 5px;
+    margin: 5px;
+    display: block;
 }
 
 .user {
     width: 125px;
     font-size: 16px;
     color: black;
+    padding-top: 3px;
+    display: block;
+    overflow: hidden;
 }
 
 .post_like_card {
     width: 30%;
-    display: grid;
+    display: flex;
     flex-direction: row;
     margin: 5px;
 }
 
 .heart {
+    display: inline-block;
+    overflow: hidden;
     font-size: 18px;
     color: gray;
 }
@@ -225,16 +246,18 @@
 .like_heart {
     color: red;
     position: absolute;
-    right: -5px;
+    padding: 1px 3px;
+    display: inline-block;
+    overflow: hidden;
+    right: 10%;
 }
 
 .likeCount {
     font-size: 15px;
     color: black;
-    margin: 0px 5px;
+    margin: 0 3%;
     position: absolute;
-    right: -25px;
-    bottom: 23px;
+    right: 1%;
 }
 
 .box_title1 {
