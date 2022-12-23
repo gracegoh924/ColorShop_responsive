@@ -93,65 +93,40 @@ async function loadPosts_2() {
 }
 
 async function loadPosts_3() {
-    const posts = await getPosts()
-    const post_list = document.getElementById("post_list_3")
-    const gallery = document.getElementById('post_list_3')
-    gallery.innerHTML=""
-    if(list_filter === "new"){
+  const posts = await getPosts()
+  const gallery = document.getElementById('post_list_3')
+  gallery.innerHTML = ""
+  if (list_filter === "new") {
       posts.reverse()
-    }else{
-      posts.sort(function(a, b)  {
-        if(a.likes_count > b.likes_count) return 1;
-        if(a.likes_count === b.likes_count) return 0;
-        if(a.likes_count < b.likes_count) return -1;
+  } else {
+      posts.sort(function (a, b) {
+          if (a.likes_count > b.likes_count) return 1;
+          if (a.likes_count === b.likes_count) return 0;
+          if (a.likes_count < b.likes_count) return -1;
       });
       posts.reverse()
-    }
-   
-    const postUI = async () => {
-      for(let post of posts){
-        const newPost = document.createElement("div")
-        newPost.classList.add("post_card")
+  }
+  let container = $('#pagination');
+  container.pagination({
+      dataSource: posts,
+      pageSize: 15,
+      callback: function (data, pagination) {
+          var dataHtml = '<div class="gallery_3">';
 
-        const postImage = document.createElement("img")
-        const images = await getImageDetail(post.image_id)
-        postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
-        postImage.setAttribute("id", post.id)
-        postImage.setAttribute("onclick", "postDetail(this.id)")
-
-        const postContent = document.createElement("p")
-        postContent.classList.add("content_3")
-        postContent.innerText = post.title
-
-        const postUser = document.createElement("p")
-        postUser.classList.add("user_3")
-        postUser.innerText = post.user
-
-        const line = document.createElement("hr")
-        line.classList.add("line")
-
-        const postLike = document.createElement("i")
-        postLike.setAttribute("id", "like" + post.id)
-        postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
-
-        const likeCount = document.createElement("p")
-        likeCount.setAttribute("id", "like_count")
-        likeCount.classList.add("likeCount")
-        likeCount.innerText = post.likes_count
-
-
-        post_list.append(newPost)
-        newPost.append(postImage)
-        newPost.append(postContent)
-        newPost.append(postUser)
-        // newPost.append(line)
-        newPost.append(postLike)
-        newPost.append(likeCount)
+          $.each(data, function (index, item) {
+              dataHtml += '<div class="post_card">';
+              dataHtml += '<img src="' + `${backend_base_url}${item.image.after_image}` + '" id="' + item.id + '" onclick="postDetail(this.id)">';
+              dataHtml += '<p class="content_3">' + item.title + '</p>';
+              dataHtml += '<p class="user_3">' + item.user + '</p>';
+              dataHtml += '<i id="' + item.id + '" class="heart fa-solid fa-heart like_heart"></i>';
+              dataHtml += '<p id="like_count" class="likeCount">' + item.likes_count + '</p>';
+              dataHtml += '</div>';
+          });
+          dataHtml += '</div>';
+          $("#post_list_3").html(dataHtml);
       }
-    }
-    postUI()
+  })
 }
-
 
 async function searchPost() {
   const searchSelect = document.getElementById('search_select').value
@@ -161,62 +136,37 @@ async function searchPost() {
       "searchText": searchText
   };
   let query = Object.keys(params)
-              .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-              .join('&');
-  let url = 'http://127.0.0.1:8000/posts/search?' + query;
+      .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
+      .join('&');
+  let url = 'https://www.ai-color.shop/posts/search/?' + query;
 
   fetch(url)
-  .then(data => data.json())
-  .then((text) => {
-      const post_list = document.getElementById("post_list_3")
-      const gallery = document.getElementById('post_list_3')
-      gallery.innerHTML=""
-  
-      const postUI = async () => {
-          for(let post of text){
-            const newPost = document.createElement("div")
-            newPost.classList.add("post_card")
-    
-            const postImage = document.createElement("img")
-            const images = await getImageDetail(post.image.id)
-            postImage.setAttribute("src", `${backend_base_url}${images.after_image}`)
-            postImage.setAttribute("id", post.id)
-            postImage.setAttribute("onclick", "postDetail(this.id)")
-    
-            const postContent = document.createElement("p")
-            postContent.classList.add("content_3")
-            postContent.innerText = post.title
-    
-            const postUser = document.createElement("p")
-            postUser.classList.add("user_3")
-            postUser.innerText = post.user
-    
-            const line = document.createElement("hr")
-            line.classList.add("line")
-    
-            const postLike = document.createElement("i")
-            postLike.setAttribute("id", "like" + post.id)
-            postLike.classList.add("heart", "fa-solid", "fa-heart", "like_heart")
-    
-            const likeCount = document.createElement("p")
-            likeCount.setAttribute("id", "like_count")
-            likeCount.classList.add("likeCount")
-            likeCount.innerText = post.likes_count
-    
-            newPost.append(postImage)
-            newPost.append(postContent)
-            newPost.append(postUser)
-            // newPost.append(line)
-            newPost.append(postLike)
-            newPost.append(likeCount)
-            post_list.append(newPost)
-          }
-        }
-        postUI()
-  console.log('request succeeded with JSON response', text)
-  }).catch(function (error) {
-  console.log('request failed', error)
-  });
+      .then(data => data.json())
+      .then((text) => {
+          const gallery = document.getElementById('post_list_3')
+          gallery.innerHTML = ""
+
+          let container = $('#pagination');
+          container.pagination({
+              dataSource: text,
+              pageSize: 15,
+              callback: function (data, pagination) {
+                  var dataHtml = '<div class="gallery_3">';
+
+                  $.each(data, function (index, item) {
+                      dataHtml += '<div class="post_card">';
+                      dataHtml += '<img src="' + `${backend_base_url}${item.image.after_image}` + '" id="' + item.id + '" onclick="postDetail(this.id)">';
+                      dataHtml += '<p class="content_3">' + item.title + '</p>';
+                      dataHtml += '<p class="user_3">' + item.user + '</p>';
+                      dataHtml += '<i id="' + item.id + '" class="heart fa-solid fa-heart like_heart"></i>';
+                      dataHtml += '<p id="like_count" class="likeCount">' + item.likes_count + '</p>';
+                      dataHtml += '</div>';
+                  });
+                  dataHtml += '</div>';
+                  $("#post_list_3").html(dataHtml);
+              }
+          })
+      });
 };
 
 loadPosts_3()

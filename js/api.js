@@ -1,7 +1,7 @@
 // const backend_base_url = 'http://127.0.0.1:8000'
 const backend_base_url = 'https://www.ai-color.shop'
 // const frontend_base_url = 'http://127.0.0.1:5500/html/'
-const frontend_base_url = 'https://auto-colorshop.netlify.app/html/'
+const frontend_base_url = 'https://auto-color.shop/html/'
 
 // 로그인
 async function handleLogin() {
@@ -450,6 +450,28 @@ async function deleteComment(post_id, comment_id){
 
     if(response.status == 204){
         alert('댓글이 삭제되었습니다')
+        window.location.reload()
+    }
+}
+
+async function getImages(){
+    const response = await fetch(`${backend_base_url}/posts/image/`, {
+        method: 'GET',
+    })
+    response_json = await response.json()
+    return response_json
+}
+
+async function deleteImage(image_id){
+    const response = await fetch(`${backend_base_url}/posts/image/${image_id}/`, {
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("access")
+        },
+        method:'DELETE',
+    })
+
+    if(response.status == 204){
+        alert('이미지가 삭제되었습니다')
         window.location.reload()
     }
 }

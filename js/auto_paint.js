@@ -41,7 +41,7 @@ function showFile() {
         let fileReader = new FileReader();
         fileReader.onload = () => {
             let fileURL = fileReader.result;
-            let imgTag = `<img src="${fileURL}" alt=""><span class="delBtn" onclick="delImg(this)">x</span>`;
+            let imgTag = `<img src="${fileURL}" alt=""><span class="material-symbols-outlined" onclick="delImg(this)" style="position: absolute; font-size: xx-large; font-weight: bold; cursor: pointer;">close</span>`;
             dropArea.innerHTML = imgTag;
         }
         fileReader.readAsDataURL(file);
@@ -54,48 +54,17 @@ function showFile() {
 
 function delImg(_this){
     dropArea.classList.remove("active");
-    let before_div = `<span style="font-size:23px; margin-bottom: 5px;"><b>드래그해서 스케치 업로드</b></span>
-    <span style="font-size:20px; margin: 5px;">또는</span>
-    <button type="button" id="upload" style="margin:10px"><b>컴퓨터에서 선택</b></button>
-    <input type="file" id="before_img" hidden>
-    <span style="color:#eee; font-size:15px;"><b>jpg</b> 또는 <b>png</b> 파일로 업로드해주세요.</b></span>`
-    dropArea.innerHTML = before_div;
-
-    dropArea = document.querySelector(".before_image"),
-    dragText = dropArea.querySelector("header"),
-    button = dropArea.querySelector("button"),
-    input = dropArea.querySelector("input");
-
-    button.onclick = () => {
-        input.click();
-    }
-
-    input.addEventListener("change", function () {
-        file = this.files[0];
-        dropArea.classList.add("active");
-        showFile();
-    })
-    
-    dropArea.addEventListener("dragover", (event) => {
-        event.preventDefault();
-        dropArea.classList.add("active");
-        dragText.textContent = "Release to Upload File";
-    })
-    
-    dropArea.addEventListener("dragleave", () => {
-        dropArea.classList.remove("active");
-        dragText.textContent = "Drag & Drop to Upload File";
-    })
-    
-    dropArea.addEventListener("drop", (event) => {
-        event.preventDefault();
-        file = event.dataTransfer.files[0];
-        showFile();
-    })
+    location.href=`${frontend_base_url}auto_paint.html`
 }
 
 // 이미지 post
 async function postImage() {
+    var loading = document.getElementById('loading_image')
+    var afterImage = document.getElementById('after_image')
+
+    loading.style.display = 'block'
+    afterImage.style.display = 'none'
+
     var imageData = new FormData();
     imageData.append("before_image", file);
     imageData.append("model", model_json.model_path)
@@ -108,12 +77,24 @@ async function postImage() {
     })
 
     if (response.status == 201) {
+        var loading = document.getElementById('loading_image')
+        var afterImage = document.getElementById('after_image')
+        
+        loading.style.display = 'none'
+        afterImage.style.display = 'block'
+
         const getimages = await getImage();
         const after_image = document.getElementById("after_image")
         after_image.setAttribute("src", `${backend_base_url}${getimages.after_image}`)
         return response
     }else{
         if(file == null){
+            var loading = document.getElementById('loading_image')
+            var afterImage = document.getElementById('after_image')
+            
+            loading.style.display = 'none'
+            afterImage.style.display = 'block'
+    
             alert('파일을 올려주세요')
         }else if(model_json.model_path == null){
             alert('채색 모델을 선택해주세요')
@@ -123,20 +104,36 @@ async function postImage() {
     }
 }
 
-// 포스팅 모달창 띄우기
-const modal = document.getElementById("post_modal");
-const buttonAddFeed = document.getElementById("img_post_btn");
-buttonAddFeed.addEventListener("click", (e) => {
-    modal.style.top = window.pageYOffset + "px";
-    modal.style.display = "flex";
-    document.body.style.overflowY = "hidden";
-});
 
 // 포스팅 모달창 이미지 띄우기
 async function deepImage() {
+    const name = await getName()
     const getimage = await getImage();
+
     const deepimg = document.getElementById("deepimage");
-    deepimg.setAttribute("src", `${backend_base_url}${getimage.after_image}`);
+    const after_image = document.getElementById("after_image")
+    
+    if(after_image.getAttribute("src") == "/static/resultbox3.png"){
+        if(name){alert('채색을 먼저 해주세요')}
+    }else{
+        deepimg.setAttribute("src", `${backend_base_url}${getimage.after_image}`);
+
+        // 포스팅 모달창 띄우기
+        const modal = document.getElementById("post_modal");
+        const buttonAddFeed = document.getElementById("img_post_btn");
+        buttonAddFeed.addEventListener("click", (e) => {
+            modal.style.top = window.pageYOffset + "px";
+            modal.style.display = "flex";
+            document.body.style.overflowY = "hidden";
+        });
+
+        // 포스팅 모달창 닫기
+        const buttonCloseModal = document.getElementById("close_modal");
+        buttonCloseModal.addEventListener("click", (e) => {
+            modal.style.display = "none";
+            document.body.style.overflowY = "visible";
+        }); 
+    }
 }
 
 // 포스팅 등록
@@ -146,9 +143,26 @@ function postCreate() {
     postPost(title, content);
 }
 
-// 포스팅 모달창 닫기
-const buttonCloseModal = document.getElementById("close_modal");
-buttonCloseModal.addEventListener("click", (e) => {
-    modal.style.display = "none";
-    document.body.style.overflowY = "visible";
-});
+async function getUser(){
+    const name = await getName()
+
+    if(name){
+        // 포스팅 모달창 띄우기
+        const modal = document.getElementById("post_modal");
+        const buttonAddFeed = document.getElementById("img_post_btn");
+        buttonAddFeed.addEventListener("click", (e) => {
+            modal.style.top = window.pageYOffset + "px";
+            modal.style.display = "flex";
+            document.body.style.overflowY = "hidden";
+        });
+        
+        // 포스팅 모달창 닫기
+        const buttonCloseModal = document.getElementById("close_modal");
+        buttonCloseModal.addEventListener("click", (e) => {
+            modal.style.display = "none";
+            document.body.style.overflowY = "visible";
+        });       
+    }else{
+        return;
+    }
+}
