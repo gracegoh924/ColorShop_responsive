@@ -117,8 +117,8 @@ function cRedo() {
 
 function down(event) {
     onoff = true;
-    oldx = event.pageX - dx;
-    oldy = event.pageY - dy;
+    oldx = event.offsetX
+    oldy = event.offsetY;
 }
 
 function up(event) {
@@ -130,8 +130,8 @@ function up(event) {
 
 function draw(event) {
     if (true == onoff) {
-        var newx = event.pageX - dx;
-        var newy = event.pageY - dy;
+        var newx = event.offsetX;
+        var newy = event.offsetY;
         ctx.beginPath();
         ctx.moveTo(oldx, oldy);
         ctx.lineTo(newx, newy);
