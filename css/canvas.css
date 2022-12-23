@@ -2,7 +2,7 @@
     border:1px solid #c3c3c3;
 }
 
-#transBtn {
+#transBtn, #img_post_btn {
     width: 115px;
     height: 70px;
     font-size: 18px;

@@ -4,17 +4,16 @@
 }
 
 :root {
-    --accent: #ed6a66;
+    --accent: #00539C;
     --border-width: 2px;
     --border-radius: 10px;
     --font-size: 12px;
 }
 
 .radio-body {
-    width: 200px;
-    height: 100px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 0;
     padding-top: 30px;
     font-family: sans-serif;
@@ -22,6 +21,8 @@
 
 .radio-container {
     perspective: 800px;
+    width: 150px;
+    height: 100px;
 }
 
 .toggle {
@@ -89,12 +90,6 @@
     transform-style: preserve-3d;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Jua', sans-serif
-}
-
 .gallery {
     column-count: 4;
 }
@@ -127,9 +122,9 @@
 
 .gallery_3 .post_card {
     width: 100%;
-    height: 280px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    height: 300px;
+    border: solid 1px;
+    border-radius: 3px;
     background-color: white;
     position: relative;
 }
@@ -140,7 +135,7 @@
 
 .gallery_3 img {
     width: 100%;
-    height: 210px;
+    height: 230px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -149,9 +144,17 @@
     filter: brightness(80%);
 }
 
+.title_3 {
+    position: absolute;
+    /* bottom: 42px; */
+    left: 14px;
+    font-size: px;
+    color: black;
+}
+
 .content_3 {
     position: absolute;
-    bottom: -12px;
+    bottom: 20px;
     left: 14px;
     font-size: 18px;
     color: black;
@@ -159,17 +162,17 @@
 
 .user_3 {
     position: absolute;
-    bottom: -12px;
+    bottom: -8px;
     right: 10px;
-    font-size: 20px;
+    font-size: 17px;
     color: black;
 }
 
 .heart {
     position: absolute;
-    bottom: 42px;
-    right: 30px;
-    font-size: 18px;
+    left: 14px;
+    bottom: 11px;
+    font-size: 15px;
     color: gray;
 }
 
@@ -179,8 +182,13 @@
 
 .likeCount {
     position: absolute;
-    bottom: 17px;
-    right: 10px;
+    bottom: -11px;
+    left: 35px;
     font-size: 20px;
     color: black;
+}
+
+.search {
+    width: 80%;
+    margin: auto;
 }

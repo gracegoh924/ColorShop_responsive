@@ -17,6 +17,8 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/edb6bbddd8.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/community.css">
     <script src="/js/includehtml.js"></script>
 
@@ -24,7 +26,7 @@
 </head>
 
 <body>
-    <header include-html="/html/header.html" style="background-color: white; color: black"></header>
+    <header include-html="/html/header.html" style="color: black"></header>
 
     <div class="community_container">
         <div class="radio-body">
@@ -39,6 +41,18 @@
                     <div id="flap"><span class="content1">productive</span></div>
                 </form>
             </div>
+            <div class="search_container">
+                <form role="search">
+                    <select id="search_select" class="form-select-sm" style="align-self: flex-end;">
+                        <option selected>전체</option>
+                        <option>제목</option>
+                        <option>내용</option>
+                        <option>작성자</option>
+                    </select>
+                    <input type="search" id="search_text" name="search_text" class="form-control-sm" placeholder="검색" aria-label="Search" control-id="ControlID-2">
+                    <button type="button" id="btn" class="btn btn-outline-secondary" onclick="searchPost()"><span class="material-symbols-outlined">search</span></button>
+                </form>
+            </div>
         </div>
         <div>
             <div class="gallery_3" id="post_list_3">
@@ -50,6 +64,6 @@
 
         <script src="/js/api.js"></script>
         <script src="/js/community.js"></script>
-        <script src="/js/header.js"></script>
+
     </body>
 </html>

@@ -1,21 +1,21 @@
+includehtml();
+
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 clear();
-//画一个黑色矩形
 
-//按下标记
 var dx = canvas.offsetLeft;
 var dy = canvas.offsetTop;
 var onoff = false;
 var oldx = -dx;
 var oldy = -dy;
 
-//设置画笔颜色
 var linecolor = "black";
-//设置线宽
 var linw = 4;
 
 var dir;
+
+var file = document.getElementById("files")
 
 function IsPC() {
     var userAgentInfo = navigator.userAgent;
@@ -47,7 +47,6 @@ function touch(event) {
     switch (event.type) {
         case "touchstart":
             onoff = true;
-            //记录鼠标按下时的坐标做画线的起始坐标
             oldx = event.touches[0].clientX - dx;
             oldy = event.touches[0].clientY - dy;
             break;
@@ -62,19 +61,12 @@ function touch(event) {
                 var newx = event.touches[0].clientX - dx;
                 var newy = event.touches[0].clientY - dy;
                 ctx.beginPath();
-                //设置画线起点
                 ctx.moveTo(oldx, oldy);
-                //设置画线终点
                 ctx.lineTo(newx, newy);
-                //设置画笔颜色
                 ctx.strokeStyle = linecolor;
-                //设置画笔粗细
                 ctx.lineWidth = linw;
-                //设置笔帽
                 ctx.lineCap = "round";
-                //完成画线
                 ctx.stroke();
-                //设置本次坐标为下次画线的起始坐标
                 oldx = newx;
                 oldy = newy;
             }
@@ -89,7 +81,6 @@ function clear() {
     ctx.fillRect(0, 0, 512, 512);
 }
 
-// Canvas redo & undo
 var cPushArray = new Array();
 var cStep = -1;
 
@@ -153,25 +144,10 @@ function draw(event) {
     }
 }
 
-// Canvas init
-function cInit() {
-    var img = new Image();
-    img.crossOrigin = "*";
-    var num = Math.random() * 4 + 1;
-    num = parseInt(num, 10);
-    img.src = "static/init/i" + num + ".jpg";
-    img.onload = function () {
-        clear();
-        ctx.drawImage(img, 0, 0);
-    }
-}
-
-// Canvas reset
 function cReset() {
     clear();
 }
 
-// import file
 $("#import").click(function () {
     $("#files").click();
 });
@@ -198,6 +174,7 @@ function resize(maxWidth, maxHeight, width, height) {
 function selectImage() {
     var img = new Image();
     var reader = new FileReader();
+    file = this.files[0];
     reader.onload = function () {
         img.src = this.result;
     }
@@ -228,87 +205,104 @@ function selectImage() {
     }
 }
 
-// sketchify
-function cSketchify() {
-    $.ajax({
-        type: "POST",
-        url: "http://127.0.0.1:8000/sketchify/",
-        // async: false,
-        data: {
-            image: canvas.toDataURL("image/png").substring(22)
+async function cSketchify() {
+    var img = new Image();
+    var reader = new FileReader();
+    reader.onload = function () {
+        img.src = this.result;
+    }
+    var imageData = new FormData();
+    var image = canvas.toDataURL("image/png", 0.1).substring(22)
+    imageData.append("image_url", image);
+    imageData.append("model", "./AutoPainter/media/autopaint_model/model1/")
+    const response = await fetch(`${backend_base_url}/posts/sketchify/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("access"),
         },
-        dataType: "json",
-        success: function (data) {
-            var img = new Image();
-            img.src = data['image1'];
+        body: imageData
+    })
+
+    if (response.status == 201) {
+        const getimages = await getImage();
+        img.src = `${backend_base_url}${getimages.after_image}`
+        img.crossOrigin = 'Anonymous';
             img.onload = function () {
                 clear();
                 ctx.drawImage(img, 0, 0);
             }
-        },
-        error: function (htp, s, e) {
-            alert("信息获取失败，请刷新页面");
+        return response
+    }else{
+        if(image == null){
+            alert('이미지 파일을 선택해주세요')
+        }else{
+            alert('로그인이 필요한 기능입니다')
         }
-    });
-
+    }
 }
 
-//transform
-function transformWithoutColor(event) {
-    $.ajax({
-        type: "POST",
-        url: "http://127.0.0.1:8000/posts/image/",
-        // async: false,
-        data: {
-            image: canvas.toDataURL("image/png").substring(22)
+async function transForm1(event) {
+    var img = new Image();
+    var reader = new FileReader();
+    reader.onload = function () {
+        img.src = this.result;
+    }
+    var imageData = new FormData();
+    var image = canvas.toDataURL("image/png").substring(22)
+    imageData.append("image_url", image);
+    const response = await fetch(`${backend_base_url}/posts/trans1/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("access"),
         },
-        dataType: "json",
-        success: function (data) {
-            $('#imgResult').attr('src', data['image2']);
-        },
-        error: function (htp, s, e) {
-            alert("이미지를 불러오는데 실패했습니다.");
+        body: imageData
+    })
+
+    if (response.status == 201) {
+        const getimages = await getImage();
+        const after_image = document.getElementById("imgResult")
+        after_image.setAttribute("src", `${backend_base_url}${getimages.after_image}`)
+        return response
+    }else{
+        if(this == null){
+            alert('파일을 올려주세요')
+        }else{
+            alert('로그인이 필요한 기능입니다')
         }
-    });
+    }
 }
 
-function transformWithColor(event) {
-    $.ajax({
-        type: "POST",
-        url: "http://127.0.0.1:8000/trans2/",
-        // async: false,
-        data: {
-            image: canvas.toDataURL("image/png").substring(22)
+async function transForm2(event) {
+    var img = new Image();
+    var reader = new FileReader();
+    reader.onload = function () {
+        img.src = this.result;
+    }
+    var imageData = new FormData();
+    var image = canvas.toDataURL("image/png").substring(22)
+    imageData.append("image_url", image);
+    const response = await fetch(`${backend_base_url}/posts/trans2/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("access"),
         },
-        dataType: "json",
-        success: function (data) {
-            $('#imgResult').attr('src', data['image2']);
-        },
-        error: function (htp, s, e) {
-            alert("信息获取失败，请刷新页面");
+        body: imageData
+    })
+
+    if (response.status == 201) {
+        const getimages = await getImage();
+        const after_image = document.getElementById("imgResult")
+        after_image.setAttribute("src", `${backend_base_url}${getimages.after_image}`)
+        return response
+    }else{
+        if(image == null){
+            alert('파일을 올려주세요')
+        }else{
+            alert('로그인이 필요한 기능입니다')
         }
-    });
+    }
 }
 
-function transformCartoon(event) {
-    $.ajax({
-        type: "POST",
-        url: "http://127.0.0.1:8000/trans3/",
-        // async: false,
-        data: {
-            image: canvas.toDataURL("image/png").substring(22)
-        },
-        dataType: "json",
-        success: function (data) {
-            $('#imgResult').attr('src', data['image2']);
-        },
-        error: function (htp, s, e) {
-            alert("信息获取失败，请刷新页面");
-        }
-    });
-}
-
-// unknown
 
 function updateBorders(color) {
     var hexColor = "transparent";
@@ -358,11 +352,39 @@ $(function () {
                 "rgb(118, 165, 175)", "rgb(109, 158, 235)", "rgb(111, 168, 220)", "rgb(142, 124, 195)", "rgb(194, 123, 160)",
                 "rgb(166, 28, 0)", "rgb(204, 0, 0)", "rgb(230, 145, 56)", "rgb(241, 194, 50)", "rgb(106, 168, 79)",
                 "rgb(69, 129, 142)", "rgb(60, 120, 216)", "rgb(61, 133, 198)", "rgb(103, 78, 167)", "rgb(166, 77, 121)",
-                /*"rgb(133, 32, 12)", "rgb(153, 0, 0)", "rgb(180, 95, 6)", "rgb(191, 144, 0)", "rgb(56, 118, 29)",
-                "rgb(19, 79, 92)", "rgb(17, 85, 204)", "rgb(11, 83, 148)", "rgb(53, 28, 117)", "rgb(116, 27, 71)",*/
                 "rgb(91, 15, 0)", "rgb(102, 0, 0)", "rgb(120, 63, 4)", "rgb(127, 96, 0)", "rgb(39, 78, 19)",
                 "rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"]
         ]
     });
 
+});
+
+// 포스팅 모달창 띄우기
+const modal = document.getElementById("post_modal");
+const buttonAddFeed = document.getElementById("img_post_btn");
+buttonAddFeed.addEventListener("click", (e) => {
+    modal.style.top = window.pageYOffset + "px";
+    modal.style.display = "flex";
+    document.body.style.overflowY = "hidden";
+});
+
+// 포스팅 모달창 이미지 띄우기
+async function deepImage() {
+    const getimage = await getImage();
+    const deepimg = document.getElementById("deepimage");
+    deepimg.setAttribute("src", `${backend_base_url}${getimage.after_image}`);
+}
+
+// 포스팅 등록
+function postCreate() {
+    const title = document.getElementById("input_title").value;
+    const content = document.getElementById("input_content").value;
+    postPost(title, content);
+}
+
+// 포스팅 모달창 닫기
+const buttonCloseModal = document.getElementById("close_modal");
+buttonCloseModal.addEventListener("click", (e) => {
+    modal.style.display = "none";
+    document.body.style.overflowY = "visible";
 });
