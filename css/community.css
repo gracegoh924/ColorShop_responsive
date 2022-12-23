@@ -126,9 +126,11 @@
     border: solid 1px;
     border-radius: 3px;
     background-color: white;
-    margin: 20px 0;
     position: relative;
-    cursor: pointer;
+}
+
+.gallery_3 .post_card:hover {
+    filter: brightness(85%);
 }
 
 .gallery_3 img {

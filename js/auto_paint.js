@@ -13,6 +13,7 @@ button.onclick = () => {
 
 input.addEventListener("change", function () {
     file = this.files[0];
+    console.log(file)
     dropArea.classList.add("active");
     showFile();
 })
@@ -67,7 +68,11 @@ async function postImage() {
 
     var imageData = new FormData();
     imageData.append("before_image", file);
+    console.log(file)
     imageData.append("model", model_json.model_path)
+    for (var pair of imageData.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+        }
     const response = await fetch(`${backend_base_url}/posts/image/`, {
         method: 'POST',
         headers: {

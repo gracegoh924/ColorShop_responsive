@@ -26,7 +26,7 @@ async function handleSignup() {
     const nickname = document.getElementById("nickname").value
     const sign_up_Alert = document.getElementById("sign_up_Alert")
 
-    const response = await fetch('https://www.ai-color.shop/users/', {
+    const response = await fetch('http://127.0.0.1:8000/users/', {
         headers: {
             'content-type' : 'application/json',
         },
@@ -65,7 +65,7 @@ async function handleSignup() {
     const Username = document.getElementById("Username").value
     const password = document.getElementById("password").value
     const Alert = document.getElementById("alert")
-    const response = await fetch('https://www.ai-color.shop/users/api/token/',{
+    const response = await fetch('http://127.0.0.1:8000/users/api/token/',{
         headers : {
             'content-type' : 'application/json',
         },
