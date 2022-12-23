@@ -21,7 +21,7 @@
 
 .postview-box {
     background-color: #F0EDCC; 
-    max-width: 60%;
+    width: 950px;
     height: fit-content; 
     padding: 20px;
     gap: 20px;
@@ -47,11 +47,11 @@
 
 .image-container {
     width: 100% !important;
-    height: 450px;
+    height: 500px;
 }
 
 .image {
-    width: 100% ;
+    width: 100%;
     height: 100% !important;
     border-radius: 5px;
     margin: auto;

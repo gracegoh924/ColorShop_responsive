@@ -117,7 +117,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-column-gap: 20px;
+    gap: 20px;
 }
 
 .gallery_3 .post_card {
@@ -127,6 +127,8 @@
     border-radius: 3px;
     background-color: white;
     position: relative;
+    display: block;
+    overflow: hidden;
 }
 
 .gallery_3 .post_card:hover {
@@ -146,8 +148,7 @@
 
 .title_3 {
     position: absolute;
-    /* bottom: 42px; */
-    left: 14px;
+    left: 5%;
     font-size: px;
     color: black;
 }
@@ -155,37 +156,50 @@
 .content_3 {
     position: absolute;
     bottom: 20px;
-    left: 14px;
+    left: 5%;
     font-size: 18px;
     color: black;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .user_3 {
     position: absolute;
-    bottom: -8px;
-    right: 10px;
+    bottom: -3%;
+    right: 5%;
     font-size: 17px;
     color: black;
+    display: block;
+    overflow: hidden;
 }
 
 .heart {
     position: absolute;
-    left: 14px;
-    bottom: 11px;
+    left: 5%;
+    bottom: 4%;
     font-size: 15px;
     color: gray;
+    display: block;
+    overflow: hidden;
 }
 
 .like_heart {
-    color: red
+    color: red;
+    position: absolute;
+    display: block;
+    overflow: hidden;
 }
 
 .likeCount {
     position: absolute;
-    bottom: -11px;
-    left: 35px;
+    bottom: -4%;
+    left: 13%;
     font-size: 20px;
     color: black;
+    display: block;
+    overflow: hidden;
 }
 
 .search {
