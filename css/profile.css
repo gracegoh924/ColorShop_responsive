@@ -74,8 +74,8 @@
 
 .card{
     padding: 1px;
-    background-color: #02343F;
-    color:#F0EDCC;
+    background-color: #F0EDCC;
+    color:#02343F;
 }
 
 .card-footer{
@@ -84,5 +84,5 @@
 }
 
 .card-text{
-    color:#F0EDCC;
+    color:#02343F;
 }

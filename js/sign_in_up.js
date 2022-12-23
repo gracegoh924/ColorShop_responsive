@@ -3,6 +3,8 @@ const signUpBtn = document.getElementById("signUp");
 const fistForm = document.getElementById("form1");
 const secondForm = document.getElementById("form2");
 const container = document.querySelector(".container");
+const frontend_base_url = 'https://auto-color.shop/html/'
+const backend_base_url = 'https://www.ai-color.shop'
 
 signInBtn.addEventListener("click", () => {
   container.classList.remove("right-panel-active");
@@ -93,4 +95,8 @@ async function handleSignup() {
     }).join(''));
     localStorage.setItem("payload", jsonPayload);
   }
-  
+
+  function home(){
+    const url = `${frontend_base_url}home.html`
+    location.href=url
+}

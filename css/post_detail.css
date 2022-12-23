@@ -21,21 +21,28 @@
 
 .postview-box {
     background-color: #F0EDCC; 
-    width: 1000px;
-    height: 700px; 
+    width: fit-content;
+    height: fit-content; 
     padding: 20px;
     gap: 20px;
     border-radius: 5px;
     margin: auto;
     display: flex;
-    align-items: flex-start;
+    flex-direction: row;
 }
 
 .image-box {
     width: 60%;
-    height: fit-content;
+    height: auto;
     padding: 20px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.title-container {
+    width: auto;
 }
 
 .image-container {
@@ -50,81 +57,66 @@
     margin: auto;
 }
 
-.user-info {
-    border-radius: 5px;
-    margin-top: 20px;
-    display: flex;
-}
-
-.user-info #post_title{
+#post_title {
     font-size: 30px;
-    left: 505px;
-    bottom: 300px;
 }
 
-.user-info #post_user{
+#post_user {
     font-size: 20px;
-    left: 505px;
-    bottom: 270px;
 }
 
 .like_container {
-    width: 150px;
-    height: 100px;
+    width: auto;
+    height: auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 870px;
-    bottom: 250px;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .like_count {
-    margin-right: 10px;
+    display: inline;
+    align-items: flex-start;
 }
-
 
 .new_post_content {
     background:white;
-    height: 100px;
-    width: 520px;
-    display:flex;
+    min-height: 100px;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
     border-radius: 5px;
-    bottom: 180px;
 }
 
 .content-box{
-    font-size:20px;
-    height: auto;
+    font-size:19px;
+    /* height: auto; */
 }
 
 .post_buttons {
+    min-width: fit-content;
     display: flex;
+    justify-content: flex-end;
     align-items: flex-end;
+    color: black;
     border: none;
-    padding: 8px;
+    /* padding: 8px; */
     border-radius: 5px;
     -webkit-transition: all 150ms ease-in-out;
     transition: all 150ms ease-in-out;
-    left: 410px;
-    bottom: -10px;
 }
 
+
+
 .heart_box {
-    width: 40%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items : center;
 }
 
 .count_box {
-    width: 60%;
-    height: 100%;
-    text-align : center;
-    line-height : 100px;
+    margin-left: 10px;
 }
 
 .heart {
@@ -148,8 +140,9 @@
 }
 
 .comment-box {
-    width: 40%;
-    padding-top: 20px;
+    width: fit-content;
+    height: auto;
+    padding: 20px;
 }
 
 .create_comment {
@@ -163,7 +156,7 @@
     background:white;
     margin-top: 10px;
     border-radius: 5px;
-    min-height: 530px;
+    height: 80%;
     padding: 10px;
 }
 

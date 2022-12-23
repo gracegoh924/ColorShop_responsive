@@ -192,3 +192,9 @@
     width: 80%;
     margin: auto;
 }
+
+.pagination {
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}
