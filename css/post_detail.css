@@ -87,7 +87,7 @@
     justify-content: space-between;
     padding: 10px;
     border-radius: 5px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .content-box{
@@ -160,12 +160,12 @@
     border-radius: 5px;
     height: 80%;
     padding: 10px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .comments button {
     font-family: Poor Story;
-    font-size: large;
+    font-size: medium;
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -173,8 +173,8 @@
     min-width: fit-content;
     background-color: #F0EDCC;
     border: none;
-    margin: 10px;
-    padding: 5px 10px;
+    margin: 5px;
+    padding: 5px 7px;
     border-radius: 5px;
     box-shadow: 0 0 40px 40px #F0EDCC inset, 0 0 0 0 #F0EDCC;
     -webkit-transition: all 150ms ease-in-out;

@@ -79,7 +79,8 @@
     height: 360px;
     font-size: 20px;
     display : flex;
-    margin: 0 80px;
+    margin: 0 70px;
+    overflow: auto;
     flex-direction: column;
     justify-content: center;
     align-items : center;
