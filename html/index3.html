@@ -38,12 +38,12 @@
     <div class="left">
         <br/>
         <input type="file" id="files" name="files" onchange="selectImage();" />
-        <input type="button" id="import" value="import" />
-        <button id="funcBtn" onclick="cSketchify();">sketchify</button>
-        <button id="funcBtn" onclick="cReset();">reset</button>
-        <button id="funcBtn" onclick="cRedo();">redo</button>
-        <button id="funcBtn" onclick="cUndo();">undo</button>
-        <button id="funcBtn" onclick='linecolor="white";'>erase</button>
+        <input type="button" id="import" class="btn btn-light" value="import" />
+        <button id="funcBtn" class="btn btn-light" onclick="cSketchify();">sketchify</button>
+        <button id="funcBtn" class="btn btn-light" onclick="cReset();">reset</button>
+        <button id="funcBtn" class="btn btn-light" onclick="cRedo();">redo</button>
+        <button id="funcBtn" class="btn btn-light" onclick="cUndo();">undo</button>
+        <button id="funcBtn" class="btn btn-light" onclick='linecolor="white";'>erase</button>
     </div>
     <div class="content">
         <div class="canvas_container">
@@ -54,9 +54,9 @@
                     </canvas>
                 </div>
                 <div class="canvas_trans">
-                    <button id="transBtn" onclick="transForm1();">Transform1</button>
-                    <button id="transBtn" onclick="transForm2();">Transform2</button>
-                    <button id="img_post_btn" onclick="deepImage()" >공유하기</button>
+                    <button id="transBtn" class="btn0 btn-4 " onclick="transForm1();">Transform<br><b>1</b></button>
+                    <button id="transBtn" class="btn0 btn-4 " onclick="transForm2();">Transform<br><b>2</b></button>
+                    <button id="img_post_btn" class="btn0 btn-4" style="font-size: large; font-weight: bold;" onclick="deepImage()" >공유하기</button>
                 </div>
                 <div class="canvas_output">
                     <img src="" id="imgResult" width="512" height="512">
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="canvas_tools">
-                <br /> colour: <button id="colorBtn" style="background-color:yellow;" onclick='linecolor="yellow";'></button>
+                <br /> COLOUR > <button id="colorBtn" style="background-color:yellow;" onclick='linecolor="yellow";'></button>
                 <button id="colorBtn" style="background-color:#00FF00;" onclick='linecolor="#00FF00";'></button>
                 <button id="colorBtn" style="background-color:red;" onclick='linecolor="red";'></button>
                 <button id="colorBtn" style="background-color:blue;" onclick='linecolor="blue";'></button>
@@ -76,23 +76,51 @@
                 <button id="colorBtn" style="background-color:gray;" onclick='linecolor="gray";'></button>
                 <button id="colorBtn" style="background-color:black;" onclick='linecolor="black";'></button>
                 <input id="full" />
-                <br />stroke: <button id="colorBtn" style="background-color:white;" onclick="linw = 1;">1px</button>
+                <br />STROKE > <button id="colorBtn" style="background-color:white;" onclick="linw = 1;">1px</button>
                 <button id="colorBtn" style="background-color:white;" onclick="linw = 2;">2px</button>
                 <button id="colorBtn" style="background-color:white;" onclick="linw = 4;">4px</button>
                 <button id="colorBtn" style="background-color:white;" onclick="linw = 8;">8px</button>
                 <button id="colorBtn" style="background-color:white;" onclick="linw = 16;">16px</button>
                 <br />
-                <div>
-                    <p>Tips:</p>
-                    <p>Import: 파일 불러오기</p>
-                    <p>Init: 미니언즈 랜덤 사진 가져오기(삭제 예정)</p>
-                    <p>Sketchify: 이미지 선화 따기</p>
-                    <p>reset : 캔버스 초기화</p>
-                    <p>redo : 재실행(컨트롤+Y)</p>
-                    <p>undo : 실행취소(컨트롤+Z)</p>
-                    <p>erase : 지우개(컬러 옆으로 가도 될듯?)</p>
-                    <p>Transform1: 자동채색(원래 쓰던 모델2)</p>
-                    <p>Transform2: 내가 지정한 색상에 맞춰 자동채색(원래 쓰던 모델3)</p>
+                <div >
+                    <br>
+                    <br>
+                    <br>
+                    <p style="font-size: 20px; color: cornflowerblue">버튼 안내</p>
+                    <span class="menu">import</span><span class="info"> 파일 불러오기</span><br>
+                    <span class="menu">init</span><span class="info"> 미니언즈 랜덤 사진 가져오기</span><br>
+                    <span class="menu">sketchify</span><span class="info"> 이미지 선화 따기</span><br>
+                    <span class="menu">reset</span><span class="info"> 캔버스 초기화</span><br>
+                    <span class="menu">redo</span><span class="info"> 재실행 (Ctrl + y)</span><br>
+                    <span class="menu">undo</span><span class="info"> 실행취소 (Ctrl + z)</span><br>
+                    <span class="menu">erase</span><span class="info"> 지우개 (컬러 옆으로 가도 될 듯)</span><br>
+                    <span class="menu">transform_1</span><span class="info"> 자동 채색 (원래 쓰던 모델2)</span><br>
+                    <span class="menu">transform_2</span><span class="info"> 내가 지정한 색상에 맞춰 자동 채색 (원래 쓰던 모델3)</span>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="canvas_info_container">
+                        <div class="info_text_box">
+                            <span class="info_text">
+                                <h5><b><span style="color:dodgerblue">C</span><span style=color:black>olor</span><span
+                                            style=color:tomato>S</span><span style=color:black>hop</span> 자동 채색</b> 이용하기</h5>
+                                <p style="line-height:180%; color:rgb(60,60,60)">
+                                    1. 채색하고자 하는 스케치를 png 또는 jpg 형태의 이미지 파일로 업로드 해주세요.<br>
+                                    2. 3가지 채색 모델 중 하나를 선택하고 '채색하기' 버튼을 누르면 오른쪽에 결과 이미지가 나타납니다.<br>
+                                    3. 변환된 이미지로 게시글을 작성해 ColorShop 커뮤니티에 올려보세요! 커뮤니티에서는 다른 사람들의 이미지를 보고 댓글과 좋아요를 남길 수 있습니다.<br>
+                                    4. 좋아요를 많이 받은 게시글은 사이트 메인페이지에 게시됩니다! ColorShop으로 여러분이 그린 그림을 채색해보세요!<br><br>
+                                </p>
+                                <b style="font-size:large; color: black">주의할 점</b>
+                                <p style="margin-top:5px; line-height:180%; rgb(60,60,60)">
+                                    이미 채색되어 있는 이미지를 채색하면 오히려 이상해질 수 있습니다.<br>
+                                    ColorShop은 사전 학습된 AI모델을 통해 채색 기능을 제공하지만 고도로 학습된 모델이 아니기 때문에 결과가 만족스럽지 못할 수 있습니다.
+                                </p>
+                            </span>
+                        </div>
+                    </div>
+                
+                
                 </div>
             </div>
         </div>
@@ -119,25 +147,6 @@
         </div>
     </div>
 
-    <div class="info_container" style="background-color:white">
-        <div class="info_text_box">
-            <span class="info_text">
-                <h5><b><span style="color:dodgerblue">C</span><span style=color:black>olor</span><span
-                            style=color:tomato>S</span><span style=color:black>hop</span> 자동 채색</b> 이용하기</h5>
-                <p style="line-height:25px;">
-                    1. 채색하고자 하는 스케치를 png 또는 jpg 형태의 이미지 파일로 업로드 해주세요.<br>
-                    2. 3가지 채색 모델 중 하나를 선택하고 '채색하기' 버튼을 누르면 오른쪽에 결과 이미지가 나타납니다.<br>
-                    3. 변환된 이미지로 게시글을 작성해 ColorShop 커뮤니티에 올려보세요! 커뮤니티에서는 다른 사람들의 이미지를 보고 댓글과 좋아요를 남길 수 있습니다.<br>
-                    4. 좋아요를 많이 받은 게시글은 사이트 메인페이지에 게시됩니다! ColorShop으로 여러분이 그린 그림을 채색해보세요!<br><br>
-                </p>
-                <b style="font-size:large;">주의할 점</b>
-                <p style="margin-top:5px; line-height:25px;">
-                    이미 채색되어 있는 이미지를 채색하면 오히려 이상해질 수 있습니다.<br>
-                    ColorShop은 사전 학습된 AI모델을 통해 채색 기능을 제공하지만 고도로 학습된 모델이 아니기 때문에 결과가 만족스럽지 못할 수 있습니다.
-                </p>
-            </span>
-        </div>
-    </div>
 
     <footer include-html="/html/footer.html"></footer>
 
