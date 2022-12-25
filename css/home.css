@@ -83,8 +83,9 @@
     margin: auto;
 }
 
-.post_box {
+#post_box {
     height: auto;
+    margin: 0 10px;
 }
 
 .card_row_1 {
@@ -213,15 +214,15 @@
     right: 1%;
 }
 
-
 .tweet_box {
     width: auto;
     height: 100%;
-    margin-bottom: 100px;
-    margin-left: 40px;
+    margin-bottom: 200px;
+    margin: 0 20px;    
 }
 
 .timeline {
+    width: auto;
     height:620px;
     overflow:scroll;
     background-color:transparent;
