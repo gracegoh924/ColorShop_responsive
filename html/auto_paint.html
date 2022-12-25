@@ -35,12 +35,14 @@
 
 </head>
 
-<body>
+<body id="home">
     <!-- 헤더 연결 -->
-    <header include-html="/html/header.html"></header>
+    <header class="clearfix" include-html="/html/header.html"></header>
 
-        <div class="wrapper">
-            <div id="sketch_container" class="row">	
+    <section id="hero" class="home_container">
+
+        <div class="wrapper" style="width: 110%;">
+            <div class="row">
                 <div id="each_grid" class="grid_4">
                     <div class="before_image_box">
                         <div class="before_image" id="before_image">
@@ -86,28 +88,25 @@
                 </div>
             </div><!-- end row -->
         </div>
+    </section>
 
-
-
-
-        <div id="post_modal" class="modal_overlay">
-            <div class="modal_window">
-                <div class="modal_image">
-                    <img id="deepimage" src="" alt="deep-image" class="modal_post_image" onclick="window.open(this.src)"
-                        style="width: 100%; height: 100%;">
-                </div>
-                <div>
-                    <input type="text" id="input_title" class="modal_text feed_content_textarea form-control col-sm-5" rows="1"
-                        placeholder="제목을 작성해 주세요" style="background-color: white;">
-                </div>
-                <div>
-                    <textarea id="input_content" class="modal_text feed_content_textarea form-control col-sm-5" rows="5"
-                        placeholder="본문을 작성해 주세요" style="background-color: white;"></textarea>
-                </div>
-                <div class="modal_button">
-                    <button type="button" class="btn btn-outline-dark" onclick="postCreate()">등록하기</button>
-                    <button type="button" class="btn btn-outline-dark" id="close_modal">돌아가기</button>
-                </div>
+    <div id="post_modal" class="modal_overlay">
+        <div class="modal_window">
+            <div class="modal_image">
+                <img id="deepimage" src="" alt="deep-image" class="modal_post_image" onclick="window.open(this.src)"
+                    style="width: 100%; height: 100%;">
+            </div>
+            <div>
+                <input type="text" id="input_title" class="modal_text feed_content_textarea form-control col-sm-5"
+                    rows="1" placeholder="제목을 작성해 주세요" style="background-color: white;">
+            </div>
+            <div>
+                <textarea id="input_content" class="modal_text feed_content_textarea form-control col-sm-5" rows="5"
+                    placeholder="본문을 작성해 주세요" style="background-color: white;"></textarea>
+            </div>
+            <div class="modal_button">
+                <button type="button" class="btn btn-outline-dark" onclick="postCreate()">등록하기</button>
+                <button type="button" class="btn btn-outline-dark" id="close_modal">돌아가기</button>
             </div>
         </div>
     </div>
