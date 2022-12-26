@@ -5,26 +5,16 @@
     font-style: normal;
 }
 
-* {
-    font-family: 'TmoneyRoundWindExtraBold';
-}
-
-.sketch_container {
-    width: 80%;
-    height: 500px;
-    margin: auto;
-    display : flex;
-    justify-content: center;
-    align-items : center;
-    border-radius: 10px;
-    background-color: #F0EDCC;
+#each_grid {
+    display:flex; 
+    justify-content: center; 
+    align-items: center;
 }
 
 .before_image_box {
-    flex: 1;
+    width: 320px;
     height: 360px;
-    margin-left: 80px;
-    border: solid black 2px;
+    border: solid dimgray 2px;
     border-radius: 10px;
     overflow: hidden;
     object-fit: cover;
@@ -75,15 +65,15 @@
 }
 
 .btn_box {
-    flex: 1;
+    width: 320px;
     height: 360px;
     font-size: 20px;
     display : flex;
-    margin: 0 80px;
+    overflow: auto;
     flex-direction: column;
     justify-content: center;
     align-items : center;
-    border: solid black 2px;
+    border: solid dimgray 2px;
     border-radius: 10px;
 }
 
@@ -112,14 +102,14 @@
 }
 
 .after_img_box {
-    flex: 1;
-    height: 350px;
-    margin-right: 80px;
+    width: 320px;
+    height: 360px;
     align-items : center;
-    border: solid black 2px;
+    border: solid dimgray 2px;
     border-radius: 10px;
     overflow: hidden;
     object-fit: cover;
+    display: block;
 }
 
 .sketch_image {
@@ -137,9 +127,8 @@
 }
 
 .info_container {
-    width: 100%;
-    height: 400px;
-    padding: 10px 50px 0px 50px;
+    width: auto;
+    height: 530px;
     display : flex;
     justify-content: center;
     align-items : center;
@@ -147,7 +136,6 @@
 
 .info_text_box {
     width: 900px;
-    height: 300px;
     display : flex;
     justify-content: center;
     align-items : center;

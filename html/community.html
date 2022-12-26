@@ -26,40 +26,56 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/community.css">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/basic-style.css">
+
+    <!-- JS-->
+    <script src="/js/libs/modernizr-2.6.2.min.js"></script>
     <script src="/js/includehtml.js"></script>
 
     <title>community</title>
 </head>
 
-<body>
+<body id="home">
     <header include-html="/html/header.html" style="color: black"></header>
 
     <div class="community_container">
-        <div class="radio-body">
-            <div class="radio-container">
-                <form class="toggle">
-                    <input type="radio" id="choice1" name="choice" value="creative">
-                    <label for="choice1">인기순</label>
-    
-                    <input type="radio" id="choice2" name="choice" value="productive">
-                    <label for="choice2">최신순</label>
-    
-                    <div id="flap"><span class="content1">productive</span></div>
-                </form>
+        <section class="clearfix">
+            <div class="wrapper">
+                <div class="row" style="height: auto;">
+                    <div id="each_grid" class="grid_8">
+                        <div class="radio-body">
+                            <div class="radio-container">
+                                <form class="toggle">
+                                    <input type="radio" id="choice1" name="choice" value="creative">
+                                    <label for="choice1">인기순</label>
+                    
+                                    <input type="radio" id="choice2" name="choice" value="productive">
+                                    <label for="choice2">최신순</label>
+                    
+                                    <div id="flap"><span class="content1">productive</span></div>
+                                </form>
+                            </div>
+                        </div>                
+                    </div>
+                    <div id="each_grid" class="grid_4" style="padding-left:3%;">
+                        <div class="search_container">
+                            <form role="search">
+                                <select id="search_select" class="form-select-sm" style="align-self: flex-end;">
+                                    <option selected>전체</option>
+                                    <option>제목</option>
+                                    <option>내용</option>
+                                    <option>작성자</option>
+                                </select>
+                                <input type="search" id="search_text" name="search_text" class="form-control-sm" placeholder="검색" aria-label="Search" control-id="ControlID-2">
+                                <button type="button" id="btn" class="btn btn-outline-secondary" onclick="searchPost()"><span class="material-symbols-outlined">search</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- end row -->
             </div>
-            <div class="search_container">
-                <form role="search">
-                    <select id="search_select" class="form-select-sm" style="align-self: flex-end;">
-                        <option selected>전체</option>
-                        <option>제목</option>
-                        <option>내용</option>
-                        <option>작성자</option>
-                    </select>
-                    <input type="search" id="search_text" name="search_text" class="form-control-sm" placeholder="검색" aria-label="Search" control-id="ControlID-2">
-                    <button type="button" id="btn" class="btn btn-outline-secondary" onclick="searchPost()"><span class="material-symbols-outlined">search</span></button>
-                </form>
-            </div>
-        </div>
+        </section>
         <div>
             <div id="post_list_3" data-current-page="1" aria-live="polite">
             </div>

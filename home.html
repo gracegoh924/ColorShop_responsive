@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="twitter:widgets:autoload" content="off">
-    <link rel="canonical" href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> -->
+
+    <!-- CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -19,67 +24,144 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/footer.css">
 
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/basic-style.css">
+
+    <!-- JS-->
+    <script src="/js/libs/modernizr-2.6.2.min.js"></script>
     <script src="/js/includehtml.js"></script>
 
     <title>main</title>
+
+    <style type="text/css">        
+        #columnsdemo .grid_1,
+        #columnsdemo .grid_2,
+        #columnsdemo .grid_3,
+        #columnsdemo .grid_4,
+        #columnsdemo .grid_5,
+        #columnsdemo .grid_6,
+        #columnsdemo .grid_7,
+        #columnsdemo .grid_8,
+        #columnsdemo .grid_9,
+        #columnsdemo .grid_10,
+        #columnsdemo .grid_11,
+        #columnsdemo .grid_12 {
+            color: #999;
+            margin-top: 20px;
+            padding-top: 20px;
+            padding: 0px;
+        }
+    </style>
 </head>
 
-<body>
-    <!-- 헤더 연결 -->
-    <header include-html="/html/header.html"></header>
-
-    <div class="home_container">
-        <div class="sketch_container">
-            <div class="sketch_img_box">
-                <img src="/static/test.png" alt="sketch_image" class="sketch_image">
+<body id="home">
+    <header class="clearfix">
+        <div class="header_container">
+            <div class="logo">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <h1 onclick="home()" style="cursor:pointer"><b><span style="color:#00539C">C</span>olor<span
+                                style=color:#ed6a66>S</span>hop</b></h1>
+                </ul>
             </div>
-            <div class="btn_box">
-                <button class="upload-btn btn-2" onclick="autoPaint()"><b
-                        style="font-size:20px">스케치를 채색해보세요! ▶<br>click here</span></b></button>
+            <div class="button_box">
+                <button class="page_button" type="button" onclick="autoPaint()"
+                    style="background-color: white; margin: 0 20px; border: none; cursor: pointer; display: inline-block;">
+                    <h5>AutoPaint</h5>
+                </button>
+                <button class="page_button" type="button" onclick="community()"
+                    style="background-color: white; margin: 0 20px; border: none; cursor: pointer; display: inline-block;">
+                    <h5>Community</h5>
+                </button>
             </div>
-            <div class="sketch_img_box">
-                <img src="/static/main_img.gif" alt="sketch_image" class="sketch_image">
+            <div class="dropdown text-end">
+                <a class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="/static/bros_blank.jpg" id="dropdown_profile_image" class="rounded-circle" alt="..."
+                        width="32" height="32">
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item">
+                            <sapn id="dropdown_username"></sapn>안녕하세요
+                        </a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a id="profile" class="dropdown-item" onclick="profileButton()" style="cursor: pointer;">내
+                            페이지</a>
+                    </li>
+                    <li><a id="user_info" class="dropdown-item" onclick="userinfoButton()"
+                            style="cursor: pointer;">회원정보</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a id="loginout" class="dropdown-item" style="cursor: pointer;"
+                            onclick="signinupButton()">로그인/회원가입</a></li>
+                </ul>
             </div>
         </div>
-
-        <div class="post_container">
-            <div class="post_box">
-                <div class="box_title1" style="margin-bottom: 10px;">
-                    <p>
-                    <h3><b><span
-                        style="color:#00539C">B</span>est <span
-                        style=color:#ed6a66>P</span>ost</b></h3>
-                    </p>
+    </header>
+    <section id="hero" class="home_container">
+        <div class="wrapper">
+            <div class="row">
+                <div class="grid_4" style="display:flex; justify-content: center; align-items: center;">
+                    <div class="sketch_img_box">
+                        <img src="/static/test.png" alt="sketch_image" class="sketch_image">
+                    </div>
                 </div>
-                <div>
+                <div class="grid_4" style="display:flex; justify-content: center; align-items: center;">
+                    <div class="btn_box">
+                        <button class="upload-btn btn-2" onclick="autoPaint()" style="font-size:20px">스케치를 채색해보세요!
+                            ▶<br>click here</button>
+                    </div>
+                </div>
+                <div class="grid_4" style="display:flex; justify-content: center; align-items: center;">
+                    <div class="sketch_img_box">
+                        <img src="/static/main_img.gif" alt="sketch_image" class="sketch_image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="main" style="width: 85%; margin: auto;">
+        <section id="columnsdemo" style="margin-bottom:60px; width:100%" class="">
+            <div class="grid_7" >
+                <div id="post_box" class="row">
+                    <h3 style="width:100%; clear:both;"><span style="color:#00539C">B</span>est <span
+                            style=color:#ed6a66>P</span>ost</h3>
                     <div class="best_post" id="best_post"></div>
                 </div>
             </div>
-            <div class="tweet_box">
-                <div class="box_title2" style="margin-bottom: 10px;">
-                    <p>
-                    <h3><b><span
-                        style="color:#00539C">T</span>weeter <span
-                        style=color:#ed6a66>T</span>imeline</b></h3>
-                    </p>
-                </div>
-                <div class="timeline">
-                    <div class="twitter-timeline twitter-timeline-rendered"
-                        style="display: flex; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe
-                            id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
-                            allowfullscreen="true" class=""
-                            style="position: static; visibility: visible; width: 363px; height: 7270px; display: block; flex-grow: 1;"
-                            title="Twitter Timeline"
-                            src="https://syndication.twitter.com/srv/timeline-profile/screen-name/colorshop_api?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOlsibGlua3RyLmVlIiwidHIuZWUiLCJ0ZXJyYS5jb20uYnIiLCJ3d3cubGlua3RyLmVlIiwid3d3LnRyLmVlIiwid3d3LnRlcnJhLmNvbS5iciJdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdGltZWxpbmVfMTIwMzQiOnsiYnVja2V0IjoidHJlYXRtZW50IiwidmVyc2lvbiI6bnVsbH0sInRmd190d2VldF9lZGl0X2JhY2tlbmQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3JlZnNyY19zZXNzaW9uIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19zaG93X2J1c2luZXNzX3ZlcmlmaWVkX2JhZGdlIjp7ImJ1Y2tldCI6Im9mZiIsInZlcnNpb24iOm51bGx9LCJ0ZndfY2hpbl9waWxsc18xNDc0MSI6eyJidWNrZXQiOiJjb2xvcl9pY29ucyIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfcmVzdWx0X21pZ3JhdGlvbl8xMzk3OSI6eyJidWNrZXQiOiJ0d2VldF9yZXN1bHQiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NlbnNpdGl2ZV9tZWRpYV9pbnRlcnN0aXRpYWxfMTM5NjMiOnsiYnVja2V0IjoiaW50ZXJzdGl0aWFsIiwidmVyc2lvbiI6bnVsbH0sInRmd19leHBlcmltZW50c19jb29raWVfZXhwaXJhdGlvbiI6eyJidWNrZXQiOjEyMDk2MDAsInZlcnNpb24iOm51bGx9LCJ0ZndfZHVwbGljYXRlX3NjcmliZXNfdG9fc2V0dGluZ3MiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3ZpZGVvX2hsc19keW5hbWljX21hbmlmZXN0c18xNTA4MiI6eyJidWNrZXQiOiJ0cnVlX2JpdHJhdGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmx1ZV92ZXJpZmllZF9iYWRnZSI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;origin=https%3A%2F%2Fpetalica.com%2Findex_en.html&amp;sessionId=f7b9a91249773a1cb8c2c4784d2e9532b2b8e511&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=a3525f077c700%3A1667415560940"></iframe>
+            <div class="grid_5">
+                <div class="tweet_box">
+                    <div>
+                        <h3><span style="color:#00539C;">T</span>weeter <span style=color:#ed6a66>T</span>imeline</h3>
                     </div>
-                    <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <div class="timeline">
+                        <div class="twitter-timeline twitter-timeline-rendered"
+                            style="display: flex; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe
+                                id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
+                                allowfullscreen="true" class=""
+                                style="position: static; visibility: visible; width: 363px; height: 7270px; display: block; flex-grow: 1;"
+                                title="Twitter Timeline"
+                                src="https://syndication.twitter.com/srv/timeline-profile/screen-name/colorshop_api?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOlsibGlua3RyLmVlIiwidHIuZWUiLCJ0ZXJyYS5jb20uYnIiLCJ3d3cubGlua3RyLmVlIiwid3d3LnRyLmVlIiwid3d3LnRlcnJhLmNvbS5iciJdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdGltZWxpbmVfMTIwMzQiOnsiYnVja2V0IjoidHJlYXRtZW50IiwidmVyc2lvbiI6bnVsbH0sInRmd190d2VldF9lZGl0X2JhY2tlbmQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3JlZnNyY19zZXNzaW9uIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19zaG93X2J1c2luZXNzX3ZlcmlmaWVkX2JhZGdlIjp7ImJ1Y2tldCI6Im9mZiIsInZlcnNpb24iOm51bGx9LCJ0ZndfY2hpbl9waWxsc18xNDc0MSI6eyJidWNrZXQiOiJjb2xvcl9pY29ucyIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfcmVzdWx0X21pZ3JhdGlvbl8xMzk3OSI6eyJidWNrZXQiOiJ0d2VldF9yZXN1bHQiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NlbnNpdGl2ZV9tZWRpYV9pbnRlcnN0aXRpYWxfMTM5NjMiOnsiYnVja2V0IjoiaW50ZXJzdGl0aWFsIiwidmVyc2lvbiI6bnVsbH0sInRmd19leHBlcmltZW50c19jb29raWVfZXhwaXJhdGlvbiI6eyJidWNrZXQiOjEyMDk2MDAsInZlcnNpb24iOm51bGx9LCJ0ZndfZHVwbGljYXRlX3NjcmliZXNfdG9fc2V0dGluZ3MiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3ZpZGVvX2hsc19keW5hbWljX21hbmlmZXN0c18xNTA4MiI6eyJidWNrZXQiOiJ0cnVlX2JpdHJhdGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmx1ZV92ZXJpZmllZF9iYWRnZSI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;origin=https%3A%2F%2Fpetalica.com%2Findex_en.html&amp;sessionId=f7b9a91249773a1cb8c2c4784d2e9532b2b8e511&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=a3525f077c700%3A1667415560940"></iframe>
+                        </div>
+                        <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <!-- 푸터 연결 -->
     <footer include-html="/html/footer.html"></footer>
+
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.9.0.min.js">\x3C/script>')</script>
+
+    <!-- fire ups - read this file!  -->
+    <script src="/js/main.js"></script>
 
     <script src="/js/api.js"></script>
     <script src="/js/home.js"></script>

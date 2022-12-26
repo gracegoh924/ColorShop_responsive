@@ -117,7 +117,7 @@ function cRedo() {
 
 function down(event) {
     onoff = true;
-    oldx = event.offsetX
+    oldx = event.offsetX;
     oldy = event.offsetY;
 }
 

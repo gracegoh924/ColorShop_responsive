@@ -22,68 +22,91 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/auto_paint.css">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/basic-style.css">
+
+    <!-- JS-->
+    <script src="/js/libs/modernizr-2.6.2.min.js"></script>
     <script src="/js/includehtml.js"></script>
 
     <title>main</title>
+
+
 </head>
 
-<body>
+<body id="home">
     <!-- 헤더 연결 -->
-    <header include-html="/html/header.html"></header>
+    <header class="clearfix" include-html="/html/header.html"></header>
 
-    <div class="sketch_container">
-        <div class="before_image_box">
-            <div class="before_image" id="before_image">
-                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <span class="material-symbols-outlined" style="font-size: 50px;">add_photo_alternate</span>
-                <header>드래그해서 스케치 이미지 업로드</header>
-                <span>또는</span>
-                <button type="button" class="btn btn-outline-dark" id="upload">컴퓨터에서 선택</button>
-                <input type="file" id="before_img" hidden>
-            </div>
+    <section id="hero" class="home_container">
+
+        <div class="wrapper" style="width: 110%;">
+            <div class="row">
+                <div id="each_grid" class="grid_4">
+                    <div class="before_image_box">
+                        <div class="before_image" id="before_image">
+                            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                            <span class="material-symbols-outlined" style="font-size: 50px;">add_photo_alternate</span>
+                            <header>드래그해서 스케치 이미지 업로드</header>
+                            <span>또는</span>
+                            <button type="button" class="btn btn-outline-dark" id="upload">컴퓨터에서 선택</button>
+                            <input type="file" id="before_img" hidden>
+                        </div>
+                    </div>
+            
+                </div>
+                
+                <div id="each_grid" class="grid_4">
+                    <div class="btn_box">
+                        <span style="margin: 15px; color: black;">원하는 채색 모델을 고른 후</span>
+                        <div class="frozen">
+                            <button type="button" class="btn btn-outline-dark" id="model1" value="1"
+                                onclick="chooseModel(this.value)"><img src="/static/md11.png" style="max-width:90px; border-radius: 5px;"></button>
+                            <button type="button" class="btn btn-outline-dark" id="model2" value="2"
+                                onclick="chooseModel(this.value)"><img src="/static/md22.png" style="max-width:90px; border-radius: 5px;"></button>
+                            <button type="button" class="btn btn-outline-dark" id="model3" value="3"
+                                onclick="chooseModel(this.value)"><img src="/static/md33.png" style="max-width:90px; border-radius: 5px;"></button>
+                        </div>
+                        <div style="margin: 15px; color:black;">▼</div>
+                        <div>
+                            <button type="button" class="btn btn-outline-dark" id="img_upload_btn"
+                                onclick="postImage()" style="margin: 5px;">채색하기</button>
+                            <button type="button" class="btn btn-outline-dark" id="img_post_btn"
+                                onclick="deepImage()" style="margin: 5px;">공유하기</button>
+                        </div>
+                    </div>
+            
+                </div>
+                
+                <div id="each_grid" class="grid_4">
+                    <div class="after_img_box">
+                        <img src="/static/Spin-1s-200px.gif" alt="loading_image" id="loading_image" class="loading_image" style="display:none;">
+                        <img src="/static/resultbox3.png" alt="sketch_image" id="after_image" class="sketch_image" style="display:block">
+                    </div>
+            
+                </div>
+            </div><!-- end row -->
         </div>
+    </section>
 
-        <div class="btn_box">
-            <span style="margin: 15px; color: black;">원하는 채색 모델을 고른 후</span>
-            <div class="frozen">
-                <button type="button" class="btn btn-outline-dark" id="model1" value="1"
-                    onclick="chooseModel(this.value)"><img src="/static/md11.png" style="max-width:90px; border-radius: 5px;"></button>
-                <button type="button" class="btn btn-outline-dark" id="model2" value="2"
-                    onclick="chooseModel(this.value)"><img src="/static/md22.png" style="max-width:90px; border-radius: 5px;"></button>
-                <button type="button" class="btn btn-outline-dark" id="model3" value="3"
-                    onclick="chooseModel(this.value)"><img src="/static/md33.png" style="max-width:90px; border-radius: 5px;"></button>
+    <div id="post_modal" class="modal_overlay">
+        <div class="modal_window">
+            <div class="modal_image">
+                <img id="deepimage" src="" alt="deep-image" class="modal_post_image" onclick="window.open(this.src)"
+                    style="width: 100%; height: 100%;">
             </div>
-            <div style="margin: 15px; color:black;">▼</div>
             <div>
-                <button type="button" class="btn btn-outline-dark" id="img_upload_btn"
-                    onclick="postImage()" style="margin: 5px;">채색하기</button>
-                <button type="button" class="btn btn-outline-dark" id="img_post_btn"
-                    onclick="deepImage()" style="margin: 5px;">공유하기</button>
+                <input type="text" id="input_title" class="modal_text feed_content_textarea form-control col-sm-5"
+                    rows="1" placeholder="제목을 작성해 주세요" style="background-color: white;">
             </div>
-        </div>
-        <div class="after_img_box">
-            <img src="/static/Spin-1s-200px.gif" alt="loading_image" id="loading_image" class="loading_image" style="display:none;">
-            <img src="/static/resultbox3.png" alt="sketch_image" id="after_image" class="sketch_image" style="display:block">
-        </div>
-
-        <div id="post_modal" class="modal_overlay">
-            <div class="modal_window">
-                <div class="modal_image">
-                    <img id="deepimage" src="" alt="deep-image" class="modal_post_image" onclick="window.open(this.src)"
-                        style="width: 100%; height: 100%;">
-                </div>
-                <div>
-                    <input type="text" id="input_title" class="modal_text feed_content_textarea form-control col-sm-5" rows="1"
-                        placeholder="제목을 작성해 주세요" style="background-color: white;">
-                </div>
-                <div>
-                    <textarea id="input_content" class="modal_text feed_content_textarea form-control col-sm-5" rows="5"
-                        placeholder="본문을 작성해 주세요" style="background-color: white;"></textarea>
-                </div>
-                <div class="modal_button">
-                    <button type="button" class="btn btn-outline-dark" onclick="postCreate()">등록하기</button>
-                    <button type="button" class="btn btn-outline-dark" id="close_modal">돌아가기</button>
-                </div>
+            <div>
+                <textarea id="input_content" class="modal_text feed_content_textarea form-control col-sm-5" rows="5"
+                    placeholder="본문을 작성해 주세요" style="background-color: white;"></textarea>
+            </div>
+            <div class="modal_button">
+                <button type="button" class="btn btn-outline-dark" onclick="postCreate()">등록하기</button>
+                <button type="button" class="btn btn-outline-dark" id="close_modal">돌아가기</button>
             </div>
         </div>
     </div>
