@@ -3,7 +3,6 @@ const signUpBtn = document.getElementById("signUp");
 const fistForm = document.getElementById("form1");
 const secondForm = document.getElementById("form2");
 const container = document.querySelector(".container");
-const frontend_base_url = 'https://auto-color.shop/html/'
 const backend_base_url = 'http://127.0.0.1:8000'
 
 
