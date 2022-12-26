@@ -104,6 +104,13 @@
     grid-column-gap: 20px;
 }
 
+
+@media(max-width: 768px) {
+    .best_post {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .new_post {
     height: 280px;
     border: solid 1px;

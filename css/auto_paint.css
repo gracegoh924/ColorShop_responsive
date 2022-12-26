@@ -11,6 +11,13 @@
     align-items: center;
 }
 
+@media(max-width: 768px) {
+    .home_container {
+        width: 90%;
+        margin: auto;
+    }
+}
+ 
 .before_image_box {
     width: 320px;
     height: 360px;
